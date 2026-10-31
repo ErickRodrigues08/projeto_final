@@ -1,0 +1,1145 @@
+/* ==========================================================================
+   PASSE LIVRE — ALERTA DE OBSTÁCULO NA ROTA
+   Reprodução fiel e pixel-perfect da tela de alerta de interferência/bloqueio
+   Tipografia: Domine (Serif) e Plus Jakarta Sans
+   Paleta: Tons quentes de pergaminho, areia, terracota, vermelho suave e âmbar
+   ========================================================================== */
+
+@import url('../assets/fonts/fonts.css');
+
+:root {
+  /* Fontes oficiais */
+  --font-serif: 'Domine', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Cores da Identidade Visual */
+  --color-orange-primary: #ea580c;
+  --color-amber-primary: #f59e0b;
+  --color-orange-btn: #e67a00;
+  --color-orange-btn-hover: #cf6900;
+  --color-brown-brand: #78350f;
+  --color-brown-dark: #291c10;
+  --color-brown-text: #451a03;
+  --color-brown-muted: #854d0e;
+
+  /* Tons de Alerta e Obstrução */
+  --color-alert-red: #b91c1c;
+  --color-alert-red-light: #fef2f2;
+  --color-alert-red-border: #fecaca;
+  --color-warn-orange: #c2410c;
+  --color-warn-bg: #faede0;
+  --color-warn-border: #fed7aa;
+
+  /* Fundos e Neutros */
+  --bg-header: #fcf8f2;
+  --bg-page: #f7f3ea;
+  --bg-modal-sand: #faf5ec;
+  --bg-card-white: #ffffff;
+  --bg-tag-peach: #faeee4;
+
+  /* Bordas */
+  --border-light: #ece4d8;
+  --border-card: #ebd9c8;
+  --border-subtle: #ede4d8;
+  --border-recommended: #e07a00;
+
+  /* Textos */
+  --text-dark: #1c1917;
+  --text-body: #292524;
+  --text-muted: #57534e;
+  --text-dim: #a8a29e;
+
+  /* Sombras */
+  --shadow-modal: 0 24px 60px -10px rgba(60, 40, 15, 0.22), 0 0 0 1px rgba(220, 210, 195, 0.65);
+  --shadow-btn: 0 8px 20px -4px rgba(230, 122, 0, 0.45);
+}
+
+/* Reset e Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-dark);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   1. CABEÇALHO DO SITE (SITE HEADER CONFORME PROTÓTIPO)
+   ========================================================================== */
+.site-header {
+  background-color: var(--bg-header);
+  border-bottom: 1px solid var(--border-light);
+  height: 64px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  z-index: 1000;
+  flex-shrink: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.brand-logo:hover {
+  transform: scale(1.03);
+}
+
+.brand-logo img {
+  height: 34px;
+  width: auto;
+}
+
+/* Campo de busca no topo */
+.header-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.header-search-wrap .search-icon {
+  position: absolute;
+  left: 14px;
+  width: 15px;
+  height: 15px;
+  color: var(--text-dim);
+  pointer-events: none;
+}
+
+.header-search-input {
+  width: 290px;
+  height: 38px;
+  background-color: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 9999px;
+  padding: 0 16px 0 38px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-dark);
+  outline: none;
+}
+
+.header-search-input::placeholder {
+  color: var(--text-dim);
+  font-size: 12.5px;
+}
+
+/* Links de Navegação */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #57534e;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.nav-link img,
+.nav-link svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0.85;
+}
+
+.nav-link-pill {
+  border: 1.5px solid var(--border-light);
+  background-color: #ffffff;
+  color: var(--color-brown-brand);
+  font-weight: 600;
+}
+
+.nav-link:hover {
+  color: var(--color-brown-brand);
+}
+
+/* Lado Direito do Cabeçalho */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+.btn-icon-notify {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: #57534e;
+  text-decoration: none;
+}
+
+.notify-badge-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-orange-primary);
+  border: 2px solid var(--bg-header);
+  border-radius: 50%;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 9999px;
+}
+
+.user-avatar-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--border-light);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.user-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.user-role {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   2. PALCO DO MAPA COM TRAJETO E BLOQUEIO (FULLSCREEN STAGE)
+   ========================================================================== */
+.obstacle-stage-container {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: calc(100vh - 124px);
+  overflow: hidden;
+  background-color: var(--bg-page);
+}
+
+/* Canvas do mapa demonstrativo interativo */
+#obstacle-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: #ede6db;
+  cursor: grab;
+  user-select: none;
+  overflow: hidden;
+  touch-action: none;
+}
+
+#obstacle-map.is-dragging {
+  cursor: grabbing;
+}
+
+.demonstrative-map-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  shape-rendering: geometricPrecision;
+  text-rendering: geometricPrecision;
+}
+
+/* ==========================================================================
+   3. CAIXA CENTRAL FLUTUANTE DE ALERTA DE OBSTÁCULO
+   ========================================================================== */
+.obstacle-alert-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  max-width: calc(100vw - 36px);
+  max-height: calc(100vh - 140px);
+  background-color: var(--bg-modal-sand);
+  border-radius: 26px;
+  box-shadow: var(--shadow-modal);
+  z-index: 500;
+  padding: 26px 26px 22px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ebd9c8 transparent;
+  animation: modalPopIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPopIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -46%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.obstacle-alert-modal::-webkit-scrollbar {
+  width: 5px;
+}
+.obstacle-alert-modal::-webkit-scrollbar-thumb {
+  background-color: #ebd9c8;
+  border-radius: 9999px;
+}
+
+/* Topo: Badges de Alerta de Obstrução e Distância */
+.modal-top-badges-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.badge-obstruction-alert {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--color-alert-red-light);
+  border: 1px solid var(--color-alert-red-border);
+  border-radius: 9999px;
+  padding: 3.5px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--color-alert-red);
+  letter-spacing: 0.4px;
+}
+
+.badge-obstruction-alert svg {
+  width: 14px;
+  height: 14px;
+  color: var(--color-alert-red);
+}
+
+.badge-user-distance {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: 9999px;
+  padding: 3.5px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-brown-brand);
+}
+
+.badge-user-distance svg {
+  width: 13px;
+  height: 13px;
+  color: var(--color-brown-brand);
+}
+
+/* Título e Descrição do Obstáculo */
+.obstacle-main-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-brown-dark);
+  letter-spacing: -0.3px;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+
+.obstacle-main-desc {
+  font-size: 12.8px;
+  line-height: 1.45;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.obstacle-main-desc strong {
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   4. CARD BRANCO INTERNO: DETALHES DO REPORTE DO VOLUNTÁRIO
+   ========================================================================== */
+.report-details-card {
+  background-color: var(--bg-card-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.report-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.report-author-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.report-shield-icon-wrap {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fef3c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.report-shield-icon-wrap svg {
+  width: 16px;
+  height: 16px;
+  color: #d97706;
+}
+
+.report-text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.report-author-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 2px;
+}
+
+.report-cause-text {
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: #57534e;
+}
+
+.report-cause-text strong.cause-label {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.report-active-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-orange-primary);
+  box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.25);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* Divisor sutil no card */
+.report-inner-divider {
+  height: 1px;
+  background-color: #f5ede2;
+}
+
+/* Linha inferior de características intransponíveis */
+.report-tags-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--color-brown-brand);
+  font-weight: 600;
+  flex-wrap: wrap;
+}
+
+.report-tag-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.report-tag-item svg {
+  width: 14px;
+  height: 14px;
+  color: var(--color-brown-brand);
+}
+
+.tag-dot-sep {
+  color: #d6d3d1;
+}
+
+/* ==========================================================================
+   5. BOX DE ROTA RECOMENDADA COM BORDA LARANJA
+   ========================================================================== */
+.recommended-detour-box {
+  background-color: var(--bg-card-white);
+  border: 2px solid var(--border-recommended);
+  border-radius: 18px;
+  padding: 16px 18px 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.08);
+}
+
+.detour-box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.detour-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.detour-dot-orange {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--color-orange-primary);
+}
+
+.detour-title-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-brown-brand);
+}
+
+.badge-detour-piso {
+  background-color: var(--bg-tag-peach);
+  color: var(--color-brown-muted);
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 6px;
+}
+
+.detour-info-text {
+  font-size: 11.5px;
+  color: #57534e;
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+
+/* Botão Principal: Desviar agora */
+.btn-detour-now {
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(135deg, var(--color-amber-primary) 0%, var(--color-orange-btn) 100%);
+  border: none;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: var(--shadow-btn);
+  transition: all 0.2s ease;
+}
+
+.btn-detour-now:hover {
+  background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  transform: translateY(-1.5px);
+  box-shadow: 0 10px 22px -4px rgba(230, 122, 0, 0.55);
+}
+
+.btn-detour-now svg {
+  width: 17px;
+  height: 17px;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   6. BOTÃO SECUNDÁRIO DE RISCO E LINKS DO RODAPÉ
+   ========================================================================== */
+.btn-continue-manual {
+  width: 100%;
+  height: 44px;
+  background-color: var(--color-warn-bg);
+  border: 1px solid var(--color-warn-border);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--color-warn-orange);
+  cursor: pointer;
+  margin-bottom: 14px;
+  transition: all 0.18s ease;
+}
+
+.btn-continue-manual:hover {
+  background-color: #f7e2ce;
+  border-color: #fbcfe8;
+}
+
+.btn-continue-manual svg {
+  width: 15px;
+  height: 15px;
+  color: var(--color-warn-orange);
+}
+
+/* Links do Rodapé da Caixa */
+.obstacle-footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px 0;
+}
+
+.link-obstacle-action {
+  background: none;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--color-brown-brand);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.link-obstacle-action:hover {
+  color: var(--color-orange-primary);
+  text-decoration: underline;
+}
+
+.link-obstacle-action svg {
+  width: 14px;
+  height: 14px;
+  color: var(--color-brown-brand);
+}
+
+/* ==========================================================================
+   7. ELEMENTOS DO MAPA DEMONSTRATIVO VETORIAL
+   ========================================================================== */
+
+/* Quarteirões */
+.city-block {
+  transition: fill 0.2s ease;
+}
+.city-block:hover {
+  fill: #d7cebf;
+}
+
+/* Praça Cidade das Flores */
+.park-polygon {
+  transition: fill 0.2s ease;
+}
+.map-park-group:hover .park-polygon {
+  fill: #d4d8c7;
+}
+
+/* Trajetos do Usuário */
+.route-traveled {
+  transition: stroke-width 0.2s ease, opacity 0.2s ease;
+}
+.route-traveled:hover {
+  stroke-width: 9.5px;
+}
+
+.route-blocked {
+  transition: stroke-width 0.2s ease, opacity 0.3s ease, stroke 0.3s ease;
+}
+.route-blocked:hover {
+  stroke-width: 9px;
+}
+
+.route-detour {
+  transition: stroke-width 0.25s ease, stroke 0.3s ease;
+}
+.route-detour:hover {
+  stroke-width: 9.5px;
+}
+.route-detour.detour-solid-active {
+  stroke: #ea580c;
+  stroke-width: 8.5px;
+}
+
+/* Brilho da rota de desvio ativada */
+.route-detour-active-glow.glow-pulse-active {
+  animation: detourGlowPulse 2.2s ease-in-out infinite alternate;
+}
+
+@keyframes detourGlowPulse {
+  0% {
+    opacity: 0.4;
+    stroke-width: 8.5px;
+  }
+  100% {
+    opacity: 0.85;
+    stroke-width: 13px;
+  }
+}
+
+/* Pulsação do Marcador do Usuário */
+.user-pulse-halo {
+  animation: userGpsPulse 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  transform-origin: center;
+}
+
+@keyframes userGpsPulse {
+  0% {
+    r: 8px;
+    opacity: 0.8;
+  }
+  70% {
+    r: 22px;
+    opacity: 0;
+  }
+  100% {
+    r: 22px;
+    opacity: 0;
+  }
+}
+
+/* Placa do Alerta no Mapa */
+.map-badge-blocked-group {
+  transition: transform 0.2s ease;
+}
+.map-badge-blocked-group:hover {
+  transform: translate(0, -2px);
+}
+
+/* ==========================================================================
+   7.1 CONTROLES FLUTUANTES DO HUD NO MAPA
+   ========================================================================== */
+.map-floating-hud {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 600;
+  pointer-events: auto;
+}
+
+.map-zoom-group {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1.5px solid var(--border-light);
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(60, 40, 15, 0.12);
+  overflow: hidden;
+}
+
+.btn-map-hud {
+  background-color: #ffffff;
+  border: none;
+  color: var(--color-brown-brand);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.map-zoom-group .btn-map-hud:first-child {
+  border-right: 1px solid var(--border-light);
+  padding: 8px 12px;
+}
+
+.btn-hud-recenter,
+.btn-hud-toggle-modal {
+  border: 1.5px solid var(--border-light);
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(60, 40, 15, 0.12);
+  padding: 8px 16px;
+}
+
+.btn-map-hud:hover {
+  background-color: #faf5ec;
+  color: var(--color-orange-primary);
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 20px rgba(60, 40, 15, 0.18);
+}
+
+.btn-map-hud:active {
+  transform: translateY(0);
+}
+
+.hud-btn-label {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   7.2 BARRA COMPACTA QUANDO O MODAL ESTÁ RECOLHIDO
+   ========================================================================== */
+.minimized-alert-banner {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 700;
+  background-color: var(--bg-modal-sand);
+  border: 1.5px solid var(--border-card);
+  border-radius: 9999px;
+  padding: 9px 22px;
+  box-shadow: 0 12px 35px rgba(60, 40, 15, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: calc(100vw - 48px);
+  animation: bannerPopUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes bannerPopUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.minimized-alert-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.minimized-badge-alert {
+  background-color: var(--color-alert-red-light);
+  border: 1px solid var(--color-alert-red-border);
+  color: var(--color-alert-red);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.minimized-alert-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--color-brown-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.minimized-alert-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-mini-detour {
+  background: linear-gradient(135deg, var(--color-amber-primary) 0%, var(--color-orange-btn) 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-mini-detour:hover {
+  transform: scale(1.03);
+}
+
+.btn-mini-expand {
+  background-color: #ffffff;
+  border: 1px solid var(--border-light);
+  color: var(--color-brown-brand);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-mini-expand:hover {
+  background-color: #faf5ec;
+  color: var(--color-orange-primary);
+}
+
+/* Estado Recolhido da Caixa de Alerta */
+.obstacle-alert-modal.is-minimized {
+  opacity: 0;
+  transform: translate(-50%, 60px) scale(0.92);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   7.3 TOOLTIP FLUTUANTE DOS ELEMENTOS DO MAPA
+   ========================================================================== */
+.map-feature-tooltip {
+  position: fixed;
+  z-index: 3000;
+  background: rgba(30, 24, 18, 0.92);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  padding: 6px 13px;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+}
+
+.map-feature-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   8. MODAL DE FOTOS E EVIDÊNCIAS DE ACESSIBILIDADE
+   ========================================================================== */
+.photo-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(28, 25, 23, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.photo-modal-overlay.open {
+  display: flex;
+}
+
+.photo-modal-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  animation: modalPopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-modal-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.photo-modal-title {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-brown-dark);
+}
+
+.btn-close-photo-modal {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.photo-modal-body {
+  padding: 18px 20px;
+}
+
+.photo-modal-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.photo-modal-caption {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   9. RODAPÉ DO SITE (SITE FOOTER)
+   ========================================================================== */
+.site-footer {
+  background-color: var(--bg-header);
+  border-top: 1px solid var(--border-light);
+  padding: 12px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+  z-index: 100;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.footer-credits {
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-link-item {
+  color: #57534e;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-link-item:hover {
+  color: var(--color-orange-primary);
+}
+
+/* Toast de Alerta */
+.toast-obstacle-msg {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background-color: #292524;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  z-index: 2500;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.toast-obstacle-msg.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .map-floating-hud {
+    bottom: 16px;
+    right: 16px;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .obstacle-alert-modal {
+    width: calc(100% - 24px);
+    padding: 20px 18px;
+    border-radius: 20px;
+  }
+
+  .obstacle-main-title {
+    font-size: 19px;
+  }
+
+  .hud-btn-label {
+    display: none;
+  }
+
+  .btn-hud-recenter,
+  .btn-hud-toggle-modal {
+    padding: 8px 10px;
+  }
+
+  .minimized-alert-banner {
+    width: calc(100% - 24px);
+    padding: 8px 14px;
+    gap: 10px;
+  }
+
+  .minimized-alert-title {
+    max-width: 140px;
+  }
+}

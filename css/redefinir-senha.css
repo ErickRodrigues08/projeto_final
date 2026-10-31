@@ -1,0 +1,838 @@
+/* ==========================================================================
+   PASSE LIVRE — REDEFINIÇÃO DE SENHA (ETAPA FINAL 2 DE 2)
+   Design System: Warm Sand/Ivory Palette, Outfit + Plus Jakarta Sans,
+   Pill inputs, interactive 3-requirement counter, SSL badge, and Senai Suzano footer.
+   ========================================================================== */
+
+@import url('../assets/fonts/fonts.css');
+
+:root {
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', var(--font-main);
+
+  --primary-orange: #d97706;
+  --primary-amber: #f59e0b;
+  --primary-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  --primary-hover: linear-gradient(135deg, #fbbf24 0%, #b45309 100%);
+  --dark-warm: #1f160e;
+  --text-main: #292524;
+  --text-muted: #6b5847;
+  --text-dim: #78716c;
+  
+  --bg-page: #faf5ec;
+  --bg-card: #ffffff;
+  --border-card: #ebdccb;
+  --border-subtle: #e7dcce;
+  --border-input: #dccbb5;
+  
+  --success-color: #16a34a;
+  --error-color: #ef4444;
+  
+  --shadow-card: 0 20px 48px -12px rgba(69, 26, 3, 0.08), 0 0 0 1px rgba(69, 26, 3, 0.03);
+  --shadow-btn: 0 10px 22px -6px rgba(217, 119, 6, 0.42);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.reset-page {
+  font-family: var(--font-main);
+  background-color: var(--bg-page);
+  background-image: radial-gradient(circle at 12% 88%, #f3e5ce 0%, transparent 40%),
+                    radial-gradient(circle at 88% 12%, #fdf8f0 0%, transparent 35%);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+.reset-header {
+  position: relative;
+  z-index: 2;
+  padding: 22px 64px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.reset-brand-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.reset-brand-link:hover {
+  transform: translateY(-1px);
+}
+
+.reset-brand-link img {
+  height: 48px;
+  width: auto;
+}
+
+.reset-header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #57432f;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.header-action-link:hover {
+  color: var(--primary-orange);
+}
+
+.header-action-link svg {
+  width: 16px;
+  height: 16px;
+  color: currentColor;
+}
+
+.header-divider {
+  width: 1px;
+  height: 18px;
+  background: #dfcfbc;
+}
+
+/* --------------------------------------------------------------------------
+   Container Principal (2 Colunas)
+   -------------------------------------------------------------------------- */
+.reset-main-container {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  max-width: 1360px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px 64px 44px;
+  display: grid;
+  grid-template-columns: 1.12fr 1fr;
+  gap: 68px;
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   Coluna Esquerda
+   -------------------------------------------------------------------------- */
+.reset-info-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  animation: fadeInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Badge de Etapa */
+.step-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  padding: 5px 14px;
+  background: #eee7db;
+  border: 1px solid #e2d6c4;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #785b3b;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a89886;
+}
+
+.pill-bar {
+  width: 18px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--primary-amber);
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--dark-warm);
+  letter-spacing: -0.5px;
+}
+
+.page-subtitle {
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* Status da Solicitação Card */
+.status-badge-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(69, 26, 3, 0.04);
+  margin-top: 4px;
+  transition: transform 0.2s ease;
+}
+
+.status-badge-card:hover {
+  transform: translateY(-1px);
+}
+
+.status-badge-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.status-shield-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 1.5px solid #fcd34d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b45309;
+}
+
+.status-shield-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.status-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.status-kicker {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #b45309;
+}
+
+.status-main {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark-warm);
+}
+
+.status-badge-right {
+  display: flex;
+  align-items: center;
+  color: #b45309;
+}
+
+.status-check-circle {
+  width: 22px;
+  height: 22px;
+  color: #b45309;
+}
+
+/* Dois Cards de Segurança Inferiores */
+.security-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.security-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(69, 26, 3, 0.03);
+  transition: transform 0.2s ease;
+}
+
+.security-card:hover {
+  transform: translateY(-2px);
+}
+
+.security-card-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #fdf2de;
+  border: 1px solid #f6dbb5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b45309;
+}
+
+.security-card-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.security-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.security-card-title {
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #573a21;
+}
+
+.security-card-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   Coluna Direita (Card de Redefinição)
+   -------------------------------------------------------------------------- */
+.reset-card-column {
+  display: flex;
+  justify-content: center;
+  animation: fadeInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.redefinir-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-card);
+  border-radius: 28px;
+  padding: 36px 36px 30px;
+  box-shadow: var(--shadow-card);
+  width: 100%;
+  max-width: 490px;
+}
+
+/* Header do Card */
+.form-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.form-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.refresh-badge-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 1.5px solid #fcd34d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b45309;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.refresh-badge-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.refresh-check-badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #f59e0b;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+}
+
+.form-title {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--dark-warm);
+  line-height: 1.2;
+}
+
+.form-subtitle-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #65a30d;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.green-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #65a30d;
+}
+
+.etapa-final-badge {
+  background: #faeed7;
+  border: 1px solid #f5dfbe;
+  color: #92400e;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Campos em Formato de Pílula */
+.reset-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dark-warm);
+}
+
+.input-pill-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-left-icon {
+  position: absolute;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8c827a;
+  pointer-events: none;
+}
+
+.input-left-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.form-input-pill {
+  width: 100%;
+  height: 48px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border-input);
+  background: #ffffff;
+  padding: 0 46px 0 46px;
+  font-family: var(--font-main);
+  font-size: 14px;
+  color: var(--text-main);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.form-input-pill::placeholder {
+  color: #a89a8c;
+  font-size: 13.5px;
+}
+
+.form-input-pill:focus {
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.14);
+}
+
+.form-input-pill.has-error {
+  border-color: var(--error-color);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.14);
+}
+
+.btn-eye-toggle {
+  position: absolute;
+  right: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: #8c827a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease;
+}
+
+.btn-eye-toggle:hover {
+  color: var(--primary-orange);
+}
+
+.btn-eye-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.field-error {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--error-color);
+  padding-left: 16px;
+  margin-top: 2px;
+}
+
+/* Box de Requisitos de Senha */
+.requirements-card {
+  background: #f7eedf;
+  border: 1px solid #ebd9c2;
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
+
+.requirements-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.req-title {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #57534e;
+}
+
+.req-counter {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #78716c;
+}
+
+.requirements-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.req-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.req-circle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid #b5a494;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 9px;
+  font-weight: 800;
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.req-item.valid {
+  color: var(--dark-warm);
+  font-weight: 600;
+}
+
+.req-item.valid .req-circle {
+  background: var(--success-color);
+  border-color: var(--success-color);
+}
+
+.req-item.valid .req-circle::after {
+  content: "✓";
+}
+
+/* Botão Redefinir Senha */
+.btn-redefinir-final {
+  width: 100%;
+  height: 50px;
+  background: var(--primary-gradient);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--font-main);
+  font-size: 15.5px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 4px;
+}
+
+.btn-redefinir-final:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px -6px rgba(217, 119, 6, 0.52);
+}
+
+.btn-redefinir-final:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-redefinir-final:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-arrow {
+  font-size: 18px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.btn-redefinir-final:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+/* Link Cancelar */
+.link-cancelar {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #57534e;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.link-cancelar:hover {
+  color: var(--primary-orange);
+  text-decoration: underline;
+}
+
+/* Indicador SSL */
+.ssl-trust-footer {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.ssl-trust-footer svg {
+  color: #a89a8c;
+}
+
+/* --------------------------------------------------------------------------
+   Rodapé da Página
+   -------------------------------------------------------------------------- */
+.reset-page-footer {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid var(--border-card);
+  padding: 22px 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 12px;
+  color: var(--text-dim);
+  gap: 24px;
+}
+
+.footer-left {
+  line-height: 1.5;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  white-space: nowrap;
+}
+
+.footer-right a {
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-right a:hover {
+  color: var(--primary-orange);
+  text-decoration: underline;
+}
+
+/* Toast */
+.reset-toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: #ffffff;
+  border: 1.5px solid var(--border-card);
+  border-radius: 16px;
+  padding: 14px 22px;
+  box-shadow: 0 16px 36px -6px rgba(69, 26, 3, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark-warm);
+  transform: translateY(120%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  z-index: 100;
+}
+
+.reset-toast.visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Responsividade
+   -------------------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .reset-header,
+  .reset-main-container,
+  .reset-page-footer {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .reset-main-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .reset-info-column {
+    max-width: 100%;
+  }
+
+  .page-title {
+    font-size: 36px;
+  }
+
+  .reset-card-column {
+    justify-content: center;
+  }
+
+  .redefinir-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .reset-header {
+    padding: 16px 20px;
+  }
+
+  .reset-main-container {
+    padding: 12px 20px 36px;
+  }
+
+  .reset-brand-link img {
+    height: 40px;
+  }
+
+  .security-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .redefinir-card {
+    padding: 28px 20px 24px;
+    border-radius: 22px;
+  }
+
+  .reset-page-footer {
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .footer-right {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

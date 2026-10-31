@@ -1,0 +1,998 @@
+/* ==========================================================================
+   PASSE LIVRE — DOSSIÊ INDIVIDUAL DA SOLICITAÇÃO & DO CIDADÃO
+   Painel do Gestor (Solicitações) v2.6
+   ========================================================================== */
+
+/* Layout Grid Principal */
+.dossier-page-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px 28px 48px 28px;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   1. BARRA SUPERIOR DE AÇÕES & NAVEGAÇÃO ENTRE USUÁRIOS
+   -------------------------------------------------------------------------- */
+.dossier-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: #ffffff;
+  border: 1px solid #ede4d8;
+  border-radius: 16px;
+  padding: 12px 20px;
+  box-shadow: 0 2px 10px rgba(45, 26, 3, 0.03);
+}
+
+.action-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-back-to-list {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  color: #57534e;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  background-color: #faf7f2;
+  border: 1px solid #e7ded2;
+  transition: all 0.15s ease;
+}
+
+.btn-back-to-list:hover {
+  background-color: #f3ede2;
+  color: #ea580c;
+  border-color: #fed7aa;
+}
+
+.user-quick-pager {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fdfaf6;
+  border: 1px solid #ede5d8;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-size: 12px;
+  color: #78716c;
+}
+
+.btn-pager-nav {
+  background: #ffffff;
+  border: 1px solid #d6cbbe;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #44403c;
+  font-size: 12px;
+  transition: all 0.15s ease;
+}
+
+.btn-pager-nav:hover:not(:disabled) {
+  background-color: #ea580c;
+  color: #ffffff;
+  border-color: #ea580c;
+}
+
+.btn-pager-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pager-counter-text {
+  font-weight: 700;
+  color: #1c1917;
+  padding: 0 4px;
+}
+
+.action-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-dossier-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.btn-dossier-danger {
+  background-color: #fef2f2;
+  border-color: #fecdd3;
+  color: #b91c1c;
+}
+
+.btn-dossier-danger:hover {
+  background-color: #fee2e2;
+  border-color: #fda4af;
+}
+
+.btn-dossier-amber {
+  background-color: #fffbeb;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+.btn-dossier-amber:hover {
+  background-color: #fef3c7;
+  border-color: #fcd34d;
+}
+
+.btn-dossier-success {
+  background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+  color: #ffffff;
+  box-shadow: 0 3px 12px rgba(234, 88, 12, 0.35);
+}
+
+.btn-dossier-success:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.btn-dossier-print {
+  background-color: #faf7f2;
+  border-color: #ede4d8;
+  color: #57534e;
+}
+
+.btn-dossier-print:hover {
+  background-color: #f5ede1;
+  color: #1c1917;
+}
+
+/* --------------------------------------------------------------------------
+   2. GRID EM DUAS COLUNAS (DOSSIÊ PRINCIPAL + PAINEL LATERAL)
+   -------------------------------------------------------------------------- */
+.dossier-main-grid {
+  display: grid;
+  grid-template-columns: 1.45fr 0.95fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.dossier-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   3. CARD DO PERFIL INDIVIDUAL DO CIDADÃO
+   -------------------------------------------------------------------------- */
+.user-profile-hero-card {
+  background: #ffffff;
+  border: 1px solid #ede4d8;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 3px 14px -4px rgba(45, 26, 3, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.user-profile-hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #ea580c 0%, #f59e0b 50%, #10b981 100%);
+}
+
+.user-hero-top-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.user-avatar-large-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.user-avatar-large-img {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fed7aa;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.avatar-verified-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  background-color: #10b981;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.user-meta-heading-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.user-full-name {
+  font-family: var(--font-domine, 'Domine', serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: #1c1917;
+  line-height: 1.2;
+}
+
+.user-tags-badges-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag-citizen-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 9999px;
+}
+
+.tag-pcd-condition {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #9a3412;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 9999px;
+}
+
+.tag-community-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #fefce8;
+  border: 1px solid #fef08a;
+  color: #854d0e;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 9999px;
+}
+
+/* 4 Cartões de Métricas do Cidadão */
+.user-metrics-quad-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.user-metric-box {
+  background-color: #faf7f2;
+  border: 1px solid #ede5d8;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user-metric-label {
+  font-size: 10.5px;
+  color: #78716c;
+  line-height: 1.2;
+}
+
+.user-metric-value {
+  font-size: 14px;
+  font-weight: 800;
+  color: #1c1917;
+  line-height: 1.2;
+}
+
+.user-metric-sub {
+  font-size: 9.5px;
+  color: #a8a29e;
+  line-height: 1.2;
+}
+
+/* Dados de Contato e Documentação (LGPD) */
+.user-contact-details-box {
+  background-color: #fdfcf9;
+  border: 1px solid #f0eae1;
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  font-size: 12px;
+}
+
+.contact-item-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contact-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #78716c;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.contact-value-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #1c1917;
+  font-weight: 600;
+}
+
+.btn-copy-chip {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ea580c;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: #fff7ed;
+  transition: all 0.15s;
+}
+
+.btn-copy-chip:hover {
+  background-color: #ffedd5;
+}
+
+/* --------------------------------------------------------------------------
+   4. CARD DE DETALHES DA OCORRÊNCIA / SOLICITAÇÃO
+   -------------------------------------------------------------------------- */
+.request-details-dossier-card {
+  background: #ffffff;
+  border: 1px solid #ede4d8;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 3px 14px -4px rgba(45, 26, 3, 0.04);
+}
+
+.card-section-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f5f0e8;
+}
+
+.card-title-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-title-icon-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background-color: #fff7ed;
+  color: #ea580c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-section-h3 {
+  font-family: var(--font-domine, 'Domine', serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: #1c1917;
+}
+
+.badge-risk-critical {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #fef2f2;
+  border: 1px solid #fecdd3;
+  color: #991b1b;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 9999px;
+}
+
+/* Dados da Ocorrência */
+.occurrence-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  background: #faf7f2;
+  border: 1px solid #ede5d8;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+.occurrence-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.occ-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #78716c;
+}
+
+.occ-val {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1c1917;
+  line-height: 1.35;
+}
+
+/* Relato do Cidadão (Quote) */
+.citizen-testimony-box {
+  background: #fffbf5;
+  border-left: 4px solid #ea580c;
+  border-radius: 4px 12px 12px 4px;
+  padding: 16px 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+}
+
+.citizen-quote-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #9a3412;
+}
+
+.citizen-quote-text {
+  font-size: 12.5px;
+  color: #44403c;
+  line-height: 1.55;
+  font-style: italic;
+}
+
+/* Gravação de áudio enviada pelo cidadão (só existe quando há arquivo no registro) */
+.voice-memo-player-box {
+  background-color: #faf6ef;
+  border: 1px solid #ede4d8;
+  border-radius: 12px;
+  padding: 8px 14px;
+  margin-top: 12px;
+}
+
+.voice-memo-player-box audio {
+  width: 100%;
+  height: 34px;
+}
+
+.voice-memo-empty {
+  margin: 12px 0 0;
+  font-size: 11.5px;
+  color: #78716c;
+  background-color: #faf6ef;
+  border: 1px dashed #d6cbbc;
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+
+/* Evidências Fotográficas */
+.evidence-photos-wrap {
+  margin-top: 18px;
+}
+
+.evidence-header-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1c1917;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.evidence-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 12px;
+}
+
+.evidence-empty {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 110px;
+  padding: 0 16px;
+  border: 1px dashed #d6cbbc;
+  border-radius: 12px;
+  background: #faf6ef;
+  font-size: 11.5px;
+  color: #78716c;
+  text-align: center;
+}
+
+.evidence-photo-card:only-child {
+  grid-column: 1 / -1;
+}
+
+.evidence-photo-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #ede5d8;
+  background: #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.evidence-photo-card:hover {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  transform: translateY(-1px);
+}
+
+.evidence-photo-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  opacity: 0.95;
+  transition: transform 0.3s;
+}
+
+.evidence-photo-card:hover img {
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+.photo-caption-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(28, 25, 23, 0.82);
+  backdrop-filter: blur(4px);
+  padding: 6px 10px;
+  color: #ffffff;
+  font-size: 10.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* --------------------------------------------------------------------------
+   5. CARD DE DESPACHO E LINHA DO TEMPO DA FISCALIZAÇÃO
+   -------------------------------------------------------------------------- */
+.dispatch-action-card {
+  background: #ffffff;
+  border: 1px solid #ede4d8;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 3px 14px -4px rgba(45, 26, 3, 0.04);
+}
+
+/* Linha do Tempo Visual do Workflow */
+.workflow-timeline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  position: relative;
+  padding: 0 10px;
+}
+
+.workflow-timeline::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 30px;
+  right: 30px;
+  height: 3px;
+  background-color: #ede4d8;
+  z-index: 1;
+}
+
+.timeline-step-node {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.step-circle-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #faf7f2;
+  border: 2px solid #d6cbbe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #78716c;
+  transition: all 0.2s;
+}
+
+.timeline-step-node.completed .step-circle-icon {
+  background-color: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+.timeline-step-node.current .step-circle-icon {
+  background-color: #ea580c;
+  border-color: #ea580c;
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.2);
+}
+
+.step-label-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1c1917;
+  max-width: 90px;
+}
+
+.step-label-time {
+  font-size: 9.5px;
+  color: #a8a29e;
+}
+
+/* Formulário de Triagem / Ordem de Serviço */
+.triage-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: #faf7f2;
+  border: 1px solid #ede5d8;
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.form-row-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-item-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-item-col label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #44403c;
+}
+
+.dossier-input,
+.dossier-select {
+  width: 100%;
+  padding: 8px 12px;
+  background-color: #ffffff;
+  border: 1px solid #d6cbbe;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 12px;
+  color: #1c1917;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.dossier-input:focus,
+.dossier-select:focus {
+  border-color: #ea580c;
+  box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.15);
+}
+
+.quick-templates-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.template-chip-btn {
+  background: #ffffff;
+  border: 1px solid #e7ded2;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 10.5px;
+  color: #78716c;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.template-chip-btn:hover {
+  background: #fff7ed;
+  border-color: #fed7aa;
+  color: #c2410c;
+}
+
+/* --------------------------------------------------------------------------
+   6. COLUNA DA DIREITA: MAPA GEORREFERENCIADO & LISTA RÁPIDA DE USUÁRIOS
+   -------------------------------------------------------------------------- */
+.map-context-card {
+  background: #ffffff;
+  border: 1px solid #ede4d8;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 3px 14px -4px rgba(45, 26, 3, 0.04);
+}
+
+.map-view-box {
+  position: relative;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e7ded2;
+  background: #e2d9cd;
+  margin-bottom: 14px;
+}
+
+.map-view-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#sol-minimap {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.map-no-coords {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 22px;
+  text-align: center;
+  color: #57534e;
+  background: repeating-linear-gradient(45deg, #e7ded2, #e7ded2 10px, #efe7dc 10px, #efe7dc 20px);
+}
+
+.map-no-coords strong {
+  font-size: 12.5px;
+  color: #92400e;
+}
+
+.map-no-coords span {
+  font-size: 11px;
+  line-height: 1.45;
+  color: #78716c;
+}
+
+.map-impact-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 11.5px;
+  color: #57534e;
+}
+
+.map-impact-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  background-color: #faf7f2;
+  border-radius: 8px;
+}
+
+/* Card: Fila de Usuários / Solicitações */
+.quick-users-queue-card {
+  background: #ffffff;
+  border: 1px solid #ede4d8;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 3px 14px -4px rgba(45, 26, 3, 0.04);
+}
+
+.queue-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.queue-user-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background-color: #faf7f2;
+  border: 1px solid #ede5d8;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.queue-user-item:hover {
+  background-color: #fff7ed;
+  border-color: #fed7aa;
+}
+
+.queue-user-item.active {
+  background-color: #fff7ed;
+  border-color: #ea580c;
+  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.15);
+}
+
+.queue-user-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.queue-avatar-sm {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.queue-meta-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.queue-user-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1c1917;
+  line-height: 1.2;
+}
+
+.queue-occurrence-title {
+  font-size: 10.5px;
+  color: #78716c;
+  line-height: 1.2;
+}
+
+.queue-status-tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.queue-status-tag.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.queue-status-tag.analyzing {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.queue-status-tag.approved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.queue-status-tag.correction {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.queue-status-tag.rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* --------------------------------------------------------------------------
+   7. RESPONSIVIDADE
+   -------------------------------------------------------------------------- */
+@media (max-width: 1080px) {
+  .dossier-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dossier-page-layout {
+    padding: 16px;
+  }
+
+  .user-metrics-quad-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .occurrence-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .workflow-timeline {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .workflow-timeline::before {
+    display: none;
+  }
+
+  .timeline-step-node {
+    flex-direction: row;
+    text-align: left;
+  }
+}

@@ -1,0 +1,12 @@
+# Segredos locais — nunca versionar
+.env
+.env.*
+!.env.example
+
+# Cache dos proxies de API externa
+api/cache/*
+!api/cache/.htaccess
+
+# Uploads de usuários
+uploads/*
+!uploads/.htaccess

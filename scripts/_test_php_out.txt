@@ -1,0 +1,7 @@
+{
+  "status": 0,
+  "stdout": "PHP 8.0.30 (cli) (built: Sep  1 2023 14:15:38) ( ZTS Visual C++ 2019 x64 )\nCopyright (c) The PHP Group\nZend Engine v4.0.30, Copyright (c) Zend Technologies\n",
+  "stderr": "",
+  "error": null,
+  "signal": null
+}

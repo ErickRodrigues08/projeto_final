@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" fill="none">
+  <!-- Subtle warm ambient background with flowing contour routes -->
+  <rect width="1440" height="900" fill="#FDFBF7"/>
+  
+  <!-- Flowing organic path 1 -->
+  <path d="M-100 280 C 200 240, 400 380, 800 310 C 1100 260, 1300 340, 1600 300" stroke="#F5EBDD" stroke-width="42" stroke-linecap="round" fill="none" opacity="0.8"/>
+  
+  <!-- Flowing organic path 2 (subtle crossing route) -->
+  <path d="M-50 480 C 350 420, 600 620, 1050 480 C 1300 400, 1450 520, 1600 460" stroke="#F8EFE3" stroke-width="68" stroke-linecap="round" fill="none" opacity="0.6"/>
+
+  <!-- Subtle dotted / dashed route curve -->
+  <path d="M-80 340 C 250 310, 500 450, 950 370 C 1200 330, 1380 410, 1550 380" stroke="#EEDCC6" stroke-width="3" stroke-dasharray="8 10" fill="none" opacity="0.45"/>
+  
+  <!-- Ambient light warmth glows -->
+  <circle cx="200" cy="180" r="320" fill="#FFF4E6" filter="blur(60px)" opacity="0.5"/>
+  <circle cx="1250" cy="720" r="360" fill="#FFF1DF" filter="blur(70px)" opacity="0.4"/>
+</svg>

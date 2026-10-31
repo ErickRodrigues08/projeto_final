@@ -1,0 +1,8 @@
+status: 0
+signal: null
+error: none
+stdout: PHP 8.0.30 (cli) (built: Sep  1 2023 14:15:38) ( ZTS Visual C++ 2019 x64 )
+Copyright (c) The PHP Group
+Zend Engine v4.0.30, Copyright (c) Zend Technologies
+
+stderr: 

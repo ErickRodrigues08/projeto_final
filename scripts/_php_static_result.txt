@@ -1,0 +1,75 @@
+=== VERIFICAÇÃO 1: PHP syntax check estático (67 arquivos) ===
+(Nota: PHP não está disponível no PATH. Usando análise estática de tokens.)
+
+OK: acessibilidade.php
+OK: adaptar-busca.php
+OK: ajuda.php
+OK: alerta-obstaculo.php
+OK: api\auditoria.php
+OK: api\auth.php
+OK: api\avaliacoes.php
+OK: api\configuracoes.php
+OK: api\contato.php
+OK: api\dashboard.php
+OK: api\db.php
+OK: api\estatisticas.php
+OK: api\locais.php
+OK: api\locations.php
+OK: api\notificacoes.php
+OK: api\notifications.php
+OK: api\obstacle-confirmation.php
+OK: api\obstacles.php
+OK: api\ocorrencias.php
+OK: api\relatorios.php
+OK: api\reviews.php
+OK: api\rotas.php
+OK: api\routes.php
+OK: api\solicitacoes.php
+OK: api\sql_bridge.php
+OK: api\user-status.php
+OK: api\user.php
+OK: api\users.php
+OK: auditoria.php
+OK: avaliar-local.php
+OK: cadastro.php
+OK: central-notificacoes.php
+OK: configuracao-rota.php
+OK: configuracoes.php
+OK: dashboard.php
+OK: detalhes-local.php
+OK: direitos.php
+OK: editar-perfil.php
+OK: esqueci-senha.php
+OK: explorar.php
+OK: fale-conosco.php
+OK: includes\auth_guard.php
+OK: includes\sidebar_gestor.php
+OK: index.php
+OK: locais-cadastrados.php
+OK: login.php
+OK: lugares-encontrados.php
+OK: mapa-geral.php
+OK: mapa-gestor.php
+OK: navegacao.php
+OK: notificacoes.php
+OK: perfil-cidadao-detalhe.php
+OK: perfil-gestor.php
+OK: personalizar-busca.php
+OK: privacidade.php
+AVISO: redefinir-senha.php
+  -> Parênteses () desbalanceados: faltam 1 fechando
+OK: relatorios.php
+OK: sem-resultados.php
+AVISO: solicitacao-detalhe.php
+  -> Parênteses () desbalanceados: faltam 1 fechando
+OK: solicitacoes.php
+OK: termos-de-uso.php
+OK: test_endpoints.php
+AVISO: test_migration.php
+  -> Chaves {} desbalanceadas: faltam 12 fechando
+OK: test_notifications_suite.php
+OK: test_suite_mysql.php
+OK: verificar-codigo.php
+OK: verificar-email.php
+
+Total: 67 arquivos analisados. Arquivos com avisos: 3

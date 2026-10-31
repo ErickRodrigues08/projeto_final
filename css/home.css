@@ -1,0 +1,821 @@
+/* ==========================================================================
+   PASSE LIVRE — LANDING PAGE (HOME PRINCIPAL)
+   ========================================================================== */
+
+:root {
+  --home-bg-warm: #fcf9f4;
+  --home-bg-alt: #f6f0e4;
+  --home-primary: #d97706;
+  --home-accent: #f59e0b;
+  --home-dark: #29180d;
+  --home-text: #1c1917;
+  --home-muted: #78716c;
+}
+
+body.home-page {
+  background-color: #ffffff;
+  color: var(--home-text);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   1. NAVBAR HOME
+   ========================================================================== */
+.home-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  min-height: 68px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #ede4d8;
+  padding: 0px 40px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+}
+
+.home-navbar .brand-logo img {
+  height: 34px;
+}
+
+.home-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+
+.home-nav-links a {
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #57534e;
+  transition: color 0.15s;
+}
+
+.home-nav-links a:hover,
+.home-nav-links a.active {
+  color: var(--home-primary);
+}
+
+.btn-home-login {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #ffffff;
+  border: 1.5px solid #d6cbbe;
+  border-radius: 9999px;
+  padding: 7px 18px;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 700;
+  color: #44403c;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-home-login:hover {
+  border-color: var(--home-primary);
+  color: var(--home-primary);
+  background: #fffbf5;
+  transform: translateY(-1px);
+}
+
+/* Botão hambúrguer (menu mobile) */
+.home-nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: none;
+  border: 1px solid #e7ded2;
+  border-radius: 8px;
+  cursor: pointer;
+  order: 3;
+}
+
+.home-nav-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin: 0 auto;
+  background: var(--home-dark);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.home-nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.home-nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.home-nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   2. HERO SECTION
+   ========================================================================= */
+.home-hero-section {
+  padding: 60px 40px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-phone-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-phone-mockup {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  filter: drop-shadow(0 20px 35px rgba(217, 119, 6, 0.18));
+  animation: floatPhone 4s ease-in-out infinite;
+}
+
+@keyframes floatPhone {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.hero-floating-safe-card {
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  background: #ffffff;
+  border: 1px solid #fde68a;
+  border-radius: 12px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  font-size: 11px;
+  font-weight: 700;
+  color: #92400e;
+  backdrop-filter: blur(8px);
+}
+
+.hero-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-eyebrow-tag {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--home-primary);
+  text-transform: uppercase;
+}
+
+.hero-big-title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -1.2px;
+  color: var(--home-dark);
+}
+
+.hero-big-title .highlight-amber {
+  color: var(--home-accent);
+  display: block;
+}
+
+.hero-description-lead {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #57534e;
+  max-width: 520px;
+}
+
+/* Hero CTA Card */
+.hero-cta-action-card {
+  background: #fffdfa;
+  border: 1px solid #fde68a;
+  border-radius: 18px;
+  padding: 20px 24px;
+  box-shadow: 0 10px 30px -10px rgba(217, 119, 6, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.cta-card-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: #b45309;
+  text-transform: uppercase;
+}
+
+.btn-hero-cta {
+  width: 100%;
+  height: 52px;
+  background: var(--primary-gradient);
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(217, 119, 6, 0.4);
+  transition: all 0.2s ease;
+}
+
+.btn-hero-cta:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(217, 119, 6, 0.5);
+}
+
+.cta-tags-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 11.5px;
+  color: #78716c;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   3. SECTION: PROJETADO PARA CADA NECESSIDADE
+   ========================================================================= */
+.needs-section {
+  padding: 70px 40px;
+  background-color: var(--home-bg-warm);
+  border-top: 1px solid #ede4d8;
+  border-bottom: 1px solid #ede4d8;
+}
+
+.section-container-centered {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--home-primary);
+  text-transform: uppercase;
+}
+
+.section-main-heading {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--home-dark);
+  letter-spacing: -0.6px;
+}
+
+.section-sub-heading {
+  font-size: 14px;
+  color: var(--home-muted);
+  max-width: 580px;
+  margin-bottom: 34px;
+}
+
+.needs-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  text-align: left;
+}
+
+.need-card-item {
+  background: #ffffff;
+  border: 1px solid #ede5d8;
+  border-radius: 18px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.22s ease;
+  position: relative;
+}
+
+.need-card-item:hover {
+  transform: translateY(-4px);
+  border-color: #fde68a;
+  box-shadow: 0 12px 28px -6px rgba(217, 119, 6, 0.12);
+}
+
+.need-card-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.need-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1c1917;
+}
+
+.need-card-desc {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #78716c;
+  flex: 1;
+}
+
+.need-card-link {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--home-primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.need-card-link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   4. SECTION: SOBRE O PASSE LIVRE
+   ========================================================================= */
+.about-section {
+  padding: 80px 40px;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.about-manifesto-text {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #57534e;
+  max-width: 720px;
+}
+
+.about-origin-card {
+  background: #ffffff;
+  border: 1px solid #ede5d8;
+  border-radius: 20px;
+  padding: 30px 36px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.origin-badge {
+  display: inline-block;
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+.origin-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1c1917;
+}
+
+.origin-card-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #78716c;
+}
+
+.origin-quote-box {
+  border-left: 3px solid var(--home-accent);
+  padding-left: 14px;
+  margin-top: 6px;
+  font-size: 12px;
+  font-style: italic;
+  color: #92400e;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   5. SECTION: NOSSA EQUIPE
+   ========================================================================= */
+.team-section {
+  padding: 80px 40px;
+  background-color: var(--home-bg-warm);
+  border-top: 1px solid #ede4d8;
+  border-bottom: 1px solid #ede4d8;
+}
+
+.team-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.team-card-item {
+  background: #ffffff;
+  border: 1px solid #ede5d8;
+  border-radius: 18px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+  transition: transform 0.2s ease;
+}
+
+.team-card-item:hover {
+  transform: translateY(-3px);
+  border-color: #fde68a;
+}
+
+.team-avatar-img {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fef3c7;
+}
+
+.team-member-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1c1917;
+}
+
+.team-member-role {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--home-primary);
+}
+
+.team-member-bio {
+  font-size: 11px;
+  color: #78716c;
+  line-height: 1.4;
+}
+
+.team-card-centered {
+  grid-column: span 2;
+  max-width: 370px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ==========================================================================
+   6. SECTION: CONTATO
+   ========================================================================= */
+.contact-section {
+  padding: 80px 40px 100px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.contact-card-box {
+  background: #ffffff;
+  border: 1px solid #ede5d8;
+  border-radius: 24px;
+  padding: 32px 36px;
+  box-shadow: 0 10px 30px rgba(45, 26, 3, 0.05);
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.contact-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-bar-header {
+  background: #78350f;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.contact-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact-form-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #292524;
+}
+
+.contact-input {
+  width: 100%;
+  height: 40px;
+  background: #faf7f2;
+  border: 1px solid #e7ded2;
+  border-radius: 10px;
+  padding: 0 14px;
+  font-family: var(--font-main);
+  font-size: 12.5px;
+  color: #1c1917;
+  outline: none;
+}
+
+.contact-input:focus {
+  border-color: var(--home-primary);
+  background: #ffffff;
+}
+
+.contact-textarea {
+  width: 100%;
+  min-height: 80px;
+  background: #faf7f2;
+  border: 1px solid #e7ded2;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-family: var(--font-main);
+  font-size: 12.5px;
+  color: #1c1917;
+  outline: none;
+  resize: vertical;
+}
+
+.contact-textarea:focus {
+  border-color: var(--home-primary);
+  background: #ffffff;
+}
+
+.btn-contact-submit {
+  width: 90px;
+  height: 36px;
+  background: #ffffff;
+  border: 1.5px solid #d6cbbe;
+  border-radius: 8px;
+  font-family: var(--font-main);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #44403c;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-contact-submit:hover {
+  background: var(--home-primary);
+  border-color: var(--home-primary);
+  color: #ffffff;
+}
+
+/* Contact Right Column */
+.contact-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.contact-illustration-img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  border-radius: 18px;
+  border: 1px solid #ede4d8;
+}
+
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 11.5px;
+  color: #57534e;
+  width: 100%;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-info-item img {
+  width: 14px;
+  height: 14px;
+  opacity: 0.7;
+}
+
+.social-links-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.social-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #faf7f2;
+  border: 1px solid #e7ded2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #57534e;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.social-icon-btn:hover {
+  background: var(--home-primary);
+  border-color: var(--home-primary);
+  color: #ffffff;
+}
+
+.social-icon-btn img {
+  width: 15px;
+  height: 15px;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE HOME
+   ========================================================================== */
+@media (max-width: 900px) {
+  .home-hero-section {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+  }
+  .needs-cards-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .team-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .team-card-centered {
+    grid-column: span 1;
+  }
+  .contact-card-box {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+  }
+  .home-navbar {
+    flex-wrap: wrap;
+  }
+  .home-nav-toggle {
+    display: flex;
+  }
+  .home-navbar nav[aria-label="Navegação da Página"] {
+    order: 4;
+    width: 100%;
+  }
+  .home-nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    width: 100%;
+    padding: 12px 0 16px;
+  }
+  .home-nav-links.is-open {
+    display: flex;
+  }
+  .home-nav-links a {
+    width: 100%;
+    padding: 10px 4px;
+  }
+}
+
+@media (max-width: 560px) {
+  .home-navbar {
+    padding: 0 10px 0 14px;
+    min-height: 54px;
+  }
+  .home-navbar .brand-logo img {
+    height: 28px;
+    width: auto;
+  }
+  .home-auth-area {
+    gap: 6px;
+  }
+  .btn-home-cadastro {
+    font-size: 11.5px !important;
+    padding: 5px 10px !important;
+  }
+  .btn-home-login {
+    font-size: 11.5px !important;
+    padding: 5px 11px !important;
+  }
+  .home-nav-toggle {
+    width: 34px;
+    height: 34px;
+  }
+  .needs-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .contact-card-box {
+    padding: 20px 14px;
+  }
+  .social-links-row {
+    justify-content: center;
+  }
+  .site-footer {
+    padding: 16px 14px;
+    text-align: center;
+  }
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 12px;
+  }
+}
+
+/* ==========================================================================
+   BOTÃO "PAINEL DO GESTOR" — exibido no header da home apenas para admins
+   ========================================================================== */
+.btn-home-dashboard {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 16px;
+  background: #1c1917;
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-home-dashboard:hover {
+  background: #292524;
+  transform: translateY(-1px);
+}
+
+.btn-home-dashboard svg {
+  flex-shrink: 0;
+}
+
+/* Alinha corretamente quando aparece junto com o perfil */
+.home-auth-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

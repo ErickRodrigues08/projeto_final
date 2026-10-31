@@ -1,0 +1,68 @@
+
+=== VERIFICAÇÃO 2: node --check js/*.js (exceto leaflet.js) ===
+OK: adaptar-busca.js
+OK: ajuda.js
+OK: alerta-obstaculo.js
+OK: auditoria.js
+OK: auth.js
+OK: avaliar-local.js
+OK: cadastro.js
+OK: central-notificacoes.js
+OK: configuracao-rota.js
+OK: configuracoes.js
+OK: dashboard.js
+OK: db-queries.js
+OK: db.js
+OK: detalhes-local.js
+OK: esqueci-senha.js
+OK: gestor.js
+OK: home.js
+OK: locais-cadastrados.js
+OK: login.js
+OK: lugares-encontrados.js
+OK: main.js
+OK: mapa-geral.js
+OK: mapa-gestor.js
+OK: mock-data.js
+OK: navegacao.js
+OK: notificacoes-cidadao.js
+OK: notificacoes.js
+OK: perfil-cidadao-detalhe.js
+OK: perfil-gestor.js
+OK: perfil.js
+OK: personalizar-busca.js
+OK: redefinir-senha.js
+OK: relatorios.js
+OK: sem-resultados.js
+OK: solicitacao-detalhe.js
+OK: solicitacoes.js
+OK: usuarios.js
+OK: verificar-codigo.js
+
+Total: 38 arquivos. Erros: 0
+
+=== VERIFICAÇÃO 4: Arquivos vazios ===
+Nenhum arquivo vazio encontrado.
+
+=== VERIFICAÇÃO 5: Links .html em .php e js/*.js ===
+  test_migration.php:212: if (strpos($content, 'login.html') !== false) throw new \Exception("Ainda contém login.html");
+  test_migration.php:213: if (strpos($content, 'adaptar-busca.html') !== false) throw new \Exception("Ainda contém adaptar-busca.html");
+  test_migration.php:214: if (strpos($content, 'dashboard.html') !== false) throw new \Exception("Ainda contém dashboard.html");
+
+Total de ocorrências: 3
+
+=== VERIFICAÇÃO 6: Arquivos de teste descartáveis ===
+'git' n�o � reconhecido como um comando interno
+ou externo, um programa oper�vel ou um arquivo em lotes.
+  test_endpoints.php | 1816 bytes | último commit: (erro git)
+'git' n�o � reconhecido como um comando interno
+ou externo, um programa oper�vel ou um arquivo em lotes.
+  test_migration.php | 15040 bytes | último commit: (erro git)
+'git' n�o � reconhecido como um comando interno
+ou externo, um programa oper�vel ou um arquivo em lotes.
+  test_notifications_suite.php | 9104 bytes | último commit: (erro git)
+'git' n�o � reconhecido como um comando interno
+ou externo, um programa oper�vel ou um arquivo em lotes.
+  test_suite_mysql.php | 5977 bytes | último commit: (erro git)
+
+=== FIM DAS VERIFICAÇÕES ===

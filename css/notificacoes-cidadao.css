@@ -1,0 +1,370 @@
+/* ==========================================================================
+   PASSE LIVRE — PAINEL DE NOTIFICAÇÕES DO CIDADÃO (DRAWER LATERAL)
+   notificacoes-cidadao.css
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   BACKDROP
+   -------------------------------------------------------------------------- */
+.notif-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(3px);
+  z-index: 3000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.notif-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --------------------------------------------------------------------------
+   DRAWER
+   -------------------------------------------------------------------------- */
+.notif-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 400px;
+  background: #fdfaf6;
+  z-index: 3001;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 40px rgba(15, 23, 42, 0.14);
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 1px solid #ede4d8;
+}
+.notif-drawer.open {
+  transform: translateX(0);
+}
+
+/* --------------------------------------------------------------------------
+   HEADER DO DRAWER
+   -------------------------------------------------------------------------- */
+.notif-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 22px 16px;
+  border-bottom: 1px solid #ede4d8;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.notif-drawer-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notif-drawer-title h2 {
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 700;
+  color: #1c1917;
+  margin: 0;
+}
+
+.notif-title-icon {
+  width: 36px;
+  height: 36px;
+  background: #fff7ed;
+  border: 1.5px solid #fed7aa;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.notif-title-icon svg { color: #d97706; }
+
+.notif-unread-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  background: #ea580c;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 9999px;
+  margin-left: 4px;
+}
+
+.notif-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-notif-mark-all {
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 600;
+  color: #b45309;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 8px;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.btn-notif-mark-all:hover { background: #fff7ed; }
+
+.btn-notif-close {
+  width: 32px;
+  height: 32px;
+  background: #f5f5f4;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #57534e;
+  font-size: 18px;
+  line-height: 1;
+  transition: background 0.15s;
+}
+.btn-notif-close:hover { background: #e7e5e4; }
+
+/* --------------------------------------------------------------------------
+   FILTROS DE CATEGORIA
+   -------------------------------------------------------------------------- */
+.notif-filter-row {
+  display: flex;
+  gap: 6px;
+  padding: 12px 22px;
+  border-bottom: 1px solid #f5ede2;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+  background: #ffffff;
+}
+.notif-filter-row::-webkit-scrollbar { display: none; }
+
+.notif-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  background: #f5f5f4;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 600;
+  color: #57534e;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.notif-filter-btn:hover { background: #ece4d8; }
+.notif-filter-btn.active {
+  background: #fff7ed;
+  border-color: #fed7aa;
+  color: #92400e;
+}
+
+/* --------------------------------------------------------------------------
+   LISTA DE NOTIFICAÇÕES
+   -------------------------------------------------------------------------- */
+.notif-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.notif-date-separator {
+  padding: 10px 22px 4px;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #a8a29e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.notif-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 22px;
+  cursor: pointer;
+  transition: background 0.12s;
+  border-bottom: 1px solid #f5ede2;
+  position: relative;
+}
+.notif-item:last-child { border-bottom: none; }
+.notif-item:hover { background: #fdfaf5; }
+.notif-item.unread { background: #fffdf9; }
+.notif-item.unread::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: #ea580c;
+  border-radius: 50%;
+}
+
+.notif-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.notif-icon-wrap.tipo-rota       { background: #ecfdf5; color: #16a34a; }
+.notif-icon-wrap.tipo-alerta     { background: #fef2f2; color: #dc2626; }
+.notif-icon-wrap.tipo-info       { background: #eff6ff; color: #2563eb; }
+.notif-icon-wrap.tipo-sistema    { background: #f5f3ff; color: #7c3aed; }
+.notif-icon-wrap.tipo-gestor     { background: #fffbeb; color: #d97706; }
+.notif-icon-wrap.tipo-conquista  { background: #fdf4ff; color: #9333ea; }
+
+.notif-content { flex: 1; min-width: 0; }
+
+.notif-item-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1c1917;
+  line-height: 1.3;
+  margin-bottom: 3px;
+}
+.notif-item.unread .notif-item-title { color: #0c1a2e; }
+
+.notif-item-body {
+  font-size: 12px;
+  color: #78716c;
+  line-height: 1.45;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.notif-item-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.notif-item-time {
+  font-size: 11px;
+  color: #a8a29e;
+}
+
+.notif-item-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 9999px;
+}
+.notif-item-tag.tipo-rota      { background: #dcfce7; color: #166534; }
+.notif-item-tag.tipo-alerta    { background: #fee2e2; color: #991b1b; }
+.notif-item-tag.tipo-info      { background: #dbeafe; color: #1e40af; }
+.notif-item-tag.tipo-sistema   { background: #ede9fe; color: #6d28d9; }
+.notif-item-tag.tipo-gestor    { background: #fef3c7; color: #92400e; }
+.notif-item-tag.tipo-conquista { background: #fae8ff; color: #86198f; }
+
+/* --------------------------------------------------------------------------
+   ESTADO VAZIO
+   -------------------------------------------------------------------------- */
+.notif-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 60px 32px;
+  text-align: center;
+  gap: 14px;
+  color: #78716c;
+}
+.notif-empty svg { color: #d6cbbe; }
+.notif-empty h3 { font-size: 15px; font-weight: 700; color: #1c1917; margin: 0; }
+.notif-empty p  { font-size: 13px; line-height: 1.5; margin: 0; max-width: 280px; }
+
+/* --------------------------------------------------------------------------
+   RODAPÉ DO DRAWER
+   -------------------------------------------------------------------------- */
+.notif-drawer-footer {
+  padding: 14px 22px;
+  border-top: 1px solid #ede4d8;
+  background: #ffffff;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notif-drawer-footer a {
+  font-size: 13px;
+  font-weight: 700;
+  color: #b45309;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.notif-drawer-footer a:hover { text-decoration: underline; }
+
+/* --------------------------------------------------------------------------
+   BADGE NO SINO DO HEADER
+   -------------------------------------------------------------------------- */
+.notify-badge-dot {
+  position: absolute;
+  top: 6px;
+  right: 5px;
+  width: 8px;
+  height: 8px;
+  background: #ea580c;
+  border-radius: 50%;
+  border: 2px solid #fdfaf6;
+}
+
+.btn-icon-notify {
+  position: relative;
+}
+
+/* Número no badge (quando há contagem) */
+.notify-count-badge {
+  position: absolute;
+  top: 2px;
+  right: 0px;
+  min-width: 16px;
+  height: 16px;
+  background: #ea580c;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  border-radius: 9999px;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVO
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .notif-drawer { max-width: 100%; }
+}

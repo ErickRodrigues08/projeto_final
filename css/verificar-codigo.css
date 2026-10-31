@@ -1,0 +1,790 @@
+/* ==========================================================================
+   PASSE LIVRE — VALIDAÇÃO EM DUAS ETAPAS / VERIFICAÇÃO DE E-MAIL
+   Aesthetics: Warm Sand/Cream Palette, Outfit + Plus Jakarta Sans Typography,
+   Soft Glassmorphism, Responsive OTP Inputs, Dynamic Countdown, Micro-animations.
+   ========================================================================== */
+
+@import url('../assets/fonts/fonts.css');
+
+:root {
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', var(--font-main);
+
+  --primary-orange: #d97706;
+  --primary-amber: #f59e0b;
+  --primary-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  --primary-hover: linear-gradient(135deg, #fbbf24 0%, #b45309 100%);
+  --dark-warm: #3a2a1a;
+  --text-main: #292524;
+  --text-muted: #6b5847;
+  --text-dim: #9c8e80;
+  
+  --bg-page: #f7eedf;
+  --bg-card: #fbf2e3;
+  --border-card: #d4b896;
+  --border-input: #dccbb5;
+  --border-subtle: rgba(212, 184, 150, 0.5);
+  
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  
+  --shadow-card: 0 16px 40px -10px rgba(69, 26, 3, 0.09), 0 0 0 1px rgba(69, 26, 3, 0.04);
+  --shadow-btn: 0 8px 20px -4px rgba(217, 119, 6, 0.42);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.verify-page {
+  font-family: var(--font-main);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --------------------------------------------------------------------------
+   Formas decorativas orgânicas de fundo (SVG Background)
+   -------------------------------------------------------------------------- */
+.verify-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Header com Logotipo e Badge Superior
+   -------------------------------------------------------------------------- */
+.verify-header {
+  position: relative;
+  z-index: 2;
+  padding: 24px 56px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1360px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.verify-brand-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.verify-brand-link:hover {
+  transform: translateY(-1px);
+}
+
+.verify-brand-link img {
+  height: 80px;
+  width: auto;
+}
+
+.verify-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-user-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-card);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dark-warm);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.header-user-badge:hover {
+  background: #ffffff;
+  border-color: var(--primary-orange);
+  color: var(--primary-orange);
+  box-shadow: 0 4px 12px rgba(69, 26, 3, 0.08);
+}
+
+.header-user-badge img,
+.header-user-badge svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   Container Principal (2 Colunas)
+   -------------------------------------------------------------------------- */
+.verify-main-container {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 18px 48px 48px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   Coluna Esquerda: Informações & Status
+   -------------------------------------------------------------------------- */
+.verify-info-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 580px;
+  animation: fadeInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.verify-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  padding: 6px 16px;
+  background: #fdf3e2;
+  border: 1.5px solid #f2cf97;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #a15309;
+  letter-spacing: 0.2px;
+}
+
+.verify-eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.8;
+  }
+}
+
+.verify-heading {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--dark-warm);
+  letter-spacing: -0.5px;
+}
+
+.verify-description {
+  font-size: 16.5px;
+  line-height: 1.65;
+  color: var(--text-muted);
+  font-weight: 450;
+}
+
+/* Card Informativo com Ícone */
+.verify-status-card {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid var(--border-card);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px -6px rgba(69, 26, 3, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.verify-status-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -6px rgba(69, 26, 3, 0.1);
+}
+
+.verify-status-icon-wrap {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 1.5px solid #fcd34d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b45309;
+}
+
+.verify-status-icon-wrap svg {
+  width: 26px;
+  height: 26px;
+}
+
+.verify-status-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.verify-status-title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #b45309;
+}
+
+.verify-status-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.verify-status-desc strong {
+  color: var(--dark-warm);
+  font-weight: 700;
+  word-break: break-all;
+}
+
+/* --------------------------------------------------------------------------
+   Coluna Direita: Card de Verificação (OTP)
+   -------------------------------------------------------------------------- */
+.verify-card-column {
+  display: flex;
+  justify-content: center;
+  animation: fadeInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.verify-otp-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-card);
+  border-radius: 28px;
+  padding: 44px 40px 36px;
+  box-shadow: var(--shadow-card);
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+/* Ícone de Envelope no topo do Card */
+.verify-card-badge {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde047 50%, #f59e0b 100%);
+  border: 3px solid #ffffff;
+  box-shadow: 0 8px 20px -4px rgba(245, 158, 11, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #78350f;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.verify-otp-card:hover .verify-card-badge {
+  transform: scale(1.05) rotate(4deg);
+}
+
+.verify-card-badge svg {
+  width: 30px;
+  height: 30px;
+}
+
+.verify-card-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--dark-warm);
+  line-height: 1.2;
+}
+
+.verify-card-subtitle {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-top: 8px;
+  margin-bottom: 26px;
+  max-width: 360px;
+}
+
+.verify-card-subtitle .email-target {
+  font-weight: 700;
+  color: var(--dark-warm);
+}
+
+/* --------------------------------------------------------------------------
+   Container dos 6 Dígitos OTP
+   -------------------------------------------------------------------------- */
+.verify-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.otp-inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 390px;
+  margin-bottom: 20px;
+}
+
+.otp-digit-input {
+  width: 100%;
+  height: 62px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--dark-warm);
+  background: #ffffff;
+  border: 2px solid var(--border-input);
+  border-radius: 14px;
+  outline: none;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 4px rgba(69, 26, 3, 0.04);
+}
+
+.otp-digit-input::placeholder {
+  color: #c4b5a5;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.otp-digit-input:focus {
+  border-color: var(--primary-orange);
+  background: #fffdfa;
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.18), 0 8px 16px -4px rgba(217, 119, 6, 0.2);
+}
+
+.otp-digit-input.filled {
+  border-color: #f59e0b;
+  background: #fffbf5;
+}
+
+.otp-digit-input.is-error {
+  border-color: var(--error-color) !important;
+  background: #fff5f5 !important;
+  color: var(--error-color) !important;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15) !important;
+  animation: shakeBox 0.35s ease;
+}
+
+.otp-digit-input.is-success {
+  border-color: var(--success-color) !important;
+  background: #f0fdf4 !important;
+  color: var(--success-color) !important;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15) !important;
+}
+
+@keyframes shakeBox {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+/* Feedback de Erro & Dica */
+.otp-feedback-msg {
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  min-height: 20px;
+  transition: opacity 0.2s ease;
+}
+
+.otp-feedback-msg.error {
+  color: var(--error-color);
+}
+
+.otp-feedback-msg.success {
+  color: var(--success-color);
+}
+
+/* Atalho para Teste / Demonstração */
+.demo-code-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fdf5e8;
+  border: 1px dashed #d97706;
+  border-radius: 10px;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  color: #854d0e;
+  margin-bottom: 22px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.demo-code-pill:hover {
+  background: #fef0db;
+  border-color: #b45309;
+  transform: translateY(-1px);
+}
+
+.demo-code-pill strong {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #b45309;
+}
+
+/* --------------------------------------------------------------------------
+   Botão Primário: Confirmar Código
+   -------------------------------------------------------------------------- */
+.btn-submit-verify {
+  width: 100%;
+  max-width: 390px;
+  height: 52px;
+  background: var(--primary-gradient);
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-submit-verify:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -4px rgba(217, 119, 6, 0.52);
+}
+
+.btn-submit-verify:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-submit-verify.ready {
+  background: var(--primary-hover);
+  box-shadow: 0 12px 28px -4px rgba(217, 119, 6, 0.55);
+  transform: translateY(-1px);
+}
+
+.btn-submit-verify:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Spinner no botão durante validação */
+.btn-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: none;
+}
+
+.btn-submit-verify.is-loading .btn-spinner {
+  display: inline-block;
+}
+
+.btn-submit-verify.is-loading .btn-text {
+  opacity: 0.9;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------------------------------
+   Área de Reenvio de Código com Contador
+   -------------------------------------------------------------------------- */
+.verify-resend-area {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.resend-timer-text {
+  font-weight: 500;
+}
+
+.resend-timer-text strong {
+  color: #b45309;
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.btn-resend-action {
+  background: none;
+  border: none;
+  color: var(--primary-orange);
+  font-family: var(--font-main);
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+  padding: 4px 8px;
+}
+
+.btn-resend-action:hover {
+  color: #b45309;
+}
+
+/* --------------------------------------------------------------------------
+   Links de Rodapé do Card
+   -------------------------------------------------------------------------- */
+.verify-links-footer {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-size: 14px;
+  border-top: 1px solid rgba(212, 184, 150, 0.4);
+  width: 100%;
+  padding-top: 20px;
+}
+
+.verify-back-link {
+  color: var(--dark-warm);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.verify-back-link:hover {
+  color: var(--primary-orange);
+  transform: translateX(-2px);
+}
+
+.verify-change-email {
+  color: #854d0e;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.verify-change-email:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   Toast de Notificação
+   -------------------------------------------------------------------------- */
+.verify-toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: #ffffff;
+  border: 1.5px solid #d4b896;
+  border-radius: 16px;
+  padding: 14px 22px;
+  box-shadow: 0 16px 36px -6px rgba(69, 26, 3, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark-warm);
+  transform: translateY(120%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  z-index: 100;
+}
+
+.verify-toast.visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.verify-toast-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Responsividade
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .verify-main-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 16px 24px 40px;
+  }
+
+  .verify-info-column {
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .verify-eyebrow-pill {
+    align-self: center;
+  }
+
+  .verify-heading {
+    font-size: 34px;
+  }
+
+  .verify-status-card {
+    text-align: left;
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 580px) {
+  .verify-header {
+    padding: 18px 20px 8px;
+  }
+
+  .verify-brand-link img {
+    height: 64px;
+  }
+
+  .verify-main-container {
+    padding: 10px 16px 36px;
+  }
+
+  .verify-heading {
+    font-size: 28px;
+  }
+
+  .verify-otp-card {
+    padding: 32px 20px 28px;
+    border-radius: 22px;
+  }
+
+  .otp-inputs-grid {
+    gap: 6px;
+  }
+
+  .otp-digit-input {
+    height: 52px;
+    font-size: 22px;
+    border-radius: 10px;
+  }
+
+  .btn-submit-verify {
+    height: 48px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 400px) {
+  .verify-brand-link img {
+    height: 44px;
+  }
+
+  .verify-otp-card {
+    padding: 24px 12px 20px;
+    border-radius: 18px;
+  }
+
+  .otp-inputs-grid {
+    gap: 4px;
+    max-width: 100%;
+  }
+
+  .otp-digit-input {
+    height: 44px;
+    font-size: 18px;
+    border-radius: 8px;
+    padding: 0;
+  }
+
+  .verify-heading {
+    font-size: 24px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Timer de Expiração do Código OTP
+   -------------------------------------------------------------------------- */
+.otp-expiry-timer {
+  margin: 8px 0 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: #78716c;
+  text-align: center;
+  min-height: 20px;
+  transition: color 0.2s ease;
+}
+
+.otp-expiry-timer.expired {
+  color: #dc2626;
+  font-weight: 700;
+}

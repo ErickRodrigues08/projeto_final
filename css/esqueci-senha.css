@@ -1,0 +1,234 @@
+/* ==========================================================================
+   PASSE LIVRE — TELA DE RECUPERAÇÃO DE SENHA
+   Reaproveita o layout de css/login.css e ajusta o que é específico.
+   ========================================================================== */
+
+.recover-page {
+  background-color: #f7eedf;
+  background-image: none;
+}
+
+/* Formas de fundo atrás de todo o conteúdo */
+.recover-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.recover-page .login-header,
+.recover-page .login-main-container {
+  position: relative;
+  z-index: 1;
+}
+
+.recover-page .login-main-container {
+  max-width: 1360px;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 64px;
+}
+
+.recover-illustration {
+  max-width: 600px;
+  border-radius: 0;
+  filter: none;
+}
+
+/* Card */
+.recover-card {
+  max-width: 560px;
+  padding: 56px 52px 40px;
+  gap: 0;
+  background: #f7e6c8;
+  border: 1.5px solid #3a2a1a;
+}
+
+.recover-card .login-title-wrap {
+  margin-bottom: 44px;
+}
+
+.recover-card .login-card-title {
+  font-size: 34px;
+  color: #4a3222;
+}
+
+.recover-card .login-card-subtitle {
+  font-size: 15.5px;
+  color: #4a3222;
+  margin-top: 8px;
+}
+
+/* Campo em formato de pílula */
+.recover-input {
+  height: 58px;
+  border-radius: 999px;
+  border: 1.5px solid #3a2a1a;
+  background: #fbf1e0;
+  padding: 0 28px;
+  font-size: 17px;
+}
+
+.recover-input::placeholder {
+  color: #8a7d70;
+}
+
+.recover-input.has-error {
+  border-color: #b91c1c;
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.12);
+}
+
+.recover-error {
+  display: block;
+  color: #b91c1c;
+  background: #fdecec;
+  border: 1px solid #f3c0c0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.recover-error-link {
+  color: #8f1616;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.recover-error-link:hover {
+  color: #b91c1c;
+}
+
+.recover-error[hidden],
+.recover-hint[hidden] {
+  display: none;
+}
+
+/* Botão */
+.recover-card .btn-submit-login {
+  width: auto;
+  min-width: 200px;
+  height: 52px;
+  padding: 0 40px;
+  margin: 36px auto 0;
+  display: block;
+  font-size: 16px;
+  border-radius: 14px;
+  background: #f59e0b;
+}
+
+.recover-card .btn-submit-login:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.recover-hint {
+  text-align: center;
+  font-size: 13px;
+  color: #57432f;
+  margin-top: 14px;
+  line-height: 1.5;
+}
+
+/* Voltar */
+.recover-back-link {
+  display: block;
+  text-align: center;
+  margin-top: 36px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #4a3222;
+  text-decoration: none;
+}
+
+.recover-back-link:hover {
+  color: var(--primary-orange);
+  text-decoration: underline;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 960px) {
+  .recover-page .login-main-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .recover-card {
+    padding: 36px 24px 28px;
+  }
+
+  .recover-card .login-title-wrap {
+    margin-bottom: 28px;
+  }
+
+  .recover-card .login-card-title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .recover-page .login-header {
+    padding: 16px 18px 8px;
+  }
+
+  .recover-page .login-main-container {
+    padding: 8px 16px 36px;
+    gap: 20px;
+  }
+
+  .recover-illustration {
+    max-height: 160px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .recover-card {
+    padding: 26px 18px 22px;
+    border-radius: 20px;
+  }
+
+  .recover-card .login-title-wrap {
+    margin-bottom: 20px;
+  }
+
+  .recover-card .login-card-title {
+    font-size: 24px;
+  }
+
+  .recover-card .login-card-subtitle {
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  .recover-input {
+    height: 50px;
+    font-size: 16px; /* standard to prevent iOS auto-zoom */
+    padding: 0 18px;
+  }
+
+  .recover-card .btn-submit-login {
+    width: 100%;
+    min-width: 0;
+    height: 48px;
+    margin: 24px auto 0;
+    font-size: 15px;
+  }
+
+  .recover-back-link {
+    margin-top: 24px;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,68 @@
+/* Google Fonts: Domine (Serif clássica e elegante) e Plus Jakarta Sans */
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+/* Fallback local para Domine */
+@font-face {
+  font-family: 'Domine';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('./Domine-VariableFont.ttf') format('truetype');
+}
+
+/* Fallback local para Outfit e Plus Jakarta Sans se offline */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./Outfit-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./Outfit-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./Outfit-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./PlusJakartaSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./PlusJakartaSans-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./PlusJakartaSans-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./PlusJakartaSans-Bold.ttf') format('truetype');
+}

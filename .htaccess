@@ -1,0 +1,16 @@
+# Bloqueia acesso publico a arquivos de ambiente (credenciais)
+<FilesMatch "^\.env">
+    Require all denied
+</FilesMatch>
+
+# Bloqueia download publico dos dumps SQL (schema e hashes de senha)
+<FilesMatch "\.sql$">
+    Require all denied
+</FilesMatch>
+
+# Fotos de perfil padrao: a URL e fixa, entao o navegador precisa revalidar antes
+# de reusar a copia em cache. Sem isso, trocar o arquivo no servidor nao aparece
+# para quem ja abriu o site (a janela de validade estimada passa de meio dia).
+<FilesMatch "^avatar(|-admin)\.jpg$">
+    Header set Cache-Control "no-cache"
+</FilesMatch>

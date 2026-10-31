@@ -1,0 +1,639 @@
+/* ==========================================================================
+   PASSE LIVRE — LISTA DE USUÁRIOS DO GESTOR
+   perfil-gestor.html  ·  css/perfil-gestor.css
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. BARRA DE FERRAMENTAS: BUSCA + BOTÃO NOVO
+   -------------------------------------------------------------------------- */
+.usuarios-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.usuarios-search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 220px;
+  max-width: 420px;
+}
+
+.usuarios-search-wrap svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #a8a29e;
+  pointer-events: none;
+}
+
+.usuarios-search-input {
+  width: 100%;
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid #e7ded2;
+  border-radius: 9999px;
+  padding: 0 16px 0 42px;
+  font-family: var(--font-main);
+  font-size: 13px;
+  color: #1c1917;
+  transition: all 0.2s;
+}
+
+.usuarios-search-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(217,119,6,.14);
+}
+
+.usuarios-search-input::placeholder { color: #a8a29e; }
+
+.btn-novo-usuario {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 40px;
+  padding: 0 20px;
+  background: #1c1917;
+  color: #fff;
+  border: none;
+  border-radius: 9999px;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.btn-novo-usuario:hover {
+  background: #292524;
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   2. BLOCO DE FILTROS
+   -------------------------------------------------------------------------- */
+.filtros-bloco {
+  background: #ffffff;
+  border: 1px solid #ede4d8;
+  border-radius: 16px;
+  padding: 18px 22px;
+}
+
+.filtros-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.filtros-titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #292524;
+}
+
+.filtros-titulo svg {
+  width: 15px;
+  height: 15px;
+  color: #a8a29e;
+}
+
+.btn-limpar-filtros {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 600;
+  color: #78716c;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.btn-limpar-filtros:hover {
+  color: #b45309;
+  background: #fff7ed;
+}
+
+.filtros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 12px;
+}
+
+.filtro-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.filtro-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #78716c;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.filtro-select {
+  height: 36px;
+  background: #fdfaf6;
+  border: 1px solid #e7ded2;
+  border-radius: 8px;
+  padding: 0 30px 0 12px;
+  font-family: var(--font-main);
+  font-size: 12.5px;
+  color: #1c1917;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a8a29e' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.filtro-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(217,119,6,.12);
+  outline: none;
+}
+
+/* Range de Idade */
+.filtro-range-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filtro-range-input {
+  width: 100%;
+  height: 36px;
+  background: #fdfaf6;
+  border: 1px solid #e7ded2;
+  border-radius: 8px;
+  padding: 0 10px;
+  font-family: var(--font-main);
+  font-size: 12.5px;
+  color: #1c1917;
+  text-align: center;
+  transition: border-color 0.15s;
+}
+
+.filtro-range-input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(217,119,6,.12);
+}
+
+.filtro-range-sep {
+  font-size: 12px;
+  color: #a8a29e;
+  flex-shrink: 0;
+}
+
+/* Chips de filtro ativos */
+.filtros-ativos-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f5ede2;
+}
+
+.filtros-ativos-row:empty { display: none; }
+
+.filtro-chip-ativo {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #92400e;
+}
+
+.btn-remover-chip {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #b45309;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+
+.btn-remover-chip:hover { color: #7c2d12; }
+
+/* --------------------------------------------------------------------------
+   3. BARRA DE RESULTADO + ORDENAÇÃO
+   -------------------------------------------------------------------------- */
+.resultado-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.resultado-count {
+  font-size: 13px;
+  color: #57534e;
+}
+
+.resultado-count strong {
+  color: #1c1917;
+  font-weight: 700;
+}
+
+.ordenar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #78716c;
+}
+
+.ordenar-select {
+  height: 32px;
+  background: #ffffff;
+  border: 1px solid #e7ded2;
+  border-radius: 8px;
+  padding: 0 28px 0 10px;
+  font-family: var(--font-main);
+  font-size: 12px;
+  color: #1c1917;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%23a8a29e' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+.ordenar-select:focus { outline: none; border-color: var(--color-primary); }
+
+/* --------------------------------------------------------------------------
+   4. GRID DE CARDS DE USUÁRIO
+   -------------------------------------------------------------------------- */
+.usuarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.usuario-card {
+  background: #ffffff;
+  border: 1px solid #ede4d8;
+  border-radius: 18px;
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.usuario-card:hover {
+  border-color: #d97706;
+  box-shadow: 0 6px 22px -4px rgba(217,119,6,.18);
+  transform: translateY(-2px);
+}
+
+.usuario-card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Faixa colorida por status no topo do card */
+.usuario-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 18px 18px 0 0;
+  background: #10b981; /* Ativo */
+}
+
+.usuario-card.status-pendente::before  { background: #f59e0b; }
+.usuario-card.status-bloqueado::before { background: #ef4444; }
+
+/* Topo do card: avatar + nome + status */
+.card-usuario-top {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.card-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.card-avatar-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ede4d8;
+}
+
+.card-avatar-initials {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff7ed;
+  border: 2px solid #fed7aa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 800;
+  color: #b45309;
+  flex-shrink: 0;
+}
+
+.card-status-dot {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: #10b981;
+}
+
+.card-status-dot.pendente  { background: #f59e0b; }
+.card-status-dot.bloqueado { background: #ef4444; }
+
+.card-usuario-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-usuario-nome {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1c1917;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-usuario-id {
+  font-size: 11px;
+  color: #a8a29e;
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.card-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.card-status-pill.ativo     { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+.card-status-pill.pendente  { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+.card-status-pill.bloqueado { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+
+/* Linha de detalhes */
+.card-usuario-detalhes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-detalhe-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: #57534e;
+}
+
+.card-detalhe-row svg {
+  width: 13px;
+  height: 13px;
+  color: #a8a29e;
+  flex-shrink: 0;
+}
+
+.card-detalhe-row strong {
+  color: #1c1917;
+}
+
+/* Tags de deficiência */
+.card-deficiencia-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 9999px;
+  padding: 2px 9px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #92400e;
+}
+
+.card-deficiencia-tag.visual        { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
+.card-deficiencia-tag.auditiva      { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+.card-deficiencia-tag.tea           { background: #faf5ff; border-color: #e9d5ff; color: #7e22ce; }
+.card-deficiencia-tag.mobilidade    { background: #fff7ed; border-color: #fed7aa; color: #92400e; }
+
+/* Rodapé do card: solicitações + chevron */
+.card-usuario-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid #f5ede2;
+}
+
+.card-solicitacoes-info {
+  font-size: 11.5px;
+  color: #78716c;
+}
+
+.card-solicitacoes-info strong {
+  color: #1c1917;
+  font-weight: 700;
+}
+
+.card-ver-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #b45309;
+}
+
+.card-ver-link svg {
+  width: 13px;
+  height: 13px;
+  transition: transform 0.15s;
+}
+
+.usuario-card:hover .card-ver-link svg { transform: translateX(3px); }
+
+/* --------------------------------------------------------------------------
+   5. ESTADO VAZIO
+   -------------------------------------------------------------------------- */
+.usuarios-empty-state {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: #78716c;
+}
+
+.usuarios-empty-state svg {
+  width: 48px;
+  height: 48px;
+  color: #d6cbbe;
+  margin-bottom: 16px;
+}
+
+.usuarios-empty-state h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1c1917;
+  margin-bottom: 6px;
+}
+
+.usuarios-empty-state p {
+  font-size: 13px;
+  max-width: 340px;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   6. PAGINAÇÃO
+   -------------------------------------------------------------------------- */
+.paginacao-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.paginacao-info {
+  font-size: 12.5px;
+  color: #78716c;
+}
+
+.paginacao-btns {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-pagina {
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  background: #ffffff;
+  border: 1px solid #e7ded2;
+  border-radius: 8px;
+  font-family: var(--font-main);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #44403c;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-pagina:hover:not(:disabled) {
+  background: #fdfaf5;
+  border-color: #d6cbbe;
+  color: #1c1917;
+}
+
+.btn-pagina.ativa {
+  background: #1c1917;
+  border-color: #1c1917;
+  color: #fff;
+}
+
+.btn-pagina:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* --------------------------------------------------------------------------
+   7. SKELETON LOADING
+   -------------------------------------------------------------------------- */
+.skeleton-card {
+  background: #ffffff;
+  border: 1px solid #ede4d8;
+  border-radius: 18px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.skeleton-line {
+  border-radius: 6px;
+  background: linear-gradient(90deg, #f5ede2 25%, #fdf7ef 50%, #f5ede2 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* --------------------------------------------------------------------------
+   8. RESPONSIVO
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .filtros-grid { grid-template-columns: 1fr 1fr; }
+  .usuarios-grid { grid-template-columns: 1fr; }
+  .usuarios-toolbar { flex-direction: column; align-items: stretch; }
+  .usuarios-search-wrap { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .filtros-grid { grid-template-columns: 1fr; }
+}

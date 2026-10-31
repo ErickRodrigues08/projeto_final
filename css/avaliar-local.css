@@ -1,0 +1,1246 @@
+/* ==========================================================================
+   PASSE LIVRE SUZANO — TELA DE AVALIAÇÃO DE LOCAL (FISCALIZAÇÃO COLABORATIVA)
+   Estilização Pixel-Perfect baseada no design system Passe Livre,
+   ABNT NBR 9050, paleta quente de Suzano e tipografia Domine / Plus Jakarta Sans.
+   ========================================================================== */
+
+:root {
+  --color-page-bg: #f8f5ee;
+  --color-card-bg: #ffffff;
+  --color-border-card: #ece4d8;
+  --color-border-subtle: #f0e9df;
+  --color-border-hover: #fed7aa;
+  
+  --color-orange-primary: #ea580c;
+  --color-orange-dark: #c2410c;
+  --color-orange-light: #fff7ed;
+  --color-orange-tint: #ffedd5;
+  --color-amber-primary: #f59e0b;
+  --color-amber-dark: #b45309;
+  
+  --color-red-inaccessible: #991b1b;
+  --color-red-light: #fef2f2;
+  --color-green-accessible: #15803d;
+  --color-green-light: #f0fdf4;
+  
+  --text-dark: #1c1917;
+  --text-body: #44403c;
+  --text-muted: #78716c;
+  --text-dim: #a8a29e;
+  
+  --font-serif: 'Domine', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  
+  --shadow-card: 0 16px 40px -10px rgba(69, 26, 3, 0.06), 0 0 0 1px rgba(69, 26, 3, 0.04);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-button: 0 8px 24px -4px rgba(234, 88, 12, 0.35);
+}
+
+/* Reset Básico da Página */
+body.avaliar-local-page {
+  background-color: var(--color-page-bg);
+  color: var(--text-dark);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   1. CABEÇALHO DA PÁGINA (SITE HEADER)
+   ========================================================================== */
+.site-header {
+  background-color: #fcf9f4;
+  border-bottom: 1.5px solid var(--color-border-card);
+  padding: 12px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.brand-logo img {
+  height: 34px;
+  width: auto;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.brand-logo:hover img {
+  transform: scale(1.02);
+}
+
+.header-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 320px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.header-search-input {
+  width: 100%;
+  padding: 8px 14px 8px 36px;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border-card);
+  background-color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-dark);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.header-search-input:focus {
+  border-color: var(--color-orange-primary);
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15);
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #57534e;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-link svg {
+  width: 16px;
+  height: 16px;
+  color: currentColor;
+}
+
+.nav-link:hover {
+  background-color: rgba(120, 53, 15, 0.06);
+  color: var(--text-dark);
+}
+
+.nav-link-pill {
+  border: 1px solid var(--color-border-card);
+  background-color: #ffffff;
+}
+
+.nav-link.active {
+  color: var(--color-orange-primary);
+  font-weight: 700;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-icon-notify {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background 0.2s;
+  color: #57534e;
+  text-decoration: none;
+}
+
+.btn-icon-notify:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.btn-icon-notify svg {
+  width: 20px;
+  height: 20px;
+}
+
+.notify-badge-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-orange-primary);
+  border: 2px solid #fcf9f4;
+  border-radius: 50%;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  padding: 4px 10px 4px 4px;
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+}
+
+.user-profile:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.user-avatar-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--color-border-card);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.user-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.user-role {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   2. CORPO PRINCIPAL E CABEÇALHO DO FORMULÁRIO (HERO / BANNER)
+   ========================================================================== */
+.eval-page-main {
+  flex: 1;
+  padding: 36px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.eval-hero-header {
+  text-align: center;
+  margin-bottom: 28px;
+  max-width: 720px;
+}
+
+/* Badge de Fiscalização Colaborativa */
+.badge-collab-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f6eedf;
+  border: 1px solid #ebd9c8;
+  border-radius: 9999px;
+  padding: 5px 14px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #854d0e;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.badge-collab-tag svg {
+  width: 14px;
+  height: 14px;
+  color: #b45309;
+}
+
+.eval-hero-title {
+  font-family: var(--font-serif);
+  font-size: 33px;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.25;
+  margin: 0 0 10px;
+  letter-spacing: -0.3px;
+}
+
+.eval-hero-subtitle {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   3. CARD PRINCIPAL DA AVALIAÇÃO (CONTAINER DO FORMULÁRIO)
+   ========================================================================== */
+.eval-card-container {
+  width: 100%;
+  background-color: var(--color-card-bg);
+  border: 1.5px solid var(--color-border-card);
+  border-radius: 28px;
+  box-shadow: var(--shadow-card);
+  padding: 38px 42px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+/* Divisor Sutil entre Passos */
+.eval-step-divider {
+  height: 1px;
+  background-color: #f2ece2;
+  margin: 4px 0;
+}
+
+/* ==========================================================================
+   4. ESTRUTURA PADRÃO DOS CABEÇALHOS DE PASSO (STEPS 1, 2, 3, 4)
+   ========================================================================== */
+.step-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.step-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.step-number-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-orange-primary);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.35);
+}
+
+.step-title-text {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+.step-meta-right {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-dim);
+}
+
+.step-meta-audit-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.step-meta-audit-info svg {
+  width: 14px;
+  height: 14px;
+  color: var(--text-dim);
+}
+
+.step-subtitle-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 16px 40px;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   5. PASSO 1: LOCAL EM AVALIAÇÃO
+   ========================================================================== */
+.eval-location-box {
+  background-color: #ffffff;
+  border: 1.5px solid var(--color-border-card);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.2s;
+}
+
+.eval-location-box:hover {
+  border-color: #fed7aa;
+}
+
+.location-box-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.location-name-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.location-name-wrap svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-orange-primary);
+  flex-shrink: 0;
+}
+
+.location-name-text {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.badge-official-point {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #f7f4ee;
+  border: 1px solid #ebd9c8;
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #78716c;
+}
+
+.badge-official-point svg {
+  width: 12px;
+  height: 12px;
+  color: #b45309;
+}
+
+.location-address-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  padding-left: 2px;
+}
+
+.location-address-row svg {
+  width: 14px;
+  height: 14px;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   6. PASSO 2: CRITÉRIOS DE ACESSIBILIDADE (GRID DE 6 CARDS)
+   ========================================================================== */
+.criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-left: 40px;
+}
+
+.criteria-card {
+  background-color: #ffffff;
+  border: 1.5px solid var(--color-border-card);
+  border-radius: 16px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  transition: all 0.2s ease;
+}
+
+.criteria-card:hover {
+  border-color: #fed7aa;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.criteria-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.criteria-icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background-color: #fbf5eb;
+  border: 1px solid #ebd9c8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-orange-primary);
+  flex-shrink: 0;
+}
+
+.criteria-icon-box svg {
+  width: 20px;
+  height: 20px;
+}
+
+.criteria-text-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.criteria-card-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.criteria-card-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* Pílulas de Seleção de Status do Critério */
+.criteria-options-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.btn-criteria-pill {
+  border: 1px solid #ebd9c8;
+  background-color: #ffffff;
+  border-radius: 9999px;
+  padding: 4px 11px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.btn-criteria-pill:hover {
+  background-color: #faf5ee;
+  border-color: #fed7aa;
+  color: var(--text-dark);
+}
+
+/* Estado Ativo: Laranja Padrão (Disponível e Parcial) */
+.btn-criteria-pill.active-orange {
+  background-color: var(--color-orange-primary);
+  border-color: var(--color-orange-primary);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.35);
+}
+
+/* Estado Ativo: Vermelho Escuro (Inacessível) */
+.btn-criteria-pill.active-red {
+  background-color: var(--color-red-inaccessible);
+  border-color: var(--color-red-inaccessible);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(153, 27, 27, 0.35);
+}
+
+/* Estado Ativo: Cinza Neutro (Não se aplica) */
+.btn-criteria-pill.active-gray {
+  background-color: #78716c;
+  border-color: #78716c;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   7. PASSO 3: BARREIRA OU OBSTÁCULO TEMPORÁRIO COM TOGGLE
+   ========================================================================== */
+/* Toggle Switch Personalizado (Laranja quando ativo) */
+.toggle-switch-wrap {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.toggle-switch-wrap input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #d6cbbe;
+  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 9999px;
+}
+
+.toggle-slider::before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch-wrap input:checked + .toggle-slider {
+  background-color: var(--color-orange-primary);
+}
+
+.toggle-switch-wrap input:checked + .toggle-slider::before {
+  transform: translateX(20px);
+}
+
+/* Caixa de Alerta / Textarea de Barreira */
+.barrier-reporting-box {
+  background-color: #fefcf9;
+  border: 1.5px solid #fed7aa;
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.barrier-reporting-box.is-hidden {
+  display: none;
+}
+
+.barrier-box-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #9a3412;
+}
+
+.barrier-box-header svg {
+  width: 16px;
+  height: 16px;
+  color: var(--color-orange-primary);
+  flex-shrink: 0;
+}
+
+.barrier-textarea {
+  width: 100%;
+  min-height: 72px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #ebd9c8;
+  background-color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-dark);
+  line-height: 1.45;
+  resize: vertical;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.barrier-textarea:focus {
+  border-color: var(--color-orange-primary);
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.12);
+}
+
+.barrier-box-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.barrier-footer-hint {
+  color: var(--text-muted);
+}
+
+.barrier-char-counter {
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   7.1 NOTA GERAL E COMENTÁRIO DA AVALIAÇÃO
+   ========================================================================== */
+.review-general-box {
+  background-color: #fffdfa;
+  border: 1.5px solid var(--color-border-card);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin: 16px 0 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.review-rating-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.review-rating-label {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.review-stars-input {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.btn-star-input {
+  background: none;
+  border: 0;
+  padding: 0 3px;
+  font-size: 26px;
+  line-height: 1;
+  color: #d6d3d1;
+  cursor: pointer;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-star-input.active {
+  color: #f59e0b;
+}
+
+.btn-star-input:hover {
+  transform: scale(1.08);
+}
+
+.btn-star-input:focus-visible {
+  outline: 2px solid var(--color-orange-primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.review-comment-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   8. PASSO 4: ADICIONAR FOTOS COMPROBATÓRIAS (DROPZONE & LISTA)
+   ========================================================================== */
+.badge-senai-validation {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #f7f4ee;
+  border: 1px solid #ebd9c8;
+  border-radius: 9999px;
+  padding: 3px 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #78716c;
+}
+
+.badge-senai-validation svg {
+  width: 13px;
+  height: 13px;
+  color: #b45309;
+}
+
+/* Área de Arrastar e Soltar (Dropzone) */
+.photo-dropzone-box {
+  border: 2px dashed #fed7aa;
+  background-color: #fffdfa;
+  border-radius: 18px;
+  padding: 26px 20px;
+  text-align: center;
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.photo-dropzone-box:hover,
+.photo-dropzone-box.dragover {
+  background-color: #fdf5ea;
+  border-color: var(--color-orange-primary);
+}
+
+.dropzone-camera-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #ffedd5;
+  color: var(--color-orange-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+
+.dropzone-camera-icon-wrap svg {
+  width: 22px;
+  height: 22px;
+}
+
+.dropzone-primary-text {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.dropzone-browse-link {
+  color: var(--color-orange-primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.dropzone-browse-link:hover {
+  color: var(--color-orange-dark);
+}
+
+.dropzone-secondary-text {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  max-width: 460px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Lista de Fotos Carregadas */
+.uploaded-photos-container {
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.uploaded-photo-card {
+  background-color: #ffffff;
+  border: 1.5px solid var(--color-border-card);
+  border-radius: 14px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.uploaded-photo-card:hover {
+  border-color: #fed7aa;
+}
+
+.uploaded-photo-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.uploaded-photo-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #ebd9c8;
+  flex-shrink: 0;
+}
+
+.uploaded-photo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.uploaded-photo-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.uploaded-photo-meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.meta-geo-verified {
+  color: var(--color-green-accessible);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: 600;
+}
+
+.btn-delete-photo {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-dim);
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.btn-delete-photo:hover {
+  color: #ef4444;
+  background-color: #fee2e2;
+}
+
+.btn-delete-photo svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* ==========================================================================
+   9. AÇÃO FINAL: BOTÃO DE ENVIO E SELO LGPD
+   ========================================================================== */
+.eval-submit-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.btn-submit-review {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  border-radius: 9999px;
+  padding: 14px 36px;
+  cursor: pointer;
+  box-shadow: var(--shadow-button);
+  transition: all 0.25s ease;
+}
+
+.btn-submit-review:hover {
+  background: linear-gradient(135deg, #fbbf24 0%, #c2410c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -4px rgba(234, 88, 12, 0.45);
+}
+
+.btn-submit-review:active {
+  transform: translateY(0);
+}
+
+.btn-submit-review svg {
+  width: 18px;
+  height: 18px;
+  color: #ffffff;
+}
+
+.submit-security-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.submit-security-note svg {
+  width: 13px;
+  height: 13px;
+  color: var(--text-dim);
+}
+
+/* ==========================================================================
+   10. MODAL DE CONFIRMAÇÃO DE SUCESSO
+   ========================================================================== */
+.eval-success-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(28, 25, 23, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 20px;
+}
+
+.eval-success-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.eval-success-modal-card {
+  background-color: #ffffff;
+  border-radius: 24px;
+  border: 1.5px solid var(--color-border-card);
+  max-width: 480px;
+  width: 100%;
+  padding: 36px 32px;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eval-success-modal-overlay.active .eval-success-modal-card {
+  transform: scale(1);
+}
+
+.modal-icon-success {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #dcfce7;
+  color: #16a34a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.2);
+}
+
+.modal-icon-success svg {
+  width: 32px;
+  height: 32px;
+}
+
+.modal-success-title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 10px;
+}
+
+.modal-success-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0 0 24px;
+}
+
+.modal-success-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.btn-modal-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--color-orange-primary);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  border-radius: 9999px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-modal-primary:hover {
+  background-color: var(--color-orange-dark);
+}
+
+.btn-modal-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--color-border-card);
+  border-radius: 9999px;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-modal-secondary:hover {
+  background-color: #faf5ee;
+  color: var(--text-dark);
+}
+
+/* ==========================================================================
+   11. RODAPÉ INSTITUCIONAL (SITE FOOTER)
+   ========================================================================== */
+.site-footer {
+  background-color: #fcf9f4;
+  border-top: 1.5px solid var(--color-border-card);
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: auto;
+}
+
+.footer-credits {
+  color: var(--text-muted);
+}
+
+.footer-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-link-item {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-link-item:hover {
+  color: var(--color-orange-primary);
+}
+
+/* ==========================================================================
+   12. RESPONSIVIDADE
+   ========================================================================== */
+@media (max-width: 900px) {
+  .site-header {
+    padding: 12px 18px;
+  }
+  
+  .header-search-wrap {
+    display: none;
+  }
+
+  .eval-card-container {
+    padding: 28px 22px;
+  }
+
+  .criteria-grid {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+  }
+
+  .eval-location-box,
+  .step-subtitle-desc,
+  .barrier-reporting-box,
+  .review-general-box,
+  .photo-dropzone-box,
+  .uploaded-photos-container {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .eval-hero-title {
+    font-size: 24px;
+  }
+  
+  .step-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .step-meta-right,
+  .step-meta-audit-info,
+  .badge-senai-validation {
+    align-self: flex-start;
+    margin-left: 0;
+  }
+  
+  .eval-card-container {
+    padding: 20px 14px;
+    border-radius: 18px;
+  }
+
+  .btn-submit-review {
+    width: 100%;
+    padding: 13px 20px;
+  }
+}

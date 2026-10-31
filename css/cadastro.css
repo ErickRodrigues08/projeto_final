@@ -1,0 +1,816 @@
+/* ==========================================================================
+   PASSE LIVRE — TELA DE CADASTRO (CRIE SUA CONTA)
+   ========================================================================== */
+
+.cadastro-page {
+  background-color: #faf5eb;
+  background-image: radial-gradient(circle at 10% 90%, #f3e7d3 0%, transparent 45%),
+                    radial-gradient(circle at 90% 10%, #fdf8f0 0%, transparent 35%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-main);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   1. Header Minimalista com Logotipo
+   -------------------------------------------------------------------------- */
+.cadastro-header {
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.cadastro-brand-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.cadastro-brand-link img {
+  height: 38px;
+  width: auto;
+}
+
+/* --------------------------------------------------------------------------
+   2. Layout Principal em 2 Colunas
+   -------------------------------------------------------------------------- */
+.cadastro-main-container {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 32px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Coluna Esquerda: Ilustração */
+.cadastro-illustration-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cadastro-vector-illustration {
+  max-width: 480px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 24px rgba(45, 26, 3, 0.05));
+  animation: fadeInIllustration 0.6s ease-out;
+}
+
+@keyframes fadeInIllustration {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Coluna Direita: Card de Formulário */
+.cadastro-card-column {
+  display: flex;
+  justify-content: center;
+}
+
+.cadastro-form-card {
+  background: #fbf2e3;
+  border: 1.5px solid #d4b896;
+  border-radius: 24px;
+  padding: 34px 40px;
+  box-shadow: 0 12px 36px -6px rgba(69, 26, 3, 0.07);
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Título e Subtítulo */
+.cadastro-title-wrap {
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.cadastro-card-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: #292524;
+  line-height: 1.2;
+}
+
+.cadastro-card-subtitle {
+  font-size: 14px;
+  color: #57534e;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* Campos de Formulário */
+.form-field-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-input-cadastro {
+  width: 100%;
+  height: 44px;
+  background: #faebd7;
+  border: 1px solid #dccbb5;
+  border-radius: 10px;
+  padding: 0 16px;
+  font-family: var(--font-main);
+  font-size: 13px;
+  color: #1c1917;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+/* Label visível acima dos campos */
+.form-label-visible {
+  font-size: 13px;
+  font-weight: 600;
+  color: #44403c;
+  padding-left: 2px;
+  margin-bottom: 2px;
+}
+
+.form-input-cadastro::placeholder {
+  color: #8c827a;
+  font-weight: 400;
+}
+
+.form-input-cadastro:focus {
+  background: #ffffff;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.14);
+}
+
+/* Campos em Linha (Senha / Confirmar) */
+.form-fields-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.password-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrap input {
+  padding-right: 40px;
+}
+
+.btn-toggle-eye {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+}
+
+.btn-toggle-eye:hover {
+  opacity: 1;
+}
+
+.btn-toggle-eye img {
+  width: 16px;
+  height: 16px;
+}
+
+/* Seção PCD / Mobilidade Reduzida */
+.pcd-selection-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+  padding-top: 6px;
+  border-top: 1px solid #ede1d0;
+}
+
+.pcd-question-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1c1917;
+}
+
+.pcd-question-desc {
+  font-size: 11px;
+  color: #78716c;
+}
+
+.pcd-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.pcd-option-btn {
+  height: 40px;
+  background: #faebd7;
+  border: 1px solid #d6cbbe;
+  border-radius: 10px;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 600;
+  color: #44403c;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.pcd-option-btn:hover {
+  background: #f5eedf;
+  border-color: #c8aa84;
+}
+
+.pcd-option-btn.selected {
+  background: #fff7ed;
+  border-color: var(--primary-orange);
+  color: #c2410c;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.15);
+}
+
+/* Checkbox de Termos */
+.terms-checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 6px 0;
+  cursor: pointer;
+  user-select: none;
+  font-size: 11.5px;
+  color: #44403c;
+  line-height: 1.35;
+}
+
+.custom-checkbox-input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #d6cbbe;
+  border-radius: 4px;
+  background: #faebd7;
+  cursor: pointer;
+  display: inline-grid;
+  place-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.custom-checkbox-input:checked {
+  background: var(--primary-orange);
+  border-color: var(--primary-orange);
+}
+
+.custom-checkbox-input:checked::before {
+  content: "";
+  width: 8px;
+  height: 5px;
+  border-left: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transform: rotate(-45deg) translate(0.5px, -0.5px);
+}
+
+/* Botão Primário */
+.btn-submit-cadastro {
+  width: 100%;
+  height: 46px;
+  background: var(--primary-gradient);
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 4px 14px -2px rgba(217, 119, 6, 0.4);
+  transition: all 0.15s ease;
+  margin-top: 4px;
+}
+
+.btn-submit-cadastro:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px -2px rgba(217, 119, 6, 0.5);
+}
+
+/* Rodapé do Card */
+.cadastro-card-footer {
+  text-align: center;
+  font-size: 12.5px;
+  color: #57534e;
+  margin-top: 4px;
+}
+
+.cadastro-login-link {
+  color: var(--primary-orange);
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.cadastro-login-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 960px) {
+  .cadastro-main-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 10px 20px 40px;
+  }
+
+  .cadastro-illustration-column {
+    display: none;
+  }
+
+  .cadastro-form-card {
+    max-width: 100%;
+    padding: 28px 24px;
+  }
+}
+
+@media (max-width: 520px) {
+  .cadastro-header {
+    padding: 18px 20px;
+  }
+  .form-fields-row-2col {
+    grid-template-columns: 1fr;
+  }
+  .pcd-options-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Select de estado/municipio — herda form-input-cadastro, ajuste de aparencia */
+select.form-input-cadastro {
+  cursor: pointer;
+  padding-right: 32px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2378716c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+select.form-input-cadastro:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Combobox customizado do município — painel sempre abre abaixo do campo */
+.pl-combobox-native {
+  display: none;
+}
+
+.pl-combobox {
+  position: relative;
+  width: 100%;
+}
+
+.pl-combobox-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.pl-combobox-trigger:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.pl-combobox-trigger:focus-visible {
+  background: #ffffff;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.14);
+}
+
+.pl-combobox-value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pl-combobox-value.is-placeholder {
+  color: #8c827a;
+}
+
+.pl-combobox-arrow {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 8px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2378716c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
+  transition: transform 0.15s ease;
+}
+
+.pl-combobox.is-open .pl-combobox-arrow {
+  transform: rotate(180deg);
+}
+
+.pl-combobox-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 60;
+  background: #fffaf2;
+  border: 1px solid #dccbb5;
+  border-radius: 12px;
+  box-shadow: 0 14px 30px rgba(68, 64, 60, 0.2);
+  overflow: hidden;
+}
+
+.pl-combobox-panel[hidden] {
+  display: none;
+}
+
+.pl-combobox-search {
+  display: block;
+  width: calc(100% - 16px);
+  height: 36px;
+  margin: 8px;
+  padding: 0 12px;
+  background: #ffffff;
+  border: 1px solid #dccbb5;
+  border-radius: 8px;
+  font-family: var(--font-main);
+  font-size: 13px;
+  color: #1c1917;
+  outline: none;
+}
+
+.pl-combobox-search:focus {
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.12);
+}
+
+.pl-combobox-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 6px 6px;
+  max-height: 240px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.pl-combobox-option {
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #292524;
+  cursor: pointer;
+}
+
+.pl-combobox-option:hover,
+.pl-combobox-option.is-active {
+  background: #faebd7;
+  color: #9a3412;
+}
+
+.pl-combobox-option[aria-selected="true"] {
+  background: #d97706;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.pl-combobox-empty {
+  padding: 12px;
+  font-size: 13px;
+  color: #8c827a;
+  text-align: center;
+}
+
+.pl-combobox-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.pl-combobox-list::-webkit-scrollbar-thumb {
+  background: #dccbb5;
+  border-radius: 999px;
+}
+
+.pl-combobox-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cadastro-page .toast-notice {
+  width: min(560px, calc(100vw - 32px));
+  padding: 18px 26px;
+  border-radius: 16px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.cadastro-page .toast-notice span {
+  min-width: 0;
+}
+
+@media (max-width: 520px) {
+  .cadastro-page .toast-notice {
+    bottom: 18px;
+    padding: 16px 20px;
+    font-size: 14px;
+  }
+}
+
+/* ==========================================================================
+   MODAL: TERMOS DE USO E POLÍTICA DE PRIVACIDADE
+   ========================================================================== */
+body.pl-termos-open {
+  overflow: hidden;
+}
+
+.pl-termos-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease, visibility 0s linear 0.18s;
+}
+
+.pl-termos-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.18s ease, visibility 0s;
+}
+
+.pl-termos-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(28, 25, 23, 0.58);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+.pl-termos-card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: min(780px, 100%);
+  max-height: min(88vh, 900px);
+  background: #fbf2e3;
+  border: 1.5px solid #d4b896;
+  border-radius: 24px;
+  box-shadow: 0 24px 60px -12px rgba(69, 26, 3, 0.35);
+  transform: translateY(12px) scale(0.985);
+  transition: transform 0.18s ease;
+  overflow: hidden;
+}
+
+.pl-termos-modal.is-open .pl-termos-card {
+  transform: translateY(0) scale(1);
+}
+
+.pl-termos-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 28px 16px;
+  background: linear-gradient(180deg, #fdf8f0 0%, #fbf2e3 100%);
+  border-bottom: 1px solid #e7d8c2;
+}
+
+.pl-termos-eyebrow {
+  margin: 0 0 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b45309;
+}
+
+.pl-termos-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1.2;
+  color: #292524;
+}
+
+.pl-termos-close {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e0cfb8;
+  border-radius: 9999px;
+  background: #fff7ed;
+  color: #9a3412;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.pl-termos-close:hover {
+  background: #ffedd5;
+}
+
+.pl-termos-close:focus-visible {
+  outline: 3px solid rgba(217, 119, 6, 0.35);
+  outline-offset: 2px;
+}
+
+.pl-termos-body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  padding: 20px 28px 24px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.pl-termos-body:focus-visible {
+  outline: 3px solid rgba(217, 119, 6, 0.35);
+  outline-offset: -3px;
+}
+
+.pl-termos-loading {
+  margin: 0;
+  padding: 28px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #78716c;
+}
+
+.pl-termos-section + .pl-termos-section {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px dashed #dccbb5;
+}
+
+.pl-termos-section-title {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: 19px;
+  color: #9a3412;
+}
+
+.pl-termos-doc h4 {
+  margin: 20px 0 8px;
+  font-size: 15px;
+  color: #1c1917;
+}
+
+.pl-termos-doc h4:first-child {
+  margin-top: 0;
+}
+
+.pl-termos-doc p,
+.pl-termos-doc li {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #57534e;
+}
+
+.pl-termos-doc p {
+  margin: 0 0 14px;
+}
+
+.pl-termos-doc ul {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+
+.pl-termos-doc strong {
+  color: #292524;
+}
+
+.pl-termos-doc code {
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: #f3e7d3;
+  font-size: 12.5px;
+  color: #9a3412;
+}
+
+.pl-termos-doc a {
+  color: #b45309;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.pl-termos-doc a:hover {
+  color: #92400e;
+}
+
+.pl-termos-doc > div:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid #ede1d0;
+}
+
+.pl-termos-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 14px 24px;
+  background: #fdf8f0;
+  border-top: 1px solid #e7d8c2;
+}
+
+.pl-termos-footer-note {
+  margin-right: auto;
+  font-size: 12px;
+  color: #78716c;
+}
+
+.pl-termos-ok {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 9999px;
+  background: #d97706;
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.pl-termos-ok:hover {
+  background: #b45309;
+}
+
+.pl-termos-ok:focus-visible {
+  outline: 3px solid rgba(217, 119, 6, 0.35);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .pl-termos-modal {
+    padding: 12px;
+  }
+
+  .pl-termos-card {
+    max-height: 92vh;
+    border-radius: 18px;
+  }
+
+  .pl-termos-header {
+    padding: 18px 18px 14px;
+  }
+
+  .pl-termos-title {
+    font-size: 20px;
+  }
+
+  .pl-termos-body {
+    padding: 16px 18px 20px;
+  }
+
+  .pl-termos-footer {
+    justify-content: center;
+    padding: 12px 16px;
+  }
+
+  .pl-termos-footer-note {
+    display: none;
+  }
+
+  .pl-termos-ok {
+    width: 100%;
+  }
+}

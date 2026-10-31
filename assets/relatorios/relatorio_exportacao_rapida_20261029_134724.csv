@@ -1,0 +1,24 @@
+﻿"Passe Livre Suzano — Relatório Gerencial"
+Título;"Exportação Completa de Solicitações — 2026"
+"Tipo de relatório";"Exportação Rápida"
+Módulo;geral
+Período;"01/01/2026 a 31/12/2026"
+"Emitido por";"Carlos Eduardo"
+"Emitido em";"29/10/2026 13:47:24"
+
+INDICADOR;VALOR
+"Solicitações no período";7
+Deferidas;2
+Indeferidas;1
+Pendentes;2
+"Taxa de deferimento";28.6%
+"Média das avaliações";4,13
+
+Protocolo;Tipo;Status;Prioridade;"Criado em";Cidadão;Região
+SOL-2026-0860;"Solicitação Geral";Recusada;Baixa;"20/08/2026 10:00";"Roberto Almeida";"Região Central"
+SOL-2026-0875;"Ponto de Ônibus";Aprovada;Alta;"25/08/2026 16:20";"João Silva";"Região Norte"
+SOL-2026-0879;"Calçada Inacessível";"Em Análise";Média;"28/08/2026 09:40";"Roberto Almeida";"Região Sul"
+SOL-2026-0882;"Piso Tátil";"Em Análise";Alta;"29/08/2026 11:00";"Lucas Mendes";"Região Central"
+SOL-2026-0887;"Rampa de Acesso";"Pendente de Triagem";Alta;"02/09/2026 14:15";"João Silva";"Região Central"
+SOL-2026-0891;"Semáforo Sonoro";"Pendente de Triagem";Urgente;"03/09/2026 08:30";"Mariana Souza";"Região Central"
+SOL-2026-7288-5523;"Piso tátil quebrado ou bloqueado";Aprovada;Média;"23/10/2026 14:40";"NATHALYA SILVA MONTEIRO";

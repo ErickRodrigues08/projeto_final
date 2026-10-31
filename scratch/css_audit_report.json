@@ -1,0 +1,994 @@
+{
+  "adaptar-busca.css": {
+    "totalLines": 1409,
+    "mediaQueries": [
+      "@media (max-width: 860px)",
+      "@media (max-width: 600px)"
+    ],
+    "issuesCount": 5,
+    "sampleIssues": [
+      {
+        "line": 73,
+        "text": "padding: 0 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 122,
+        "text": "padding: 8px 16px 8px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 385,
+        "text": "padding: 10px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 455,
+        "text": "padding: 20px 20px 40px 20px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 657,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      }
+    ]
+  },
+  "ajuda.css": {
+    "totalLines": 840,
+    "mediaQueries": [
+      "@media (max-width: 1000px)",
+      "@media (max-width: 640px)"
+    ],
+    "issuesCount": 11,
+    "sampleIssues": [
+      {
+        "line": 35,
+        "text": "padding: 0 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 53,
+        "text": "padding: 56px 40px 44px;",
+        "issue": "Large padding 44px"
+      },
+      {
+        "line": 185,
+        "text": "padding: 60px 0 64px;",
+        "issue": "Large padding 64px"
+      },
+      {
+        "line": 225,
+        "text": "grid-template-columns: repeat(4, 1fr);",
+        "issue": "Multi-column grid without minmax: repeat(4, 1fr)"
+      },
+      {
+        "line": 300,
+        "text": "padding: 64px 40px 70px;",
+        "issue": "Large padding 70px"
+      },
+      {
+        "line": 479,
+        "text": "padding: 16px 0 22px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 580,
+        "text": "padding: 70px 0 64px;",
+        "issue": "Large padding 64px"
+      },
+      {
+        "line": 599,
+        "text": "grid-template-columns: repeat(3, 1fr);",
+        "issue": "Multi-column grid without minmax: repeat(3, 1fr)"
+      },
+      {
+        "line": 707,
+        "text": "padding: 0 40px 44px;",
+        "issue": "Large padding 44px"
+      },
+      {
+        "line": 801,
+        "text": "padding: 40px 20px 34px;",
+        "issue": "Large padding 40px"
+      }
+    ]
+  },
+  "alerta-obstaculo.css": {
+    "totalLines": 1146,
+    "mediaQueries": [
+      "@media (max-width: 768px)",
+      "@media (max-width: 600px)"
+    ],
+    "issuesCount": 1,
+    "sampleIssues": [
+      {
+        "line": 309,
+        "text": "width: 500px;",
+        "issue": "Fixed width 500px"
+      }
+    ]
+  },
+  "auditoria.css": {
+    "totalLines": 698,
+    "mediaQueries": [
+      "@media (max-width: 1180px)",
+      "@media (max-width: 768px)"
+    ],
+    "issuesCount": 1,
+    "sampleIssues": [
+      {
+        "line": 10,
+        "text": "grid-template-columns: repeat(4, 1fr);",
+        "issue": "Multi-column grid without minmax: repeat(4, 1fr)"
+      }
+    ]
+  },
+  "auth-polish.css": {
+    "totalLines": 918,
+    "mediaQueries": [
+      "@media (prefers-reduced-motion: reduce)",
+      "@media (max-width: 960px)",
+      "@media (max-width: 520px)",
+      "@media (prefers-reduced-motion: reduce)",
+      "@media (max-width: 960px)",
+      "@media (max-width: 520px)",
+      "@media (max-width: 960px)"
+    ],
+    "issuesCount": 9,
+    "sampleIssues": [
+      {
+        "line": 27,
+        "text": "padding: 28px 56px 0;",
+        "issue": "Large padding 56px"
+      },
+      {
+        "line": 101,
+        "text": "padding: 44px 44px 36px;",
+        "issue": "Large padding 44px"
+      },
+      {
+        "line": 522,
+        "text": "padding: 16px 20px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 577,
+        "text": "padding: 52px 44px;",
+        "issue": "Large padding 44px"
+      },
+      {
+        "line": 719,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      },
+      {
+        "line": 751,
+        "text": "padding: 44px 52px 36px;",
+        "issue": "Large padding 52px"
+      },
+      {
+        "line": 787,
+        "text": "padding: 44px;",
+        "issue": "Large padding 44px"
+      },
+      {
+        "line": 881,
+        "text": "padding: 40px 0;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 886,
+        "text": "padding: 32px 52px 28px;",
+        "issue": "Large padding 52px"
+      }
+    ]
+  },
+  "avaliar-local.css": {
+    "totalLines": 1246,
+    "mediaQueries": [
+      "@media (max-width: 900px)",
+      "@media (max-width: 600px)"
+    ],
+    "issuesCount": 2,
+    "sampleIssues": [
+      {
+        "line": 244,
+        "text": "padding: 36px 20px 60px;",
+        "issue": "Large padding 60px"
+      },
+      {
+        "line": 309,
+        "text": "padding: 38px 42px;",
+        "issue": "Large padding 42px"
+      }
+    ]
+  },
+  "cadastro.css": {
+    "totalLines": 817,
+    "mediaQueries": [
+      "@media (max-width: 960px)",
+      "@media (max-width: 520px)",
+      "@media (max-width: 520px)",
+      "@media (max-width: 640px)"
+    ],
+    "issuesCount": 6,
+    "sampleIssues": [
+      {
+        "line": 21,
+        "text": "padding: 24px 48px;",
+        "issue": "Large padding 48px"
+      },
+      {
+        "line": 46,
+        "text": "padding: 10px 32px 48px;",
+        "issue": "Large padding 48px"
+      },
+      {
+        "line": 84,
+        "text": "padding: 34px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 158,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      },
+      {
+        "line": 218,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      },
+      {
+        "line": 341,
+        "text": "padding: 10px 20px 40px;",
+        "issue": "Large padding 40px"
+      }
+    ]
+  },
+  "central-notificacoes.css": {
+    "totalLines": 851,
+    "mediaQueries": [
+      "@media (max-width: 768px)"
+    ],
+    "issuesCount": 3,
+    "sampleIssues": [
+      {
+        "line": 48,
+        "text": "padding: 24px 20px 60px;",
+        "issue": "Large padding 60px"
+      },
+      {
+        "line": 235,
+        "text": "padding: 0 16px 0 42px;",
+        "issue": "Large padding 42px"
+      },
+      {
+        "line": 637,
+        "text": "padding: 64px 24px;",
+        "issue": "Large padding 64px"
+      }
+    ]
+  },
+  "configuracao-rota.css": {
+    "totalLines": 2223,
+    "mediaQueries": [
+      "@media (max-width: 960px)",
+      "@media (max-width: 600px)",
+      "@media (max-width: 880px)"
+    ],
+    "issuesCount": 2,
+    "sampleIssues": [
+      {
+        "line": 405,
+        "text": "width: 440px;",
+        "issue": "Fixed width 440px"
+      },
+      {
+        "line": 1792,
+        "text": "grid-template-columns: repeat(4, 1fr);",
+        "issue": "Multi-column grid without minmax: repeat(4, 1fr)"
+      }
+    ]
+  },
+  "configuracoes.css": {
+    "totalLines": 937,
+    "mediaQueries": [
+      "@media (max-width: 1080px)",
+      "@media (max-width: 768px)"
+    ],
+    "issuesCount": 3,
+    "sampleIssues": [
+      {
+        "line": 101,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      },
+      {
+        "line": 188,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      },
+      {
+        "line": 526,
+        "text": "grid-template-columns: repeat(3, 1fr);",
+        "issue": "Multi-column grid without minmax: repeat(3, 1fr)"
+      }
+    ]
+  },
+  "dashboard.css": {
+    "totalLines": 1228,
+    "mediaQueries": [
+      "@media (max-width: 1280px)",
+      "@media (max-width: 768px)",
+      "@media (max-width: 600px)",
+      "@media (max-width: 600px)"
+    ],
+    "issuesCount": 2,
+    "sampleIssues": [
+      {
+        "line": 423,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      },
+      {
+        "line": 828,
+        "text": "grid-template-columns: repeat(3, 1fr);",
+        "issue": "Multi-column grid without minmax: repeat(3, 1fr)"
+      }
+    ]
+  },
+  "detalhes-local.css": {
+    "totalLines": 1694,
+    "mediaQueries": [
+      "@media (max-width: 960px)",
+      "@media (max-width: 600px)",
+      "@media (max-width: 720px)"
+    ],
+    "issuesCount": 7,
+    "sampleIssues": [
+      {
+        "line": 63,
+        "text": "padding: 0 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 112,
+        "text": "padding: 8px 16px 8px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 375,
+        "text": "padding: 12px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 444,
+        "text": "padding: 24px 40px 48px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 568,
+        "text": "grid-template-columns: repeat(3, 1fr);",
+        "issue": "Multi-column grid without minmax: repeat(3, 1fr)"
+      },
+      {
+        "line": 834,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      },
+      {
+        "line": 1492,
+        "text": "padding: 20px 20px 40px 20px;",
+        "issue": "Large padding 40px"
+      }
+    ]
+  },
+  "direitos.css": {
+    "totalLines": 1208,
+    "mediaQueries": [
+      "@media (max-width: 980px)",
+      "@media (max-width: 560px)"
+    ],
+    "issuesCount": 2,
+    "sampleIssues": [
+      {
+        "line": 19,
+        "text": "padding: 24px 28px 70px;",
+        "issue": "Large padding 70px"
+      },
+      {
+        "line": 415,
+        "text": "grid-template-columns: repeat(3, 1fr);",
+        "issue": "Multi-column grid without minmax: repeat(3, 1fr)"
+      }
+    ]
+  },
+  "esqueci-senha.css": {
+    "totalLines": 181,
+    "mediaQueries": [
+      "@media (max-width: 960px)"
+    ],
+    "issuesCount": 2,
+    "sampleIssues": [
+      {
+        "line": 42,
+        "text": "padding: 56px 52px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 116,
+        "text": "padding: 0 40px;",
+        "issue": "Large padding 40px"
+      }
+    ]
+  },
+  "gerenciar-administradores.css": {
+    "totalLines": 497,
+    "mediaQueries": [
+      "@media (max-width: 900px)"
+    ],
+    "issuesCount": 0,
+    "sampleIssues": []
+  },
+  "gestor.css": {
+    "totalLines": 1130,
+    "mediaQueries": [
+      "@media (max-width: 1024px)",
+      "@media (max-width: 768px)"
+    ],
+    "issuesCount": 3,
+    "sampleIssues": [
+      {
+        "line": 314,
+        "text": "padding: 24px 32px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 677,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      },
+      {
+        "line": 761,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      }
+    ]
+  },
+  "home-polish.css": {
+    "totalLines": 822,
+    "mediaQueries": [
+      "@media (prefers-reduced-motion: reduce)",
+      "@media (max-width: 1000px)",
+      "@media (max-width: 900px)",
+      "@media (max-width: 560px)",
+      "@media (max-width: 900px)",
+      "@media (max-width: 900px)",
+      "@media (max-width: 520px)",
+      "@media (max-width: 900px)",
+      "@media (max-width: 900px)"
+    ],
+    "issuesCount": 17,
+    "sampleIssues": [
+      {
+        "line": 95,
+        "text": "padding: 150px max(40px, calc((100% - 1200px) / 2)) 110px;",
+        "issue": "Large padding 110px"
+      },
+      {
+        "line": 97,
+        "text": "grid-template-columns: 1.1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1.1fr 1fr"
+      },
+      {
+        "line": 193,
+        "text": "width: 440px;",
+        "issue": "Fixed width 440px"
+      },
+      {
+        "line": 225,
+        "text": "padding: 96px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 318,
+        "text": ".about-section { padding: 96px 40px; max-width: 1040px; }",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 332,
+        "text": "padding: 48px 52px;",
+        "issue": "Large padding 52px"
+      },
+      {
+        "line": 426,
+        "text": "padding: 40px 40px 110px;",
+        "issue": "Large padding 110px"
+      },
+      {
+        "line": 437,
+        "text": "grid-template-columns: 1.1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1.1fr 1fr"
+      },
+      {
+        "line": 441,
+        "text": ".contact-left-col { padding: 48px 52px; gap: 14px; }",
+        "issue": "Large padding 52px"
+      },
+      {
+        "line": 501,
+        "text": "padding: 48px 44px;",
+        "issue": "Large padding 44px"
+      }
+    ]
+  },
+  "home.css": {
+    "totalLines": 777,
+    "mediaQueries": [
+      "@media (max-width: 900px)"
+    ],
+    "issuesCount": 9,
+    "sampleIssues": [
+      {
+        "line": 33,
+        "text": "padding: 0px 40px 0px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 127,
+        "text": "padding: 60px 40px 80px;",
+        "issue": "Large padding 80px"
+      },
+      {
+        "line": 272,
+        "text": "padding: 70px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 313,
+        "text": "grid-template-columns: repeat(4, 1fr);",
+        "issue": "Multi-column grid without minmax: repeat(4, 1fr)"
+      },
+      {
+        "line": 380,
+        "text": "padding: 80px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 451,
+        "text": "padding: 80px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 522,
+        "text": "padding: 80px 40px 100px;",
+        "issue": "Large padding 100px"
+      },
+      {
+        "line": 701,
+        "text": "padding: 40px 20px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 704,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      }
+    ]
+  },
+  "locais-cadastrados.css": {
+    "totalLines": 1189,
+    "mediaQueries": [
+      "@media (max-width: 1100px)",
+      "@media (max-width: 768px)"
+    ],
+    "issuesCount": 3,
+    "sampleIssues": [
+      {
+        "line": 150,
+        "text": "grid-template-columns: repeat(4, 1fr);",
+        "issue": "Multi-column grid without minmax: repeat(4, 1fr)"
+      },
+      {
+        "line": 294,
+        "text": "padding: 0 16px 0 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 1005,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      }
+    ]
+  },
+  "login.css": {
+    "totalLines": 582,
+    "mediaQueries": [
+      "@media (max-width: 960px)",
+      "@media (max-width: 520px)"
+    ],
+    "issuesCount": 4,
+    "sampleIssues": [
+      {
+        "line": 21,
+        "text": "padding: 28px 56px 8px;",
+        "issue": "Large padding 56px"
+      },
+      {
+        "line": 46,
+        "text": "padding: 10px 32px 48px;",
+        "issue": "Large padding 48px"
+      },
+      {
+        "line": 85,
+        "text": "padding: 38px 44px;",
+        "issue": "Large padding 44px"
+      },
+      {
+        "line": 389,
+        "text": "padding: 10px 20px 40px;",
+        "issue": "Large padding 40px"
+      }
+    ]
+  },
+  "lugares-encontrados.css": {
+    "totalLines": 911,
+    "mediaQueries": [
+      "@media (max-width: 1120px)",
+      "@media (max-width: 640px)"
+    ],
+    "issuesCount": 1,
+    "sampleIssues": [
+      {
+        "line": 397,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      }
+    ]
+  },
+  "mapa-geral.css": {
+    "totalLines": 1547,
+    "mediaQueries": [
+      "@media (max-width: 1100px)",
+      "@media (max-width: 860px)"
+    ],
+    "issuesCount": 1,
+    "sampleIssues": [
+      {
+        "line": 824,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      }
+    ]
+  },
+  "mapa-gestor.css": {
+    "totalLines": 808,
+    "mediaQueries": [
+      "@media (max-width: 980px)"
+    ],
+    "issuesCount": 1,
+    "sampleIssues": [
+      {
+        "line": 569,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      }
+    ]
+  },
+  "navegacao.css": {
+    "totalLines": 1309,
+    "mediaQueries": [
+      "@media (max-width: 768px)"
+    ],
+    "issuesCount": 1,
+    "sampleIssues": [
+      {
+        "line": 402,
+        "text": "width: 520px;",
+        "issue": "Fixed width 520px"
+      }
+    ]
+  },
+  "notificacoes-cidadao.css": {
+    "totalLines": 371,
+    "mediaQueries": [
+      "@media (max-width: 480px)"
+    ],
+    "issuesCount": 1,
+    "sampleIssues": [
+      {
+        "line": 294,
+        "text": "padding: 60px 32px;",
+        "issue": "Large padding 60px"
+      }
+    ]
+  },
+  "notificacoes.css": {
+    "totalLines": 743,
+    "mediaQueries": [
+      "@media (max-width: 980px)",
+      "@media (max-width: 560px)",
+      "@media (prefers-reduced-motion: reduce)"
+    ],
+    "issuesCount": 1,
+    "sampleIssues": [
+      {
+        "line": 706,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      }
+    ]
+  },
+  "perfil-gestor.css": {
+    "totalLines": 640,
+    "mediaQueries": [
+      "@media (max-width: 768px)",
+      "@media (max-width: 480px)"
+    ],
+    "issuesCount": 3,
+    "sampleIssues": [
+      {
+        "line": 41,
+        "text": "padding: 0 16px 0 42px;",
+        "issue": "Large padding 42px"
+      },
+      {
+        "line": 520,
+        "text": "padding: 60px 20px;",
+        "issue": "Large padding 60px"
+      },
+      {
+        "line": 631,
+        "text": ".filtros-grid { grid-template-columns: 1fr 1fr; }",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      }
+    ]
+  },
+  "perfil.css": {
+    "totalLines": 1141,
+    "mediaQueries": [
+      "@media (max-width: 768px)"
+    ],
+    "issuesCount": 3,
+    "sampleIssues": [
+      {
+        "line": 8,
+        "text": "padding: 24px 20px 60px;",
+        "issue": "Large padding 60px"
+      },
+      {
+        "line": 318,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      },
+      {
+        "line": 528,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      }
+    ]
+  },
+  "personalizar-busca.css": {
+    "totalLines": 1224,
+    "mediaQueries": [
+      "@media (max-width: 860px)",
+      "@media (max-width: 600px)"
+    ],
+    "issuesCount": 6,
+    "sampleIssues": [
+      {
+        "line": 63,
+        "text": "padding: 0 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 112,
+        "text": "padding: 8px 16px 8px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 375,
+        "text": "padding: 10px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 502,
+        "text": "padding: 24px 20px 48px 20px;",
+        "issue": "Large padding 48px"
+      },
+      {
+        "line": 824,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      },
+      {
+        "line": 912,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      }
+    ]
+  },
+  "redefinir-senha.css": {
+    "totalLines": 839,
+    "mediaQueries": [
+      "@media (max-width: 1100px)",
+      "@media (max-width: 680px)"
+    ],
+    "issuesCount": 5,
+    "sampleIssues": [
+      {
+        "line": 61,
+        "text": "padding: 22px 64px 8px;",
+        "issue": "Large padding 64px"
+      },
+      {
+        "line": 129,
+        "text": "padding: 16px 64px 44px;",
+        "issue": "Large padding 44px"
+      },
+      {
+        "line": 276,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      },
+      {
+        "line": 493,
+        "text": "padding: 0 46px 0 46px;",
+        "issue": "Large padding 46px"
+      },
+      {
+        "line": 710,
+        "text": "padding: 22px 64px;",
+        "issue": "Large padding 64px"
+      }
+    ]
+  },
+  "relatorios.css": {
+    "totalLines": 990,
+    "mediaQueries": [
+      "@media (max-width: 1100px)",
+      "@media (max-width: 768px)"
+    ],
+    "issuesCount": 2,
+    "sampleIssues": [
+      {
+        "line": 132,
+        "text": "grid-template-columns: repeat(4, 1fr);",
+        "issue": "Multi-column grid without minmax: repeat(4, 1fr)"
+      },
+      {
+        "line": 919,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      }
+    ]
+  },
+  "sem-resultados.css": {
+    "totalLines": 1106,
+    "mediaQueries": [
+      "@media (max-width: 860px)",
+      "@media (max-width: 600px)"
+    ],
+    "issuesCount": 4,
+    "sampleIssues": [
+      {
+        "line": 68,
+        "text": "padding: 0 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 117,
+        "text": "padding: 8px 16px 8px 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 385,
+        "text": "padding: 36px 20px 48px 20px;",
+        "issue": "Large padding 48px"
+      },
+      {
+        "line": 632,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      }
+    ]
+  },
+  "solicitacao-detalhe.css": {
+    "totalLines": 999,
+    "mediaQueries": [
+      "@media (max-width: 1080px)",
+      "@media (max-width: 768px)"
+    ],
+    "issuesCount": 4,
+    "sampleIssues": [
+      {
+        "line": 11,
+        "text": "padding: 24px 28px 48px 28px;",
+        "issue": "Large padding 48px"
+      },
+      {
+        "line": 310,
+        "text": "grid-template-columns: repeat(4, 1fr);",
+        "issue": "Multi-column grid without minmax: repeat(4, 1fr)"
+      },
+      {
+        "line": 455,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      },
+      {
+        "line": 713,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      }
+    ]
+  },
+  "solicitacoes.css": {
+    "totalLines": 843,
+    "mediaQueries": [
+      "@media (max-width: 960px)"
+    ],
+    "issuesCount": 1,
+    "sampleIssues": [
+      {
+        "line": 39,
+        "text": "padding: 0 40px 0 44px;",
+        "issue": "Large padding 44px"
+      }
+    ]
+  },
+  "style.css": {
+    "totalLines": 2087,
+    "mediaQueries": [
+      "@media (max-width: 560px)",
+      "@media (max-width: 900px)",
+      "@media (max-width: 760px)",
+      "@media (max-width: 560px)",
+      "@media (prefers-reduced-motion: reduce)"
+    ],
+    "issuesCount": 2,
+    "sampleIssues": [
+      {
+        "line": 747,
+        "text": "padding: 0 16px 0 40px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 875,
+        "text": "grid-template-columns: 1fr 1fr;",
+        "issue": "Multi-column grid without minmax: 1fr 1fr"
+      }
+    ]
+  },
+  "verificar-codigo.css": {
+    "totalLines": 764,
+    "mediaQueries": [
+      "@media (max-width: 1024px)",
+      "@media (max-width: 580px)"
+    ],
+    "issuesCount": 4,
+    "sampleIssues": [
+      {
+        "line": 71,
+        "text": "padding: 24px 56px 8px;",
+        "issue": "Large padding 56px"
+      },
+      {
+        "line": 141,
+        "text": "padding: 18px 48px 48px;",
+        "issue": "Large padding 48px"
+      },
+      {
+        "line": 310,
+        "text": "padding: 44px 40px 36px;",
+        "issue": "Large padding 40px"
+      },
+      {
+        "line": 686,
+        "text": "padding: 16px 24px 40px;",
+        "issue": "Large padding 40px"
+      }
+    ]
+  }
+}

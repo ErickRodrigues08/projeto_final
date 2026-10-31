@@ -1,0 +1,2246 @@
+/* ==========================================================================
+   PASSE LIVRE — CONFIGURAÇÃO DA ROTA ACESSÍVEL
+   Reprodução fiel e pixel-perfect da inspiração visual
+   Tipografia: Domine (Serif) e Plus Jakarta Sans
+   Cores: Paleta quente de areia, pergaminho, terracota, âmbar e marrom
+   ========================================================================== */
+
+@import url('../assets/fonts/fonts.css');
+
+:root {
+  /* Fontes oficiais do projeto */
+  --font-serif: 'Domine', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Cores da Identidade Visual (conforme protótipo) */
+  --color-primary-orange: #ea580c;
+  --color-primary-amber: #f59e0b;
+  --color-orange-btn: #e67a00;
+  --color-orange-btn-hover: #cf6900;
+  --color-brand-brown: #78350f;
+  --color-brown-dark: #291c10;
+  --color-brown-text: #451a03;
+  --color-brown-muted: #854d0e;
+  --color-badge-peach: #faeee4;
+  --color-badge-text: #92400e;
+
+  /* Tons de fundo e neutros */
+  --bg-header: #fcf8f2;
+  --bg-page: #f7f3ea;
+  --bg-card: #ffffff;
+  --bg-input-box: #ffffff;
+  --bg-swap-btn: #f3eee6;
+  --bg-swap-hover: #e8e0d4;
+  --bg-badge-lgpd: #f5ece1;
+  --bg-plano-badge: #f5f0e8;
+
+  /* Bordas */
+  --border-light: #ece4d8;
+  --border-card: #ebd9c8;
+  --border-box: #ede4d8;
+  --border-orange: #e07a00;
+
+  /* Textos */
+  --text-dark: #1c1917;
+  --text-body: #292524;
+  --text-muted: #78716c;
+  --text-dim: #a8a29e;
+
+  /* Sombras */
+  --shadow-panel: 0 20px 45px -10px rgba(60, 40, 15, 0.14), 0 0 0 1px rgba(220, 210, 195, 0.55);
+  --shadow-btn: 0 10px 22px -6px rgba(230, 122, 0, 0.45);
+  --shadow-control: 0 6px 20px rgba(0, 0, 0, 0.1);
+  --shadow-card-inner: 0 4px 16px -2px rgba(217, 119, 6, 0.1);
+}
+
+/* Reset de Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   1. CABEÇALHO SUPERIOR (SITE HEADER)
+   ========================================================================== */
+.site-header {
+  background-color: var(--bg-header);
+  border-bottom: 1px solid var(--border-light);
+  height: 64px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  z-index: 1000;
+  flex-shrink: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.brand-logo:hover {
+  transform: scale(1.03);
+}
+
+.brand-logo img {
+  height: 34px;
+  width: auto;
+}
+
+/* Campo de busca no topo */
+.header-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.header-search-wrap .search-icon {
+  position: absolute;
+  left: 14px;
+  width: 15px;
+  height: 15px;
+  color: var(--text-dim);
+  pointer-events: none;
+}
+
+.header-search-input {
+  width: 290px;
+  height: 38px;
+  background-color: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 9999px;
+  padding: 0 16px 0 38px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-dark);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.header-search-input::placeholder {
+  color: var(--text-dim);
+  font-size: 12.5px;
+}
+
+.header-search-input:focus {
+  border-color: var(--color-primary-orange);
+  width: 320px;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.12);
+}
+
+/* Links de Navegação */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #57534e;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.nav-link img,
+.nav-link svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0.85;
+}
+
+.nav-link:hover {
+  color: var(--color-brand-brown);
+  background-color: rgba(120, 53, 15, 0.05);
+}
+
+.nav-link-pill {
+  border: 1.5px solid var(--border-light);
+  background-color: #ffffff;
+  color: var(--color-brand-brown);
+  font-weight: 600;
+}
+
+.nav-link-pill:hover {
+  border-color: var(--color-primary-amber);
+  background-color: #fffaf4;
+}
+
+.nav-link.active {
+  color: var(--color-brand-brown);
+  font-weight: 700;
+}
+
+/* Lado Direito do Cabeçalho */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+.btn-icon-notify {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background 0.2s;
+  color: #57534e;
+  text-decoration: none;
+}
+
+.btn-icon-notify:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.btn-icon-notify svg {
+  width: 20px;
+  height: 20px;
+}
+
+.notify-badge-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-primary-orange);
+  border: 2px solid var(--bg-header);
+  border-radius: 50%;
+}
+
+/* Perfil do Usuário */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+}
+
+.user-profile:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.user-avatar-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--border-light);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.user-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.user-role {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   2. SUBHEADER: BREADCRUMBS & SELO LGPD
+   ========================================================================== */
+.subheader-container {
+  background-color: var(--bg-header);
+  border-bottom: 1px solid var(--border-light);
+  padding: 8px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  z-index: 900;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.breadcrumb-nav svg.home-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--text-muted);
+  margin-right: 2px;
+}
+
+.breadcrumb-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.breadcrumb-link:hover {
+  color: var(--text-dark);
+}
+
+.breadcrumb-separator {
+  color: var(--border-card);
+  font-size: 11px;
+}
+
+.breadcrumb-current {
+  color: var(--color-brown-muted);
+  font-weight: 700;
+}
+
+/* Selo LGPD Ativo */
+.security-lgpd-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background-color: var(--bg-badge-lgpd);
+  border: 1px solid rgba(120, 53, 15, 0.12);
+  border-radius: 9999px;
+  padding: 5px 14px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--color-brand-brown);
+}
+
+.security-lgpd-badge svg {
+  width: 14px;
+  height: 14px;
+  color: var(--color-brand-brown);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   3. PALCO PRINCIPAL (MAPA FULLSCREEN + PAINEL FLUTUANTE)
+   ========================================================================== */
+.route-stage-container {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  min-height: calc(100vh - 110px);
+  overflow: hidden;
+  background-color: var(--bg-page);
+}
+
+/* Elemento do Mapa Interativo Leaflet */
+#route-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: #f7f3ea;
+}
+
+/* Filtro CSS aplicado sobre os tiles para obter a tonalidade quente exata da foto */
+#route-map .leaflet-tile-pane {
+  filter: sepia(0.35) saturate(1.3) hue-rotate(338deg) brightness(1.02) contrast(0.96);
+}
+
+/* ==========================================================================
+   4. PAINEL FLUTUANTE ESQUERDO: CONFIGURAÇÃO DA ROTA
+   ========================================================================== */
+.route-card-panel {
+  position: absolute;
+  top: 24px;
+  left: 32px;
+  bottom: 24px;
+  width: 440px;
+  max-width: calc(100vw - 64px);
+  background-color: var(--bg-card);
+  border-radius: 28px;
+  box-shadow: var(--shadow-panel);
+  z-index: 500;
+  padding: 26px 26px 22px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #e5dacd transparent;
+  animation: panelSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes panelSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.route-card-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.route-card-panel::-webkit-scrollbar-thumb {
+  background-color: #e5dacd;
+  border-radius: 9999px;
+}
+
+/* Cabeçalho do Card: Ícone + Título + Badge '3 opções' */
+.card-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-title-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--color-brand-brown);
+  flex-shrink: 0;
+}
+
+.card-main-title {
+  font-family: var(--font-serif);
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--color-brown-dark);
+  letter-spacing: -0.3px;
+}
+
+.card-badge-options {
+  background-color: var(--color-badge-peach);
+  color: var(--color-badge-text);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  letter-spacing: 0.1px;
+}
+
+/* ==========================================================================
+   5. CONTAINER ORIGEM / DESTINO COM BOTÃO SWAP
+   ========================================================================== */
+.route-locations-box {
+  background-color: var(--bg-input-box);
+  border: 1px solid var(--border-box);
+  border-radius: 18px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Linha conectora vertical sutil */
+.route-locations-box::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 36px;
+  bottom: 36px;
+  width: 2px;
+  background: repeating-linear-gradient(to bottom, #d6c6b4 0, #d6c6b4 4px, transparent 4px, transparent 8px);
+  z-index: 1;
+}
+
+.location-item-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+  padding-right: 48px;
+}
+
+.location-icon-wrap {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.location-icon-wrap img,
+.location-icon-wrap svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-brand-brown);
+}
+
+.location-text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.location-type-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 1px;
+}
+
+.location-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.25;
+}
+
+.location-address {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.35;
+  margin-top: 2px;
+}
+
+/* Divisor horizontal */
+.locations-divider {
+  height: 1px;
+  background-color: #f2ece2;
+  margin: 2px 0 2px 30px;
+}
+
+/* Botão de Trocar Origem e Destino (Swap) */
+.btn-swap-locations {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--bg-swap-btn);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.22s ease;
+  z-index: 3;
+}
+
+.btn-swap-locations:hover {
+  background-color: var(--bg-swap-hover);
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.btn-swap-locations img,
+.btn-swap-locations svg {
+  width: 16px;
+  height: 16px;
+  color: var(--color-brand-brown);
+}
+
+/* ==========================================================================
+   6. CARD DE ROTA SELECIONADA (ROTA MAIS ACESSÍVEL)
+   ========================================================================== */
+.route-option-card {
+  border: 2px solid var(--border-orange);
+  border-radius: 18px;
+  background-color: #ffffff;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-card-inner);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.route-option-card:hover {
+  border-color: #d97706;
+}
+
+/* Linha superior: Badge recomendada + '100% Acessível' */
+.route-card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.badge-recommended {
+  background-color: var(--color-orange-btn);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  border-radius: 9999px;
+  padding: 3.5px 11px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.badge-recommended::before {
+  content: '●';
+  font-size: 7px;
+  line-height: 1;
+}
+
+.badge-percentage-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-brand-brown);
+}
+
+/* Linha do título: Ícone PcD + 'Rota mais acessível' + Checkmark */
+.route-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.route-title-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.route-title-left svg.wheelchair-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-brand-brown);
+}
+
+.route-heading {
+  font-family: var(--font-serif);
+  font-size: 17.5px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.route-checkmark-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-orange-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(230, 122, 0, 0.35);
+  flex-shrink: 0;
+}
+
+.route-checkmark-badge svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Linha das métricas: 22 min • 1,7 km • Plano */
+.route-metrics-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #57534e;
+}
+
+.metric-time {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.metric-sep {
+  color: var(--text-dim);
+  font-weight: 700;
+}
+
+.metric-dist {
+  font-weight: 500;
+  color: #57534e;
+}
+
+.metric-tag-slope {
+  background-color: var(--bg-plano-badge);
+  border: 1px solid var(--border-card);
+  color: #57534e;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+/* Divisor sutil no card */
+.route-card-divider {
+  height: 1px;
+  background-color: #f2ece2;
+  margin: 12px 0 12px;
+}
+
+/* Lista de Vantagens da Rota */
+.route-checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.route-checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12.8px;
+  font-weight: 500;
+  color: var(--text-body);
+  line-height: 1.35;
+}
+
+.checklist-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+/* Outras Opções de Rota (Peeking / Accordion) */
+.alternative-route-card {
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  background-color: #faf7f2;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.alternative-route-card:hover {
+  background-color: #f5efe6;
+  border-color: var(--border-card);
+}
+
+.alternative-route-card.collapsed {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+}
+
+/* Cartão de alternativa que o roteador não devolveu não pode ser exibido. */
+.alternative-route-card[hidden] {
+  display: none !important;
+}
+
+.alt-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #57534e;
+}
+
+.alt-metrics {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   7. BOTÃO CTA PRINCIPAL E LINK DE VOLTAR
+   ========================================================================== */
+.card-actions-wrap {
+  margin-top: auto;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-start-navigation {
+  width: 100%;
+  height: 52px;
+  background: linear-gradient(135deg, var(--color-primary-amber) 0%, var(--color-orange-btn) 100%);
+  border: none;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: var(--shadow-btn);
+  transition: all 0.22s ease;
+  user-select: none;
+}
+
+.btn-start-navigation:hover {
+  background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  transform: translateY(-1.5px);
+  box-shadow: 0 12px 24px -5px rgba(230, 122, 0, 0.55);
+}
+
+.btn-start-navigation:active {
+  transform: translateY(0);
+}
+
+.btn-start-navigation svg.arrow-icon {
+  width: 17px;
+  height: 17px;
+  transition: transform 0.2s ease;
+}
+
+.btn-start-navigation:hover svg.arrow-icon {
+  transform: translateX(4px);
+}
+
+.btn-back-details {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-brown-text);
+  text-decoration: none;
+  transition: color 0.15s ease;
+  padding: 4px 0;
+}
+
+.btn-back-details:hover {
+  color: var(--color-primary-orange);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   8. CONTROLES FLUTUANTES DO MAPA (SUPERIOR DIREITO)
+   ========================================================================== */
+.map-controls-capsule {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  z-index: 500;
+  background-color: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 9999px;
+  padding: 6px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  box-shadow: var(--shadow-control);
+}
+
+.btn-map-action {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #44403c;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.btn-map-action:hover {
+  background-color: #f7f3ea;
+  color: var(--color-brand-brown);
+}
+
+.btn-map-action svg {
+  width: 18px;
+  height: 18px;
+  color: #44403c;
+}
+
+.btn-map-action.active-pcd {
+  background-color: #fef3c7;
+  color: var(--color-brand-brown);
+}
+
+.btn-map-action.active-pcd svg {
+  color: var(--color-brand-brown);
+}
+
+.control-divider {
+  width: 24px;
+  height: 1px;
+  background-color: #f0eae1;
+  margin: 2px 0;
+}
+
+/* ==========================================================================
+   9. LEGENDA FLUTUANTE (INFERIOR DIREITO)
+   ========================================================================== */
+.map-legend-pill {
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  z-index: 500;
+  background-color: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 9999px;
+  padding: 8px 22px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: var(--shadow-control);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #44403c;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.2s;
+}
+
+.legend-item:hover {
+  opacity: 0.8;
+}
+
+.legend-dot-orange {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-primary-orange);
+  box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.2);
+}
+
+.legend-line-dashed {
+  width: 16px;
+  height: 4px;
+  border-top: 3px dashed #44403c;
+}
+
+.legend-dot-brown {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-brand-brown);
+  box-shadow: 0 0 0 2px rgba(120, 53, 15, 0.2);
+}
+
+/* ==========================================================================
+   10. MARCADORES E ELEMENTOS DO MAPA (CUSTOM DIVICONS LEAFLET)
+   ========================================================================== */
+/* Rótulo de destino no mapa (Shopping Suzano & Poupatempo) */
+.map-destination-label {
+  background-color: #292524;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.1px;
+  transform: translate(-50%, -100%);
+  margin-top: -10px;
+}
+
+/* Rótulos de nomes de ruas */
+.map-street-label {
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #451a03;
+  text-shadow: 0 0 4px #ffffff, 0 0 4px #ffffff, 0 0 6px #ffffff;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Marcador de Destino Teardrop Marrom */
+.pin-destination-marker {
+  width: 32px;
+  height: 38px;
+  background-image: url('../assets/icons/pin-destination.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  filter: drop-shadow(0 4px 8px rgba(69, 26, 3, 0.3));
+}
+
+.pin-destination-marker:hover {
+  transform: scale(1.15);
+}
+
+/* Marcador Circular de Alerta / Risco (Vermelho Pulsante) */
+.pin-alert-risk {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #dc2626;
+  border: 2.5px solid #ffffff;
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.35);
+  cursor: pointer;
+  animation: pulseAlert 2s infinite;
+}
+
+@keyframes pulseAlert {
+  0% {
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(220, 38, 38, 0.15);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.4);
+  }
+}
+
+/* Pontos de Piso Tátil e Rampas (Ponto Marrom) */
+.pin-tactile-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: var(--color-brand-brown);
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: transform 0.18s;
+}
+
+.pin-tactile-dot:hover {
+  transform: scale(1.4);
+}
+
+/* Ponto da Origem ("Sua localização") */
+.pin-origin-point {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #0284c7;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.3);
+  cursor: pointer;
+}
+
+/* Popups personalizados do Leaflet */
+.leaflet-popup-content-wrapper {
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(60, 40, 15, 0.18);
+  border: 1px solid var(--border-light);
+  padding: 4px;
+}
+
+.leaflet-popup-tip {
+  background-color: #ffffff;
+}
+
+.custom-popup-content {
+  font-family: var(--font-sans);
+  padding: 8px 10px;
+}
+
+.popup-tag-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+.popup-tag-accessible {
+  background-color: #ecfdf5;
+  color: #047857;
+}
+
+.popup-tag-risk {
+  background-color: #fef2f2;
+  color: #b91c1c;
+}
+
+.popup-tag-tactile {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.popup-heading {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.popup-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   11. HUD DE NAVEGAÇÃO EM TEMPO REAL (ATIVADO AO CLICAR EM INICIAR NAVEGAÇÃO)
+   ========================================================================== */
+.navigation-hud-banner {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100px);
+  z-index: 600;
+  background-color: #ffffff;
+  border: 2px solid var(--color-primary-orange);
+  border-radius: 20px;
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 14px 35px rgba(60, 40, 15, 0.2);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: 90%;
+}
+
+.navigation-hud-banner.active {
+  transform: translateX(-50%) translateY(0);
+}
+
+.hud-icon-turn {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background-color: var(--color-orange-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.hud-text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.hud-instruction-main {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.hud-instruction-sub {
+  font-size: 12px;
+  color: var(--color-brand-brown);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.btn-hud-close {
+  background: #f7f3ea;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #57534e;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: all 0.18s;
+}
+
+.btn-hud-close:hover {
+  background: #ede4d8;
+  color: #1c1917;
+}
+
+/* ==========================================================================
+   12. RODAPÉ DA PÁGINA (SITE FOOTER)
+   ========================================================================== */
+.site-footer {
+  background-color: var(--bg-header);
+  border-top: 1px solid var(--border-light);
+  padding: 14px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+  z-index: 100;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.footer-credits {
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-link-item {
+  color: #57534e;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-link-item:hover {
+  color: var(--color-primary-orange);
+}
+
+/* Toast de feedback */
+.toast-feedback {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background-color: #292524;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  z-index: 2000;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.toast-feedback.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* Responsividade */
+@media (max-width: 960px) {
+  .route-card-panel {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    max-height: 55vh;
+    border-radius: 24px 24px 0 0;
+  }
+  
+  .map-controls-capsule {
+    top: 16px;
+    right: 16px;
+  }
+  
+  .map-legend-pill {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .route-card-panel {
+    padding: 16px 14px 12px;
+    max-height: 60vh;
+  }
+
+  .map-audit-badge {
+    top: 8px !important;
+    left: 8px !important;
+    padding: 4px 10px !important;
+    font-size: 10.5px !important;
+  }
+
+  .map-controls-capsule {
+    top: 8px;
+    right: 8px;
+  }
+
+  .chosen-stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+}
+
+/* ==========================================================================
+   13. SELO SUPERIOR: MODO AUDITORIA CIDADÃ • SUZANO ACESSÍVEL (EXATO DA IMAGEM)
+   ========================================================================== */
+.map-audit-badge {
+  position: absolute;
+  top: 18px;
+  left: 24px;
+  z-index: 520;
+  background-color: #ffffff;
+  border: 1px solid #ebd9c8;
+  border-radius: 9999px;
+  padding: 7px 16px 7px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #1c1917;
+  box-shadow: 0 4px 14px rgba(60, 40, 15, 0.08);
+  pointer-events: auto;
+  user-select: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.map-audit-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(60, 40, 15, 0.12);
+}
+
+.audit-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.22);
+  display: inline-block;
+  animation: pulseGreenDot 2s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulseGreenDot {
+  0% {
+    box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(22, 163, 74, 0.12);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.4);
+  }
+}
+
+/* ==========================================================================
+   14. CALLOUTS NO MAPA (VOCÊ ESTÁ AQUI, TRAVESSIA SEGURA, RAMPA, NOMES DE RUAS)
+   ========================================================================== */
+/* Callout 1: Origem / Você está aqui */
+.map-callout-origin-wrapper {
+  background: transparent !important;
+  border: none !important;
+}
+
+.map-callout-origin {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  border: 1.5px solid #d6c6b4;
+  border-radius: 9999px;
+  padding: 5px 14px 5px 10px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  color: #1c1917;
+  box-shadow: 0 4px 14px rgba(60, 40, 15, 0.16);
+  white-space: nowrap;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.map-callout-origin:hover {
+  transform: scale(1.04);
+}
+
+.origin-pin-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ea580c;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.4);
+  flex-shrink: 0;
+}
+
+/* Callout 2: Rampa NBR 9050 */
+.map-callout-ramp-wrapper {
+  background: transparent !important;
+  border: none !important;
+}
+
+.map-callout-ramp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  border: 1.5px solid #ebd9c8;
+  border-radius: 9999px;
+  padding: 4px 12px 4px 6px;
+  box-shadow: 0 4px 14px rgba(60, 40, 15, 0.14);
+  white-space: nowrap;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.ramp-icon-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #faeee4;
+  color: #92400e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.ramp-text-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.ramp-text-wrap strong {
+  font-size: 11px;
+  color: #291c10;
+}
+
+.ramp-text-wrap small {
+  font-size: 9.5px;
+  color: #78716c;
+}
+
+/* Callout 3: Travessia Segura Ativa (Semáforo sonoro e piso tátil) */
+.map-callout-crossing-wrapper {
+  background: transparent !important;
+  border: none !important;
+}
+
+.map-callout-crossing {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffff;
+  border: 1.5px solid #ebd9c8;
+  border-radius: 14px;
+  padding: 7px 14px 7px 10px;
+  box-shadow: 0 6px 20px rgba(60, 35, 10, 0.16);
+  white-space: nowrap;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.map-callout-crossing:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(60, 35, 10, 0.2);
+}
+
+.crossing-icon-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #faeee4;
+  color: #ea580c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.crossing-content-col {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.crossing-top-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.crossing-title-main {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #1c1917;
+}
+
+.crossing-meter-badge {
+  background-color: #f5ece1;
+  color: #92400e;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1.5px 6px;
+  border-radius: 4px;
+}
+
+.crossing-desc-sub {
+  font-size: 11px;
+  color: #78716c;
+  font-weight: 500;
+}
+
+.street-armando-salles {
+  color: #78350f !important;
+  font-size: 11px !important;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   15. CONTROLE DE MINIMIZAÇÃO DO PAINEL LATERAL & BOTÕES FLUTUANTES
+   ========================================================================== */
+.route-card-panel {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+.route-card-panel.minimized {
+  transform: translateX(calc(-100% - 40px));
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Botão flutuante para restaurar painel lateral */
+.btn-floating-toggle-panel {
+  position: absolute;
+  top: 66px;
+  left: 24px;
+  z-index: 520;
+  background-color: #ffffff;
+  border: 1px solid #ebd9c8;
+  border-radius: 9999px;
+  padding: 7px 15px;
+  display: none;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: #78350f;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(60, 40, 15, 0.1);
+  transition: all 0.2s ease;
+}
+
+.btn-floating-toggle-panel:hover {
+  background-color: #fffaf4;
+  border-color: #ea580c;
+  transform: translateX(2px);
+}
+
+.btn-floating-toggle-panel.show {
+  display: inline-flex;
+  animation: fadeInPill 0.3s ease;
+}
+
+/* Botão flutuante para reabrir popup da rota ativa */
+.btn-floating-reopen-popup {
+  position: absolute;
+  top: 18px;
+  right: 180px;
+  z-index: 520;
+  background-color: #ffffff;
+  border: 1.5px solid #fed7aa;
+  border-radius: 9999px;
+  padding: 7px 16px;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #92400e;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.15);
+  transition: all 0.2s ease;
+}
+
+.btn-floating-reopen-popup:hover {
+  background-color: #fff7ed;
+  border-color: #ea580c;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.25);
+}
+
+.btn-floating-reopen-popup.show {
+  display: inline-flex;
+  animation: fadeInPill 0.3s ease;
+}
+
+@keyframes fadeInPill {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   16. POP UP MODAL DA ROTA ESCOLHIDA (REPRODUÇÃO FIEL DA IMAGEM)
+   ========================================================================== */
+.route-chosen-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 600;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 48px;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
+}
+
+.route-chosen-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.route-chosen-card {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 24px;
+  background-color: #ffffff;
+  border: 1.5px solid #ebd9c8;
+  border-radius: 24px;
+  box-shadow: 0 24px 50px -10px rgba(60, 35, 10, 0.18), 0 0 0 1px rgba(220, 205, 185, 0.45);
+  padding: 24px 28px 22px;
+  position: relative;
+  transform: translateY(-24px) scale(0.97);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.route-chosen-overlay.active .route-chosen-card {
+  transform: translateY(0) scale(1);
+}
+
+/* Botão Fechar Popup (X) */
+.btn-close-popup {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #ebd9c8;
+  background-color: #faf7f2;
+  color: #78716c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.btn-close-popup:hover {
+  background-color: #f0e6d8;
+  color: #1c1917;
+  transform: rotate(90deg);
+}
+
+/* Topo do Card */
+.chosen-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-right: 32px;
+}
+
+.chosen-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.chosen-icon-box {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
+}
+
+.chosen-title-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.chosen-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chosen-main-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: #1c1917;
+  margin: 0;
+  letter-spacing: -0.2px;
+  line-height: 1.25;
+}
+
+.chosen-badge-recommended {
+  background-color: #dcfce7;
+  color: #15803d;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  letter-spacing: 0.2px;
+}
+
+.chosen-badge-recommended .badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #16a34a;
+}
+
+.chosen-subtitle {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  color: #78716c;
+  margin-top: 3px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Badge Superior Direito de Garantia de Acessibilidade */
+.chosen-header-right {
+  flex-shrink: 0;
+}
+
+.chosen-guarantee-pill {
+  background-color: #fdf5ea;
+  border: 1px solid #fed7aa;
+  color: #9a3412;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: 0 1px 4px rgba(120, 53, 15, 0.04);
+}
+
+.chosen-guarantee-pill svg.check-icon {
+  color: #ea580c;
+  flex-shrink: 0;
+}
+
+/* Grade de 4 Métricas (Tempo, Distância, Apoio, Acessibilidade) */
+.chosen-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.chosen-stat-item {
+  background-color: #ffffff;
+  border: 1.5px solid #ebd9c8;
+  border-radius: 16px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(60, 35, 10, 0.03);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.chosen-stat-item:hover {
+  border-color: #ea580c;
+  transform: translateY(-1.5px);
+}
+
+.stat-icon-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #faeee4;
+  color: #92400e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-text-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #78716c;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.stat-value {
+  font-size: 17px;
+  font-weight: 800;
+  color: #1c1917;
+  line-height: 1.25;
+  margin-top: 2px;
+}
+
+/* Linha Inferior de Ações (3 Botões) */
+.chosen-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Botões com Outline */
+.btn-action-outline {
+  background-color: #fbf9f6;
+  border: 1.5px solid #d6c6b4;
+  border-radius: 9999px;
+  padding: 11px 18px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: #44403c;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-action-outline:hover {
+  background-color: #f2ece2;
+  border-color: #a8a29e;
+  color: #1c1917;
+  transform: translateY(-1px);
+}
+
+.btn-report-obstacle {
+  background-color: #fffaf5;
+  border-color: #ea580c;
+  color: #9a3412;
+}
+
+.btn-report-obstacle:hover {
+  background-color: #faede2;
+  border-color: #c2410c;
+  color: #7c2d12;
+}
+
+.btn-report-obstacle svg {
+  color: #ea580c;
+}
+
+/* Botão Primário Laranja Sólido */
+.btn-action-primary {
+  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+  border: none;
+  border-radius: 9999px;
+  padding: 12px 24px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px -4px rgba(234, 88, 12, 0.45);
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+
+.btn-action-primary:hover {
+  background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  transform: translateY(-1.5px);
+  box-shadow: 0 10px 24px -3px rgba(234, 88, 12, 0.6);
+}
+
+.btn-action-primary:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   17. MODAIS AUXILIARES (REPORTAR OBSTÁCULO E LISTA DE INSTRUÇÕES)
+   ========================================================================== */
+.modal-backdrop-custom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(41, 28, 16, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2500;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+  padding: 20px;
+}
+
+.modal-backdrop-custom.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-dialog-custom {
+  background: #ffffff;
+  border: 1.5px solid #ebd9c8;
+  border-radius: 22px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(15px) scale(0.97);
+  transition: all 0.25s ease;
+}
+
+.modal-backdrop-custom.open .modal-dialog-custom {
+  transform: translateY(0) scale(1);
+}
+
+.modal-header-custom {
+  padding: 18px 24px;
+  border-bottom: 1px solid #ebd9c8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fdfbf8;
+}
+
+.modal-title-custom {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: #1c1917;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-body-custom {
+  padding: 22px 24px;
+  overflow-y: auto;
+  max-height: 70vh;
+}
+
+.modal-footer-custom {
+  padding: 16px 24px;
+  border-top: 1px solid #ebd9c8;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  background-color: #fdfbf8;
+}
+
+/* Estilos de Formulário no Modal */
+.form-group-custom {
+  margin-bottom: 16px;
+}
+
+.form-group-custom label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #44403c;
+  margin-bottom: 6px;
+}
+
+.form-input-custom,
+.form-select-custom,
+.form-textarea-custom {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #ebd9c8;
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  color: #1c1917;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-input-custom:focus,
+.form-select-custom:focus,
+.form-textarea-custom:focus {
+  border-color: #ea580c;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.12);
+}
+
+/* Lista de Instruções Passo a Passo */
+.instructions-step-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.instructions-route-summary {
+  margin: 0 0 16px;
+  color: #78716c;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.instructions-empty-state {
+  padding: 14px;
+  border: 1px solid #f2ece2;
+  border-radius: 12px;
+  background: #fcfbfa;
+  color: #78716c;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.instruction-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background-color: #fcfbfa;
+  border: 1px solid #f2ece2;
+}
+
+.instruction-map-button {
+  flex-shrink: 0;
+  align-self: center;
+  padding: 6px 10px;
+  border: 1px solid #ebd9c8;
+  border-radius: 9999px;
+  background: #fff;
+  color: #9a3412;
+  font: 600 11px var(--font-sans);
+  cursor: pointer;
+}
+
+.instruction-map-button:hover {
+  background: #fff7ed;
+  border-color: #ea580c;
+}
+
+.step-num-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #ea580c;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.step-desc-wrap strong {
+  font-size: 13.5px;
+  color: #1c1917;
+  display: block;
+}
+
+.step-desc-wrap p {
+  font-size: 12px;
+  color: #78716c;
+  margin-top: 3px;
+  line-height: 1.35;
+}
+
+@media (max-width: 600px) {
+  .instruction-step-item {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .instruction-map-button {
+    margin-left: 36px;
+  }
+}
+
+/* Responsividade do Popup */
+@media (max-width: 880px) {
+  .route-chosen-overlay {
+    padding-top: 20px;
+    align-items: center;
+  }
+
+  .route-chosen-card {
+    padding: 20px 20px 18px;
+  }
+
+  .chosen-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 28px;
+    gap: 12px;
+  }
+
+  .chosen-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .chosen-actions-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-action-outline,
+  .btn-action-primary {
+    justify-content: center;
+  }
+
+  .btn-floating-reopen-popup {
+    right: 20px;
+    top: 66px;
+  }
+}
+
+/* ==========================================================================
+   12. ORIGEM MANUAL E AÇÕES INJETADAS PELA LÓGICA DE ROTAS
+   ========================================================================== */
+.btn-pick-origin {
+  margin-top: 5px;
+  align-self: flex-start;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-orange-btn);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.btn-pick-origin:hover {
+  color: #c2410c;
+}
+
+body.origin-pick-mode #route-map,
+body.origin-pick-mode #route-map .leaflet-interactive {
+  cursor: crosshair !important;
+}
+
+.btn-route-inline-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid var(--border-card);
+  border-radius: 9999px;
+  background-color: #ffffff;
+  color: var(--color-brand-brown);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-route-inline-action:hover {
+  background-color: #faf7f2;
+  border-color: var(--border-orange);
+}
+
+.alternative-route-card.is-selected {
+  border-color: var(--border-orange);
+  background-color: #fff7ed;
+}
+
+.btn-start-navigation:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}

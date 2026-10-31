@@ -1,0 +1,519 @@
+/* ==========================================================================
+   PASSE LIVRE — GERENCIAR ADMINISTRADORES (Painel do Gestor)
+   Reaproveita a identidade do painel: fundo #faf7f2, cartões brancos com
+   borda #ede4d8, acento âmbar #c2693f.
+   ========================================================================== */
+
+.admins-intro-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  background: linear-gradient(135deg, #fff7ed 0%, #fdfaf6 100%);
+  border: 1px solid #fed7aa;
+  border-radius: 18px;
+  padding: 18px 22px;
+}
+
+.admins-intro-left {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.admins-intro-icon {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 11px;
+  background: #ffedd5;
+  border: 1px solid #fed7aa;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admins-intro-icon img {
+  width: 19px;
+  height: 19px;
+}
+
+.admins-intro-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #7c2d12;
+  margin: 0 0 4px;
+}
+
+.admins-intro-text {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #9a3412;
+  margin: 0;
+}
+
+.admins-intro-text strong {
+  color: #7c2d12;
+}
+
+.admins-intro-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #fff;
+  border: 1px solid #fdba74;
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #c2410c;
+  white-space: nowrap;
+}
+
+/* 1. Resumo de níveis de acesso ------------------------------------------- */
+.admins-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.admins-summary-card {
+  background: #ffffff;
+  border: 1px solid #ede4d8;
+  border-radius: 16px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.admins-summary-label {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #a8a29e;
+}
+
+.admins-summary-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1c1917;
+  line-height: 1.1;
+}
+
+.admins-summary-value.accent { color: #c2693f; }
+.admins-summary-value.blue   { color: #1e3a8a; }
+.admins-summary-value.muted  { color: #78716c; }
+
+.admins-summary-note {
+  font-size: 11px;
+  color: #78716c;
+}
+
+/* 2. Barra de busca e filtros --------------------------------------------- */
+.admins-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f6f0e8;
+}
+
+.admins-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.admins-field label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #78716c;
+}
+
+.admins-input,
+.admins-select {
+  height: 36px;
+  border: 1px solid #e7ded2;
+  background: #fdfaf6;
+  border-radius: 9px;
+  padding: 0 12px;
+  font-family: inherit;
+  font-size: 12.5px;
+  color: #1c1917;
+}
+
+.admins-input { min-width: 290px; }
+.admins-input:focus,
+.admins-select:focus {
+  outline: 2px solid #fdba74;
+  outline-offset: 1px;
+  border-color: #fdba74;
+  background: #fff;
+}
+
+.admins-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 15px;
+  border-radius: 9px;
+  border: 1px solid #e7ded2;
+  background: #fff;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #44403c;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.admins-btn:hover { background: #faf7f2; border-color: #d6ccc0; }
+
+.admins-btn img { width: 14px; height: 14px; }
+
+.admins-btn:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}
+
+/* 3. Tabela --------------------------------------------------------------- */
+.admins-table-wrap {
+  overflow-x: auto;
+}
+
+.admins-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+.admins-table thead th {
+  text-align: left;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #a8a29e;
+  padding: 10px 12px;
+  border-bottom: 1px solid #ede4d8;
+  white-space: nowrap;
+}
+
+.admins-table tbody td {
+  padding: 13px 12px;
+  border-bottom: 1px solid #f6f0e8;
+  vertical-align: middle;
+  color: #1c1917;
+}
+
+.admins-table tbody tr:hover { background: #fdfaf6; }
+
+.admins-user-cell {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.admins-avatar {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #ffedd5;
+  color: #9a3412;
+  font-size: 11.5px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admins-user-name {
+  font-weight: 700;
+  color: #1c1917;
+  display: block;
+}
+
+.admins-user-mail {
+  font-size: 11px;
+  color: #78716c;
+  display: block;
+  word-break: break-all;
+}
+
+.admins-user-code {
+  font-size: 10.5px;
+  color: #a8a29e;
+  font-weight: 700;
+}
+
+.admins-role {
+  font-size: 11.5px;
+  color: #57534e;
+}
+
+.level-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 9999px;
+  padding: 4px 11px;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.level-badge img { width: 12px; height: 12px; }
+
+.level-badge.principal {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+  color: #3730a3;
+}
+
+.level-badge.admin {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #065f46;
+}
+
+.level-badge.cidadao {
+  background: #f5f5f4;
+  border-color: #e7e5e4;
+  color: #57534e;
+}
+
+.status-badge-pill {
+  display: inline-block;
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 10.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.status-badge-pill.ativo     { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+.status-badge-pill.pendente  { background: #fff7ed; color: #9a3412; border: 1px solid #fed7aa; }
+.status-badge-pill.bloqueado { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+
+.admins-protected-note {
+  font-size: 11px;
+  font-weight: 700;
+  color: #a8a29e;
+}
+
+.btn-grant-access,
+.btn-revoke-access {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 8px;
+  padding: 7px 13px;
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 800;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: filter 0.15s;
+}
+
+.btn-grant-access {
+  background: #c2693f;
+  border-color: #c2693f;
+  color: #fff;
+}
+
+.btn-revoke-access {
+  background: #fff;
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.btn-grant-access:hover,
+.btn-revoke-access:hover { filter: brightness(0.95); }
+
+.btn-grant-access:disabled,
+.btn-revoke-access:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.admins-state-row td {
+  text-align: center;
+  padding: 26px 12px !important;
+  color: #78716c;
+  font-size: 12.5px;
+}
+
+.admins-state-row.error td { color: #b91c1c; }
+
+/* 4. Rodapé de paginação -------------------------------------------------- */
+.admins-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 12px;
+  border-top: 1px solid #f6f0e8;
+  font-size: 11.5px;
+  color: #78716c;
+}
+
+.admins-pagination-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 5. Modal de confirmação ------------------------------------------------- */
+.admin-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 25, 23, 0.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1200;
+}
+
+.admin-confirm-overlay.active { display: flex; }
+
+.admin-confirm-window {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #ede4d8;
+  max-width: 470px;
+  width: 100%;
+  padding: 22px 24px;
+  box-shadow: 0 18px 40px -12px rgba(45, 26, 3, 0.35);
+}
+
+.admin-confirm-title {
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #1c1917;
+  margin: 0 0 10px;
+}
+
+.admin-confirm-body {
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: #57534e;
+  margin: 0 0 6px;
+}
+
+.admin-confirm-target {
+  background: #faf7f2;
+  border: 1px solid #ede4d8;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 14px 0 4px;
+  font-size: 12px;
+  color: #1c1917;
+}
+
+.admin-confirm-target div + div { margin-top: 4px; }
+
+.admin-confirm-warning {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-top: 12px;
+  font-size: 11.5px;
+  color: #9a3412;
+}
+
+.admin-confirm-warning img { width: 15px; height: 15px; flex-shrink: 0; margin-top: 1px; }
+
+.admin-confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-confirm-cancel {
+  border: 1px solid #e7ded2;
+  background: #fff;
+  color: #44403c;
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-confirm-save {
+  border: none;
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #fff;
+  cursor: pointer;
+  background: #c2693f;
+}
+
+.btn-confirm-save.danger { background: #b91c1c; }
+
+.btn-confirm-save:disabled { opacity: 0.6; cursor: progress; }
+
+/* 6. Aviso de acesso negado ----------------------------------------------- */
+.admins-denied-card {
+  background: #fff;
+  border: 1px solid #fecaca;
+  border-radius: 18px;
+  padding: 26px;
+  text-align: center;
+  color: #991b1b;
+  font-size: 13px;
+  display: none;
+}
+
+.admins-denied-card.active { display: block; }
+
+@media (max-width: 900px) {
+  .admins-intro-card { flex-direction: column; }
+  .admins-input { min-width: 100%; }
+  .admins-field { flex: 1 1 100%; }
+}
+
+@media (max-width: 580px) {
+  .admins-table {
+    min-width: 580px;
+  }
+  .admins-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .admins-card {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+  .modal-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .modal-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+}

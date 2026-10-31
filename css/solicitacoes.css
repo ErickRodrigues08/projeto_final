@@ -1,0 +1,868 @@
+/* ==========================================================================
+   PASSE LIVRE — PAINEL DO GESTOR (GESTÃO DE SOLICITAÇÕES)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Card Superior de Busca e Filtros
+   -------------------------------------------------------------------------- */
+.solicitacoes-filters-card {
+  background: #ffffff;
+  border: 1px solid #ede4d8;
+  border-radius: 18px;
+  padding: 20px 24px;
+  box-shadow: 0 3px 14px -4px rgba(45, 26, 3, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Linha Superior: Busca, Contador e Botões de Ação */
+.filters-top-action-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.search-field-large-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 280px;
+}
+
+.search-field-large-wrap input {
+  width: 100%;
+  height: 44px;
+  background: #faf7f2;
+  border: 1.5px solid #ede4d8;
+  border-radius: 9999px;
+  padding: 0 40px 0 44px;
+  font-family: var(--font-main);
+  font-size: 13px;
+  color: #1c1917;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.search-field-large-wrap input:focus {
+  background: #ffffff;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.12);
+}
+
+.search-icon-left {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 17px;
+  height: 17px;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.btn-search-clear {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #a8a29e;
+  cursor: pointer;
+  padding: 4px;
+  display: none;
+}
+
+.search-field-large-wrap input:not(:placeholder-shown) ~ .btn-search-clear {
+  display: block;
+}
+
+.badge-results-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #fdfaf5;
+  border: 1px solid #ede4d8;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #b45309;
+  white-space: nowrap;
+}
+
+.badge-results-count img {
+  width: 14px;
+  height: 14px;
+}
+
+.btn-advanced-filters {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: #ffffff;
+  border: 1px solid #d6cbbe;
+  border-radius: 9999px;
+  font-family: var(--font-main);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #44403c;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.btn-advanced-filters:hover {
+  background: #fdfaf5;
+  border-color: #bfaea0;
+  color: #1c1917;
+}
+
+.btn-advanced-filters img {
+  width: 15px;
+  height: 15px;
+  opacity: 0.75;
+}
+
+.btn-export-reports {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  background: var(--primary-gradient);
+  border: none;
+  border-radius: 9999px;
+  font-family: var(--font-main);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px -2px rgba(217, 119, 6, 0.4);
+  transition: all 0.15s ease;
+}
+
+.btn-export-reports:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px -2px rgba(217, 119, 6, 0.5);
+}
+
+.btn-export-reports img {
+  width: 15px;
+  height: 15px;
+  filter: brightness(0) invert(1);
+}
+
+/* Linha de Pílulas de Status */
+.status-filter-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 4px 0;
+  border-top: 1px solid #f6f0e8;
+  border-bottom: 1px solid #f6f0e8;
+}
+
+.status-row-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #78716c;
+  margin-right: 4px;
+}
+
+.status-pill-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: #faf7f2;
+  border: 1px solid #ede4d8;
+  border-radius: 9999px;
+  font-family: var(--font-main);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #57534e;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.status-pill-filter-btn:hover {
+  background: #f5eedf;
+  border-color: #d6cbbe;
+  color: #1c1917;
+}
+
+.status-pill-filter-btn.active {
+  background: #78350f;
+  border-color: #78350f;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.status-dot-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot-indicator.yellow { background-color: #f59e0b; }
+.status-dot-indicator.blue { background-color: #3b82f6; }
+.status-dot-indicator.green { background-color: #10b981; }
+.status-dot-indicator.red { background-color: #ef4444; }
+.status-dot-indicator.orange { background-color: #ea580c; }
+
+/* Linha de Filtros Secundários */
+.secondary-filters-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.filter-control-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filter-control-item label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #78716c;
+}
+
+.solicitacoes-select {
+  height: 38px;
+  background: #faf7f2 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2378716c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center;
+  border: 1px solid #ede4d8;
+  border-radius: 10px;
+  padding: 0 32px 0 12px;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 600;
+  color: #1c1917;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.solicitacoes-select:focus {
+  border-color: var(--primary-orange);
+}
+
+.date-range-filter-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date-input-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #faf7f2;
+  border: 1px solid #ede4d8;
+  border-radius: 10px;
+  padding: 0 12px;
+  height: 38px;
+}
+
+.date-input-wrap img {
+  width: 14px;
+  height: 14px;
+  opacity: 0.6;
+}
+
+.date-input-wrap input {
+  border: none;
+  background: transparent;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 600;
+  color: #1c1917;
+  outline: none;
+  width: 95px;
+}
+
+.date-separator {
+  font-size: 11.5px;
+  color: #78716c;
+  font-weight: 600;
+}
+
+.btn-reset-filters {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #faf7f2;
+  border: 1px solid #ede4d8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: all 0.15s;
+}
+
+.btn-reset-filters:hover {
+  background: #f5eedf;
+  border-color: #d6cbbe;
+}
+
+.btn-reset-filters img {
+  width: 15px;
+  height: 15px;
+  opacity: 0.7;
+}
+
+/* --------------------------------------------------------------------------
+   2. Tabela de Gestão de Solicitações
+   -------------------------------------------------------------------------- */
+.solicitacoes-table-card {
+  background: #ffffff;
+  border: 1px solid #ede4d8;
+  border-radius: 18px;
+  padding: 16px 20px 20px;
+  box-shadow: 0 3px 14px -4px rgba(45, 26, 3, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.solicitacoes-table-wrap {
+  overflow-x: auto;
+}
+
+.solicitacoes-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.solicitacoes-table thead th {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #78716c;
+  padding: 12px 14px;
+  border-bottom: 1.5px solid #ede4d8;
+  white-space: nowrap;
+}
+
+.solicitacoes-table tbody tr {
+  border-bottom: 1px solid #f6f0e8;
+  transition: background-color 0.15s;
+}
+
+.solicitacoes-table tbody tr:hover {
+  background-color: #fdfaf6;
+}
+
+.solicitacoes-table tbody td {
+  padding: 14px 14px;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+/* Checkboxes Customizados */
+.custom-table-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #d6cbbe;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  display: inline-grid;
+  place-content: center;
+  transition: all 0.15s;
+}
+
+.custom-table-checkbox:checked {
+  background: #78350f;
+  border-color: #78350f;
+}
+
+.custom-table-checkbox:checked::before {
+  content: "";
+  width: 7px;
+  height: 4px;
+  border-left: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transform: rotate(-45deg) translate(0.5px, -0.5px);
+}
+
+/* Célula ID / Protocolo */
+.protocol-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.protocol-id-number {
+  font-size: 13px;
+  font-weight: 800;
+  color: #1c1917;
+}
+
+.protocol-code-sub {
+  font-size: 10px;
+  color: #78716c;
+  font-family: monospace;
+}
+
+/* Célula Cidadão */
+.solicitante-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 170px;
+}
+
+.solicitante-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f5eedf;
+  color: #44403c;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.solicitante-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.solicitante-name {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #1c1917;
+}
+
+.solicitante-email {
+  font-size: 10.5px;
+  color: #78716c;
+}
+
+/* Célula Tipo de Ocorrência */
+.occurrence-type-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1c1917;
+  white-space: nowrap;
+}
+
+.occurrence-type-icon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.85;
+}
+
+/* Célula Local / Endereço */
+.location-desc-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 250px;
+}
+
+.location-main-address {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1c1917;
+}
+
+.location-sub-complement {
+  font-size: 11px;
+  color: #78716c;
+}
+
+/* Célula Data de Envio */
+.submission-date-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  white-space: nowrap;
+}
+
+.submission-date-val {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1c1917;
+}
+
+.submission-time-val {
+  font-size: 10.5px;
+  color: #78716c;
+}
+
+/* Pílulas de Status na Tabela */
+.status-pill-table {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-pill-table.pending {
+  background: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.status-pill-table.analyzing {
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+
+.status-pill-table.approved {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.status-pill-table.rejected {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.status-pill-table.correction {
+  background: #fff7ed;
+  color: #c2410c;
+  border: 1px solid #fed7aa;
+}
+
+/* Botão Visualizar na Tabela */
+.btn-table-view-details {
+  background: #ffffff;
+  border: 1px solid #d6cbbe;
+  border-radius: 9999px;
+  padding: 5px 14px;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  color: #57534e;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-table-view-details:hover {
+  background: #fdfaf5;
+  border-color: #bfaea0;
+  color: #1c1917;
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   3. Paginação Inferior
+   -------------------------------------------------------------------------- */
+.solicitacoes-pagination-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid #f6f0e8;
+  font-size: 11.5px;
+  color: #78716c;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pagination-rows-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rows-select-control {
+  height: 28px;
+  background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%2378716c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 8px center;
+  border: 1px solid #ede4d8;
+  border-radius: 6px;
+  padding: 0 24px 0 8px;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  color: #1c1917;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.pagination-nav-list {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.page-nav-btn {
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 9999px;
+  border: 1px solid #ede4d8;
+  background: #ffffff;
+  color: #57534e;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.page-nav-btn:hover {
+  background: #faf7f2;
+  border-color: #d6cbbe;
+  color: #1c1917;
+}
+
+.page-nav-btn.active {
+  background: #78350f;
+  border-color: #78350f;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.page-nav-btn.dots {
+  border: none;
+  background: none;
+  cursor: default;
+}
+
+/* --------------------------------------------------------------------------
+   4. Estados da lista, seleção em lote, triagem e acessibilidade
+   -------------------------------------------------------------------------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.link-like {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: #b45309;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.sol-state {
+  padding: 28px 16px;
+  text-align: center;
+  color: #78716c;
+  font-size: 13px;
+}
+
+.sol-state[hidden] { display: none; }
+
+.sol-loading { color: #92400e; font-weight: 600; }
+
+.sol-state-error strong { color: #b91c1c; display: block; margin-bottom: 6px; font-size: 14px; }
+.sol-state-error p { margin: 4px 0; }
+.sol-state-hint { font-size: 12px; color: #78716c; }
+.sol-state-hint a { color: #b45309; font-weight: 700; }
+
+.sol-state-empty strong { display: block; margin-bottom: 6px; color: #57534e; font-size: 14px; }
+
+.sol-row-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.btn-table-view-details--ghost {
+  background: #fdf4e7;
+  border-color: #f3d9b8;
+  color: #92400e;
+}
+
+.solicitacoes-pagination-bar[hidden] { display: none; }
+
+.sol-batch-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  background: #fdf4e7;
+  border: 1px solid #f3d9b8;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #92400e;
+}
+
+.sol-batch-bar[hidden] { display: none; }
+
+.sol-batch-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.btn-batch {
+  height: 30px;
+  padding: 0 14px;
+  border-radius: 9999px;
+  border: 1px solid #d6cbbe;
+  background: #ffffff;
+  color: #57534e;
+  font-family: var(--font-main);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-batch:hover:not(:disabled) { transform: translateY(-1px); border-color: #bfaea0; }
+.btn-batch:disabled { opacity: 0.6; cursor: progress; }
+.btn-batch-approve { background: #16a34a; border-color: #16a34a; color: #fff; }
+.btn-batch-reject { background: #dc2626; border-color: #dc2626; color: #fff; }
+
+/* Modal de triagem */
+.sol-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(28, 25, 23, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+.sol-modal[hidden] { display: none; }
+
+.sol-modal-box {
+  background: #fff;
+  border-radius: 16px;
+  width: min(480px, 100%);
+  padding: 22px 24px;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.22);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sol-modal-head { display: flex; align-items: center; justify-content: space-between; }
+.sol-modal-title { font-size: 17px; margin: 0; color: #1c1917; }
+.sol-modal-close {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid #ede4d8;
+  background: #faf7f2;
+  color: #57534e;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+.sol-modal-target { font-size: 12.5px; font-weight: 700; color: #92400e; margin: 0; }
+.sol-modal-label { font-size: 11.5px; font-weight: 700; color: #57534e; letter-spacing: .3px; }
+.sol-modal-notes {
+  border: 1px solid #ede4d8;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-family: var(--font-main);
+  font-size: 13px;
+  color: #1c1917;
+  resize: vertical;
+}
+.sol-modal-notes:focus { outline: 2px solid #b45309; outline-offset: 1px; border-color: #b45309; }
+.sol-modal-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+.btn-triage-submit {
+  flex: 1 1 auto;
+  min-width: 110px;
+  height: 34px;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+}
+.btn-triage-submit:disabled { opacity: 0.65; cursor: progress; }
+.btn-triage-approve { background: #16a34a; }
+.btn-triage-analyze { background: #2563eb; }
+.btn-triage-reject { background: #dc2626; }
+.sol-modal-hint { font-size: 11px; color: #78716c; margin: 0; }
+
+/* Responsividade */
+@media (max-width: 960px) {
+  .filters-top-action-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .search-field-large-wrap {
+    width: 100%;
+  }
+  .secondary-filters-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .sol-batch-bar { flex-direction: column; align-items: stretch; }
+  .solicitacoes-pagination-bar { justify-content: center; }
+}
+
+@media (max-width: 580px) {
+  .solicitacoes-table {
+    min-width: 680px;
+  }
+  .sol-modal-box {
+    width: calc(100vw - 20px) !important;
+    padding: 18px 14px !important;
+  }
+  .sol-modal-footer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .sol-modal-footer button {
+    width: 100%;
+    justify-content: center;
+  }
+  .status-filter-pills-row {
+    gap: 6px;
+  }
+  .filter-pill-btn {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+}

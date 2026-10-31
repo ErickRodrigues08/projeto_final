@@ -1,0 +1,697 @@
+/* ==========================================================================
+   PASSE LIVRE — PAINEL DO GESTOR (LOGS DE AUDITORIA E SEGURANÇA)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Grid de Métricas de Auditoria (4 KPIs)
+   -------------------------------------------------------------------------- */
+.audit-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.audit-metric-card {
+  background: #ffffff;
+  border: 1px solid #ede4d8;
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: 0 3px 12px -3px rgba(45, 26, 3, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.audit-metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px -4px rgba(45, 26, 3, 0.08);
+  border-color: #d6cbbe;
+}
+
+.audit-metric-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.audit-metric-label {
+  font-size: 10.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #78716c;
+}
+
+.audit-metric-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.audit-metric-icon-wrap.amber { background: #fef3c7; color: #d97706; }
+.audit-metric-icon-wrap.red { background: #fee2e2; color: #dc2626; }
+.audit-metric-icon-wrap.warm { background: #fef3c7; color: #b45309; }
+.audit-metric-icon-wrap.green { background: #ecfdf5; color: #059669; }
+
+.audit-metric-icon-wrap img {
+  width: 16px;
+  height: 16px;
+}
+
+.audit-metric-number {
+  font-size: 27px;
+  font-weight: 800;
+  color: #1c1917;
+  line-height: 1.1;
+  font-family: var(--font-display);
+}
+
+.audit-metric-subtext {
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.audit-metric-subtext.green {
+  color: #059669;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.audit-metric-subtext.red {
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.audit-metric-subtext.muted {
+  color: #78716c;
+}
+
+/* --------------------------------------------------------------------------
+   2. Barra de Filtros de Auditoria
+   -------------------------------------------------------------------------- */
+.audit-filters-card {
+  background: #ffffff;
+  border: 1px solid #ede4d8;
+  border-radius: 14px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px -2px rgba(45, 26, 3, 0.03);
+}
+
+.audit-filters-left-wrap {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.filter-input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-group-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #44403c;
+  white-space: nowrap;
+}
+
+.filter-date-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #faf7f2;
+  border: 1px solid #e7ded2;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1c1917;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.filter-date-pill:hover {
+  background: #f5eedf;
+  border-color: #d6cbbe;
+}
+
+.filter-date-pill img {
+  width: 14px;
+  height: 14px;
+  opacity: 0.7;
+}
+
+.filter-date-range-text {
+  font-size: 11px;
+  color: #78716c;
+  margin-left: 2px;
+}
+
+.filter-select-control {
+  height: 34px;
+  background: #faf7f2 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2378716c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;
+  border: 1px solid #e7ded2;
+  border-radius: 8px;
+  padding: 0 28px 0 10px;
+  font-family: var(--font-main);
+  font-size: 12px;
+  color: #1c1917;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.filter-select-control:focus {
+  border-color: var(--primary-orange);
+}
+
+.btn-clear-filters {
+  background: none;
+  border: none;
+  font-family: var(--font-main);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #78716c;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 4px 6px;
+  transition: color 0.15s;
+}
+
+.btn-clear-filters:hover {
+  color: var(--primary-orange);
+}
+
+.btn-export-audit-trail {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  background: var(--primary-gradient);
+  border: none;
+  border-radius: 9999px;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 4px 12px -2px rgba(217, 119, 6, 0.4);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-export-audit-trail:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px -2px rgba(217, 119, 6, 0.5);
+}
+
+.btn-export-audit-trail img {
+  width: 15px;
+  height: 15px;
+  filter: brightness(0) invert(1);
+}
+
+/* --------------------------------------------------------------------------
+   3. Tabela de Registros Imutáveis em Tempo Real
+   -------------------------------------------------------------------------- */
+.badge-sha256-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #faf7f2;
+  border: 1px solid #e7ded2;
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #57534e;
+}
+
+.badge-live-stream-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #065f46;
+}
+
+.live-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+  animation: pulseGreen 1.8s infinite;
+}
+
+@keyframes pulseGreen {
+  0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.audit-table-wrap {
+  overflow-x: auto;
+}
+
+.audit-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.audit-table thead th {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #78716c;
+  padding: 10px 14px;
+  border-bottom: 1.5px solid #ede4d8;
+  white-space: nowrap;
+}
+
+.audit-table tbody tr {
+  border-bottom: 1px solid #f6f0e8;
+  transition: background-color 0.15s;
+}
+
+.audit-table tbody tr:hover {
+  background-color: #fdfaf6;
+}
+
+.audit-table tbody td {
+  padding: 12px 14px;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+/* Célula Data e Hora */
+.audit-date-time-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  white-space: nowrap;
+}
+
+.audit-date-val {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1c1917;
+  font-family: monospace;
+}
+
+.audit-tz-val {
+  font-size: 10px;
+  color: #a8a29e;
+}
+
+/* Célula Operador / Identidade */
+.audit-operator-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 180px;
+}
+
+.operator-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 10.5px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.operator-avatar.doctor { background: #059669; }
+.operator-avatar.admin { background: #d97706; }
+.operator-avatar.system { background: #475569; }
+.operator-avatar.attendant { background: #0284c7; }
+.operator-avatar.support { background: #dc2626; }
+
+.operator-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.operator-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1c1917;
+}
+
+.operator-role {
+  font-size: 10.5px;
+  color: #78716c;
+}
+
+/* Célula IP / Local */
+.audit-ip-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 170px;
+}
+
+.audit-ip-address {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #1c1917;
+  font-family: monospace;
+}
+
+.audit-location-desc {
+  font-size: 10.5px;
+  color: #78716c;
+}
+
+/* Célula Módulo Afetado */
+.module-tag-badge {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  background: #faf7f2;
+  border: 1px solid #ede4d8;
+  font-size: 11px;
+  font-weight: 700;
+  color: #57534e;
+  white-space: nowrap;
+}
+
+/* Célula Ação Realizada */
+.audit-action-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 320px;
+  line-height: 1.35;
+}
+
+.audit-action-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1c1917;
+}
+
+.audit-action-desc {
+  font-size: 11px;
+  color: #57534e;
+}
+
+/* Célula Status / Hash */
+.audit-status-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.audit-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.audit-status-pill.success {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.audit-status-pill.warning {
+  background: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.audit-status-pill.critical {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.btn-inspect-hash {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.65;
+  transition: opacity 0.15s, background 0.15s;
+}
+
+.btn-inspect-hash:hover {
+  opacity: 1;
+  background: #f5eedf;
+}
+
+.btn-inspect-hash img {
+  width: 14px;
+  height: 14px;
+}
+
+/* Paginação */
+.audit-pagination-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid #f6f0e8;
+  font-size: 12px;
+  color: #78716c;
+}
+
+.pagination-controls-list {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.page-btn-item {
+  min-width: 30px;
+  height: 30px;
+  padding: 0 6px;
+  border-radius: 8px;
+  border: 1px solid #ede4d8;
+  background: #ffffff;
+  color: #57534e;
+  font-family: var(--font-main);
+  font-size: 11.5px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.page-btn-item:hover {
+  background: #faf7f2;
+  border-color: #d6cbbe;
+  color: #1c1917;
+}
+
+.page-btn-item.active {
+  background: var(--primary-gradient);
+  border-color: var(--primary-orange);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.page-btn-item.dots {
+  border: none;
+  background: none;
+  cursor: default;
+}
+
+/* --------------------------------------------------------------------------
+   4. Integridade dos Registros & Política de Retenção Municipal
+   -------------------------------------------------------------------------- */
+.retention-policy-card {
+  background: #ffffff;
+  border: 1px solid #ede4d8;
+  border-radius: 18px;
+  padding: 22px 24px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: center;
+  box-shadow: 0 3px 14px -4px rgba(45, 26, 3, 0.04);
+}
+
+.retention-left-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.retention-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.retention-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1c1917;
+}
+
+.retention-legal-text {
+  font-size: 11.5px;
+  color: #78716c;
+  line-height: 1.5;
+}
+
+.retention-legal-text strong {
+  color: #44403c;
+}
+
+.retention-badges-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+
+.retention-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: #faf7f2;
+  border: 1px solid #ede4d8;
+  font-size: 11px;
+  font-weight: 700;
+  color: #57534e;
+}
+
+.retention-pill img {
+  width: 13px;
+  height: 13px;
+}
+
+/* Bloco Criptográfico do Selo */
+.crypto-seal-card {
+  background: #fdfbf7;
+  border: 1.5px dashed #fed7aa;
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.crypto-hash-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.crypto-hash-label {
+  font-size: 9.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #a8a29e;
+}
+
+.crypto-hash-code {
+  font-size: 10.5px;
+  font-family: monospace;
+  color: #57534e;
+  word-break: break-all;
+  line-height: 1.3;
+}
+
+.crypto-valid-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #065f46;
+}
+
+.crypto-verifier-text {
+  font-size: 10px;
+  color: #78716c;
+}
+
+.btn-validate-hash {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 4px 12px;
+  background: #ffffff;
+  border: 1px solid #d6cbbe;
+  border-radius: 9999px;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  color: #b45309;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-validate-hash:hover {
+  background: #fef3c7;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+/* Responsividade */
+@media (max-width: 1180px) {
+  .audit-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .retention-policy-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .audit-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  .audit-filters-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

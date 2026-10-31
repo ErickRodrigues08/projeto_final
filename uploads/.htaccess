@@ -1,0 +1,22 @@
+# Passe Livre Suzano — diretório de uploads de imagens
+# Serve apenas conteúdo estático: nenhuma listagem e nenhuma execução de script.
+
+Options -Indexes -ExecCGI
+
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag engine off
+</IfModule>
+
+# Nenhum script ou executável é servido, mesmo com nome disfarçado
+<FilesMatch "(?i)\.(php|phtml|php[0-9]|phar|pl|py|cgi|cgi-sh|sh|asp|aspx|jsp|js|htm|html|shtml|exe|com|bat|cmd|htaccess|htpasswd)$">
+    Require all denied
+</FilesMatch>
+<FilesMatch "(?i)\.(php|phtml|php[0-9]|phar|pl|py|cgi|sh|asp|aspx|jsp|exe|com|bat|cmd)">
+    Require all denied
+</FilesMatch>
