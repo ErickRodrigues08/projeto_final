@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Passe Livre Suzano 🚍♿
 
 Plataforma Web para Mobilidade Acessível e Rotas Inclusivas do município de Suzano - SP.
@@ -172,3 +173,6 @@ O banco inicial contém usuários de teste prontos para uso:
 - **Painel de Gestão (Admin):** `dashboard.php`, `mapa-gestor.php`, `solicitacoes.php`, `solicitacao-detalhe.php`, `relatorios.php`, `auditoria.php`, `locais-cadastrados.php`.
 - **APIs REST:** `api/auditoria.php`, `api/auth.php`, `api/avaliacoes.php`, `api/configuracoes.php`, `api/contato.php`, `api/dashboard.php`, `api/estatisticas.php`, `api/geocode.php`, `api/http.php` (módulo), `api/locais.php`, `api/locations.php`, `api/mailer.php` (módulo), `api/notificacoes.php`, `api/notifications.php`, `api/obstacle-confirmation.php`, `api/obstacles.php`, `api/ocorrencias.php`, `api/osm_pontos.php`, `api/relatorios.php`, `api/reviews.php`, `api/rota.php`, `api/rotas.php`, `api/routes.php`, `api/solicitacoes.php`, `api/upload.php`, `api/user-status.php`, `api/user.php`, `api/users.php`.
 - **Uploads de usuários:** `uploads/` (criada no primeiro envio, ignorada pelo git e protegida por `uploads/.htaccess`, que desativa listagem e execução de script).
+=======
+# projeto_final
+>>>>>>> e2862b595af28cbf724d1d681d73f2126a629140
